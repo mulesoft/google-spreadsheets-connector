@@ -24,6 +24,7 @@ import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.oauth.OAuth2;
 import org.mule.api.annotations.oauth.OAuthAccessToken;
+import org.mule.api.annotations.oauth.OAuthAccessTokenIdentifier;
 import org.mule.api.annotations.oauth.OAuthAuthorizationParameter;
 import org.mule.api.annotations.oauth.OAuthConsumerKey;
 import org.mule.api.annotations.oauth.OAuthConsumerSecret;
@@ -41,7 +42,7 @@ import org.mule.module.google.spreadsheet.model.Worksheet;
 import org.mule.modules.google.AbstractGoogleOAuthConnector;
 import org.mule.modules.google.AccessType;
 import org.mule.modules.google.ForcePrompt;
-import org.mule.modules.google.GoogleUserIdExtractor;
+import org.mule.modules.google.IdentifierPolicy;
 import org.mule.modules.google.oauth.invalidation.InvalidationAwareCredential;
 import org.mule.modules.google.oauth.invalidation.OAuthTokenExpiredException;
 
@@ -73,7 +74,7 @@ import com.google.gdata.util.ServiceException;
  *
  * @author mariano.gonzalez@mulesoft.com
  */
-@Connector(name="google-spreadsheets", schemaVersion="1.0", friendlyName="Google Spreadsheets", minMuleVersion="3.5", configElementName="config-with-oauth")
+@Connector(name="google-spreadsheets", schemaVersion="1.0", friendlyName="Google Spreadsheets", minMuleVersion="3.4", configElementName="config-with-oauth")
 @OAuth2(
 		authorizationUrl = "https://accounts.google.com/o/oauth2/auth",
 		accessTokenUrl = "https://accounts.google.com/o/oauth2/token",
@@ -114,6 +115,19 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
     @Default(USER_PROFILE_SCOPE + " https://spreadsheets.google.com/feeds https://docs.google.com/feeds")
     private String scope;
     
+    /**
+     * This policy represents which id we want to use to represent each google account.
+     * 
+     * PROFILE means that we want the google profile id. That means, the user's primary key in google's DB.
+     * This is a long number represented as a string.
+     * 
+     * EMAIL means you want to use the account's email address
+     */
+    @Configurable
+    @Optional
+    @Default("EMAIL")
+    private IdentifierPolicy identifierPolicy = IdentifierPolicy.EMAIL;
+    
     private FeedURLFactory factory = FeedURLFactory.getDefault();
     
     /**
@@ -131,6 +145,11 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
 	
 	private DocsService docService;
 	
+	@OAuthAccessTokenIdentifier
+	public String getAccessTokenId() {
+		return this.identifierPolicy.getId(this);
+	}
+	
 	@OAuthPostAuthorization
 	public void postAuth() {
 		Credential credential = new InvalidationAwareCredential(BearerToken.authorizationHeaderAccessMethod());
@@ -142,7 +161,6 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
 		
 		this.docService = new DocsService(this.applicationName);
 		this.docService.setOAuth2Credentials(credential);
-		GoogleUserIdExtractor.fetchAndPublishAsFlowVar(this);
 	}
 
 	private void setHeaderValue(String value) {
@@ -171,7 +189,7 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
     /**
      * Creates a new spreadsheet using a given title
      *  
-     * {@sample.xml ../../../doc/GoogleSpreadSheets-connector.xml.sample GoogleSpreadSheets:create-spreadsheet}
+     * {@sample.xml ../../../doc/GoogleSpreadSheets-connector.xml.sample GoogleSpreadSheets:get-all-spreadsheets}
      *  
      * @param title the title you want the new spreadsheet to have
      * @throws OAuthException if there's an error authenticating
@@ -369,7 +387,7 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
     @OAuthProtected
 	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public void setRowValues(
-			@Optional @Default("#[payload]") List<Row> rows,
+			@Optional @Default("#[payload:]") List<Row> rows,
 			String spreadsheet,
     		String worksheet,
     		@Optional @Default("0") int spreadsheetIndex,
@@ -439,7 +457,7 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
     public void setCsvValues(
 			String spreadsheet,
     		String worksheet,
-    		@Optional @Default("#[payload]") String csv,
+    		@Optional @Default("#[payload:]") String csv,
     		@Optional @Default("1") int startingRow,
     		@Optional @Default("1") int startingColumn,
     		@Optional @Default("\n") String lineSeparator,
@@ -729,10 +747,10 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
 			String worksheet,
     		@Optional @Default("0") int spreadsheetIndex,
 			@Optional @Default("0") int worksheetIndex,
-    		@Optional Integer minRow,
-    		@Optional Integer maxRow,
-    		@Optional Integer minCol,
-    		@Optional Integer maxCol) throws IOException, ServiceException {
+    		int minRow,
+    		int maxRow,
+    		int minCol,
+    		int maxCol) throws IOException, ServiceException {
       
     	CellQuery query = new CellQuery(this.getCellFeedUrl(spreadsheet, worksheet, spreadsheetIndex, worksheetIndex));
     	query.setMinimumRow(minRow);
@@ -783,10 +801,10 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
 			@Optional @Default("0") int worksheetIndex,
 			@Optional @Default(",") String columnSeparator,
 			@Optional @Default("\n") String lineSeparator,
-			@Optional Integer minRow,
-			@Optional Integer maxRow,
-			@Optional Integer minCol,
-			@Optional Integer maxCol) throws IOException, ServiceException {
+			int minRow,
+			int maxRow,
+			int minCol,
+			int maxCol) throws IOException, ServiceException {
     	
     	if (StringUtils.isEmpty(lineSeparator)) {
     		lineSeparator = "\n";
@@ -936,6 +954,14 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
 
 	public void setDocService(DocsService docService) {
 		this.docService = docService;
+	}
+
+	public IdentifierPolicy getIdentifierPolicy() {
+		return identifierPolicy;
+	}
+
+	public void setIdentifierPolicy(IdentifierPolicy identifierPolicy) {
+		this.identifierPolicy = identifierPolicy;
 	}
 	
 }
