@@ -1,0 +1,63 @@
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:get-all-spreadsheets) -->
+    <google-spreadsheets:get-all-spreadsheets />
+<!-- END_INCLUDE(GoogleSpreadSheets:get-all-spreadsheets) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:create-spreadsheet) -->
+	<google-spreadsheets:create-spreadsheet title="My mule Spreadsheet"/>
+<!-- END_INCLUDE(GoogleSpreadSheets:create-spreadsheet) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:get-all-worksheets) -->
+	<google-spreadsheets:get-all-worksheets spreadsheet="My mule Spreadsheet"/>
+<!-- END_INCLUDE(GoogleSpreadSheets:get-all-worksheets) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:create-worksheet) -->
+	<google-spreadsheets:create-worksheet spreadsheet="My mule Spreadsheet" title="My mule worksheet"
+						  rowCount="10" colCount="15"/>
+<!-- END_INCLUDE(GoogleSpreadSheets:create-worksheet) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:delete-worksheet) -->
+	<google-spreadsheets:delete-worksheet spreadsheet="My mule Spreadsheet" worksheet="My mule worksheet" />
+<!-- END_INCLUDE(GoogleSpreadSheets:delete-worksheet) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:update-worksheet-metadata) -->
+	<google-spreadsheets:update-worksheet-metadata spreadsheet="My mule Spreadsheet" worksheet="My mule worksheet" 
+				title="#[map-payload:title]" rowCount="#[map-payload:rowCount]" colCount="#[map-payload:colCount]"
+				summary="#[map-payload:summary]"/>
+<!-- END_INCLUDE(GoogleSpreadSheets:update-worksheet-metadata) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:set-row-values) -->
+	<google-spreadsheets:set-row-values spreadsheet="My mule Spreadsheet" worksheet="My mule worksheet" purge="true">
+		<google-spreadsheets:rows ref="#[payload]"/>
+	</google-spreadsheets:set-row-values>
+<!-- END_INCLUDE(GoogleSpreadSheets:set-row-values) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:set-csv-values) -->
+	<google-spreadsheets:set-csv-values spreadsheet="My mule Spreadsheet" worksheet="My mule worksheet" purge="true"/>
+<!-- END_INCLUDE(GoogleSpreadSheets:set-csv-values) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:get-authors) -->
+	<google-spreadsheets:get-authors spreadsheet="My mule Spreadsheet" />
+<!-- END_INCLUDE(GoogleSpreadSheets:get-authors) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:get-column-headers) -->
+	<google-spreadsheets:get-column-headers spreadsheet="My mule Spreadsheet" worksheet="My mule worksheet" />
+<!-- END_INCLUDE(GoogleSpreadSheets:get-column-headers) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:get-spreadsheets-by-title) -->
+	<google-spreadsheets:get-spreadsheets-by-title title="My mule Spreadsheet"/>
+<!-- END_INCLUDE(GoogleSpreadSheets:get-spreadsheets-by-title) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:get-worksheet-by-title) -->
+	<google-spreadsheets:get-worksheet-by-title spreadsheet="My mule Spreadsheet" title="My mule worksheet"/>
+<!-- END_INCLUDE(GoogleSpreadSheets:get-worksheet-by-title) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:purge-worksheet) -->
+	<google-spreadsheets:purge-worksheet spreadsheet="My mule Spreadsheet" worksheet="My mule worksheet" />
+<!-- END_INCLUDE(GoogleSpreadSheets:purge-worksheet) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:get-all-cells) -->
+	<google-spreadsheets:get-all-cells spreadsheet="My mule Spreadsheet" worksheet="My mule worksheet" />
+<!-- END_INCLUDE(GoogleSpreadSheets:get-all-cells) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:get-all-cells-as-csv) -->
+	<google-spreadsheets:get-all-cells-as-csv spreadsheet="My mule Spreadsheet" worksheet="My mule worksheet" />
+<!-- END_INCLUDE(GoogleSpreadSheets:get-all-cells-as-csv) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:get-cell-range) -->
+	<google-spreadsheets:get-cell-range spreadsheet="My mule Spreadsheet" worksheet="My mule worksheet"
+					minRow="1" maxRow="10"
+					minCol="1" maxCol="10" />
+<!-- END_INCLUDE(GoogleSpreadSheets:get-cell-range) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:get-cell-range-as-csv) -->
+	<google-spreadsheets:get-cell-range-as-csv spreadsheet="My mule Spreadsheet" worksheet="My mule worksheet"
+					minRow="1" maxRow="10"
+					minCol="1" maxCol="10" />
+<!-- END_INCLUDE(GoogleSpreadSheets:get-cell-range-as-csv) -->
+<!-- BEGIN_INCLUDE(GoogleSpreadSheets:search) -->
+	<google-spreadsheets:search spreadsheet="My mule Spreadsheet" worksheet="My mule worksheet" query="Mule is Here"/>
+<!-- END_INCLUDE(GoogleSpreadSheets:search) -->

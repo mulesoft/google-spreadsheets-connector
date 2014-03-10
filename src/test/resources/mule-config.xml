@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Mule Development Kit
+    Copyright 2010-2011 (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:spring="http://www.springframework.org/schema/beans"
+      xmlns:gss="http://www.mulesoft.org/schema/mule/googlespreadsheet"
+      xmlns:http="http://www.mulesoft.org/schema/mule/http"
+      xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/3.0/mule-http.xsd
+        http://www.mulesoft.org/schema/mule/googlespreadsheet http://www.mulesoft.org/schema/mule/googlespreadsheet/1.0/mule-googlespreadsheet.xsd">
+
+<!--     <gss:config consumerKey="338184803349-oktp3kdscqsr69c51c3qkiu4vo6ec3tc.apps.googleusercontent.com" consumerSecret="-nOKGb-25368mQfvbCBjm-BS"> -->
+<!--     	<gss:oauth-restore-access-token> -->
+<!--             <message-properties-transformer> -->
+<!--                 <add-message-property key="OAuthAccessToken" value="123"/> -->
+<!--                 <add-message-property key="OAuthAccessTokenSecret" value="567"/> -->
+<!--             </message-properties-transformer> -->
+<!--         </gss:oauth-restore-access-token> -->
+<!--     </gss:config> -->
+
+<!-- 	<http:connector name="connector.http.mule.default" /> -->
+
+<!-- 	<flow name="updateFromCsv"> -->
+<!-- 		<gss:authorize /> -->
+<!-- 		<gss:set-csv-values spreadsheet="spreadsheet" worksheet="worksheet" purge="false"/> -->
+<!-- 	</flow> -->
+	
+
+</mule>
