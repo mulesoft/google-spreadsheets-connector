@@ -1,0 +1,1513 @@
+
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Google Spreadsheet Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico" />
+<title>
+
+  GoogleSpreadSheetConnector
+
+
+| Google Spreadsheet Connector
+
+</title>
+<link href="../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../", "../assets/");
+</script>
+<script src="../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Google Spreadsheet Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Google Spreadsheet Connector</span>
+    
+    <ul id="header-tabs" class="mule">
+    
+    	<li id="guide"><a href="../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../')"
+                      onkeyup="return search_changed(event, false, '../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+<div class="g-unit" id="all-content">
+
+<div id="api-info-block">
+
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF MODULE DATA ======== -->
+
+<div id="jd-header">
+    org.mule.modules
+<h1>mule-module-google-spreadsheet</h1>
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+
+
+<div class="jd-tagdata">
+      <table class="jd-tagtable">
+        <tbody><tr>
+          <th>Namespace</th><td>http://www.mulesoft.org/schema/mule/google-spreadsheets</td>
+        </tr><tr>
+          <th>Schema Location</th><td>http://www.mulesoft.org/schema/mule/google-spreadsheets/current/mule-google-spreadsheets.xsd&nbsp;&nbsp;(<a href="google-spreadsheets-schema.html">View Schema</a>)</td>
+        </tr>
+<tr>
+          <th>Schema Version</th><td>1.0</td>
+        </tr>
+<tr>
+          <th>Minimum Mule Version</th><td>3.4</td>
+        </tr>
+    </tbody></table>
+  </div>
+
+<div class="jd-descr">
+<h2>Schema</h2>
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+
+&lt;xs:schema xmlns:ns2=&quot;http://www.mulesoft.org/schema/mule/devkit&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; elementFormDefault=&quot;qualified&quot; attributeFormDefault=&quot;unqualified&quot; targetNamespace=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot;&gt;
+  &lt;xs:import namespace=&quot;http://www.w3.org/XML/1998/namespace&quot;&gt;&lt;/xs:import&gt;
+  &lt;xs:import schemaLocation=&quot;http://www.springframework.org/schema/beans/spring-beans-3.0.xsd&quot; namespace=&quot;http://www.springframework.org/schema/beans&quot;&gt;&lt;/xs:import&gt;
+  &lt;xs:import schemaLocation=&quot;http://www.mulesoft.org/schema/mule/core/current/mule.xsd&quot; namespace=&quot;http://www.mulesoft.org/schema/mule/core&quot;&gt;&lt;/xs:import&gt;
+  &lt;xs:element xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;config-with-oauth&quot; substitutionGroup=&quot;mule:abstract-extension&quot; ns2:javaClass=&quot;org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorOAuth2Adapter&quot;&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:complexContent&gt;
+        &lt;xs:extension base=&quot;mule:abstractExtensionType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Connector for accessing, creating and modifying google docs spreadsheets.
+This connector uses OAuth2 for authentication.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+          &lt;xs:sequence&gt;
+            &lt;xs:element name=&quot;oauth-callback-config&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;1&quot;&gt;
+              &lt;xs:annotation&gt;
+                &lt;xs:documentation&gt;Config for http callbacks.&lt;/xs:documentation&gt;
+              &lt;/xs:annotation&gt;
+              &lt;xs:complexType&gt;
+                &lt;xs:complexContent&gt;
+                  &lt;xs:extension base=&quot;mule:abstractExtensionType&quot;&gt;
+                    &lt;xs:attribute name=&quot;localPort&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;&lt;/xs:attribute&gt;
+                    &lt;xs:attribute name=&quot;remotePort&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;&lt;/xs:attribute&gt;
+                    &lt;xs:attribute name=&quot;domain&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;&lt;/xs:attribute&gt;
+                    &lt;xs:attribute name=&quot;async&quot; default=&quot;false&quot; use=&quot;optional&quot; type=&quot;xs:boolean&quot;&gt;&lt;/xs:attribute&gt;
+                    &lt;xs:attribute name=&quot;path&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;&lt;/xs:attribute&gt;
+                    &lt;xs:attribute name=&quot;connector-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;&lt;/xs:attribute&gt;
+                  &lt;/xs:extension&gt;
+                &lt;/xs:complexContent&gt;
+              &lt;/xs:complexType&gt;
+            &lt;/xs:element&gt;
+            &lt;xs:element name=&quot;oauth-store-config&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;0&quot;&gt;
+              &lt;xs:annotation&gt;
+                &lt;xs:documentation&gt;Configuration element for storage of access tokens&lt;/xs:documentation&gt;
+              &lt;/xs:annotation&gt;
+              &lt;xs:complexType&gt;
+                &lt;xs:complexContent&gt;
+                  &lt;xs:extension base=&quot;mule:abstractExtensionType&quot;&gt;
+                    &lt;xs:attribute name=&quot;objectStore-ref&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;&lt;/xs:attribute&gt;
+                  &lt;/xs:extension&gt;
+                &lt;/xs:complexContent&gt;
+              &lt;/xs:complexType&gt;
+            &lt;/xs:element&gt;
+          &lt;/xs:sequence&gt;
+          &lt;xs:attribute name=&quot;name&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;Give a name to this configuration so it can be later referenced by config-ref.&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute name=&quot;consumerKey&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;The OAuth consumer key&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute name=&quot;consumerSecret&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;The OAuth consumer secret&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute name=&quot;scope&quot; default=&quot;https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://spreadsheets.google.com/feeds https://docs.google.com/feeds&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;The OAuth scopes you want to request&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;identifierPolicy&quot; default=&quot;EMAIL&quot; use=&quot;optional&quot; type=&quot;IdentifierPolicyEnumType&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;This policy represents which id we want to use to represent each google account.
+
+PROFILE means that we want the google profile id. That means, the user's primary key in google's DB.
+This is a long number represented as a string.
+
+EMAIL means you want to use the account's email address&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute name=&quot;applicationName&quot; default=&quot;Mule-GoogleSpreadsheetsConnector/1.0&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;Application name to communicate to google&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute name=&quot;accessTokenUrl&quot; default=&quot;https://accounts.google.com/o/oauth2/token&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;The URL defined by the Service Provider to obtain an access token&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute name=&quot;authorizationUrl&quot; default=&quot;https://accounts.google.com/o/oauth2/auth&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;The URL defined by the Service Provider where the resource owner will be redirected to grant authorization to the connector&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+        &lt;/xs:extension&gt;
+      &lt;/xs:complexContent&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;authorize&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;AuthorizeType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Starts OAuth authorization process. It must be called from a flow with an http:inbound-endpoint.&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;unauthorize&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;UnauthorizeType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Unauthorizes the connector, forcing to re-use authorize again before accessing any protected message processor.&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;AuthorizeType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;state&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Any value that you wish to be sent with the callback&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;access_type&quot; default=&quot;online&quot; use=&quot;optional&quot; type=&quot;AccessTypeEnumType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;force_prompt&quot; default=&quot;auto&quot; use=&quot;optional&quot; type=&quot;ForcePromptEnumType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenUrl&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The URL defined by the Service Provider to obtain an access token&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;authorizationUrl&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The URL defined by the Service Provider where the resource owner will be redirected to grant authorization to the connector&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:complexType name=&quot;UnauthorizeType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;get-all-spreadsheets&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;GetAllSpreadsheetsType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Returns all the spreadsheets associated with the user's account&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;GetAllSpreadsheetsType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;create-spreadsheet&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;CreateSpreadsheetType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Creates a new spreadsheet using a given title&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;CreateSpreadsheetType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;title&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title you want the new spreadsheet to have&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;get-all-worksheets&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;GetAllWorksheetsType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Lists all the worksheets contained in an specified spreadsheet&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;GetAllWorksheetsType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet you want to get the worksheets from&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;create-worksheet&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;CreateWorksheetType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Creates a new worksheet for an specified spreadsheet&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;CreateWorksheetType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet that will contain the new worksheet&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;title&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title you want the new worksheet to have&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;rowCount&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the initial number of rows you want the worksheet to have&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;colCount&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the initial number of columns you want the worksheet to have&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;delete-worksheet&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;DeleteWorksheetType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Deletes an specified worksheet&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;DeleteWorksheetType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet that contains the worksheet to be deleted&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;worksheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the worksheet you want to delete&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;worksheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;update-worksheet-metadata&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;UpdateWorksheetMetadataType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;This processor allows updating a worksheet's metadata, constituted by
+its title, dimensions, summary, draft and editability status.&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;UpdateWorksheetMetadataType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet you want to update&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;worksheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the worksheet you want to update&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;title&quot; default=&quot;&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;if specified, it changes the title you want to set&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;draft&quot; use=&quot;optional&quot; type=&quot;booleanType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;if specified, it changes the value of the draft property&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;canEdit&quot; use=&quot;optional&quot; type=&quot;booleanType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;if specified, it changes the worksheet's editability&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;summary&quot; default=&quot;&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;if specified, it changes the worksheet's summary&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;rowCount&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;if a value greater than zero is specified, it changes the amount of rows in the worksheet&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;colCount&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;if a value greater than zero is specified, it changes the amount of columns in the worksheet&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;worksheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;set-row-values&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;SetRowValuesType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Performs a batch update of a worksheet's cells taking values from a list of 
+taken from the message payload.&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;CellObjectType&quot;&gt;
+    &lt;xs:sequence&gt;&lt;/xs:sequence&gt;
+    &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;rowNumber&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+      &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;The number of the row it belongs to. It's a 1-based index.
+Defaults to zero which means that this is still unknown.&lt;/xs:documentation&gt;
+      &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+    &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;columnNumber&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+      &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;The number of the represented column. It's a 1-based index.
+Defaults to zero which means that this is still unknown.&lt;/xs:documentation&gt;
+      &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+    &lt;xs:attribute name=&quot;valueOrFormula&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+      &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;The literal value or formula that was introduced into the cell.
+This is the value as the user entered it. It doesn't have any formatting
+or evaluation (in the case of formulas)&lt;/xs:documentation&gt;
+      &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+    &lt;xs:attribute name=&quot;evaluatedValue&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+      &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;The evaluated cell value. By evaluated we mean that
+if the user entered a formula then the result of that evaluation is returned.
+If a literal value was introduced but the cell was subject to some kind of formatting, then
+the formatted value is returned.
+
+This is just a holder for the value, the actual formatting and evaluation happens server side
+at the spreadsheet's server&lt;/xs:documentation&gt;
+      &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+    &lt;xs:attribute name=&quot;ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+      &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;The reference object for this parameter&lt;/xs:documentation&gt;
+      &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:complexType name=&quot;RowObjectType&quot;&gt;
+    &lt;xs:sequence&gt;
+      &lt;xs:element name=&quot;cells&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;0&quot;&gt;
+        &lt;xs:annotation&gt;
+          &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+        &lt;/xs:annotation&gt;
+        &lt;xs:complexType&gt;
+          &lt;xs:sequence&gt;
+            &lt;xs:element name=&quot;cell&quot; maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot;&gt;
+              &lt;xs:complexType&gt;
+                &lt;xs:complexContent&gt;
+                  &lt;xs:extension xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; base=&quot;CellObjectType&quot;&gt;
+                    &lt;xs:attribute name=&quot;value-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;&lt;/xs:attribute&gt;
+                  &lt;/xs:extension&gt;
+                &lt;/xs:complexContent&gt;
+              &lt;/xs:complexType&gt;
+            &lt;/xs:element&gt;
+          &lt;/xs:sequence&gt;
+          &lt;xs:attribute name=&quot;ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;The reference object for this parameter&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+        &lt;/xs:complexType&gt;
+      &lt;/xs:element&gt;
+    &lt;/xs:sequence&gt;
+    &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;rowNumber&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+      &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;Defaults to zero&lt;/xs:documentation&gt;
+      &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+    &lt;xs:attribute name=&quot;ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+      &lt;xs:annotation&gt;
+        &lt;xs:documentation&gt;The reference object for this parameter&lt;/xs:documentation&gt;
+      &lt;/xs:annotation&gt;
+    &lt;/xs:attribute&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:complexType name=&quot;SetRowValuesType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:sequence&gt;
+          &lt;xs:element name=&quot;rows&quot; maxOccurs=&quot;1&quot; minOccurs=&quot;0&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;a list of  taken from the message payload describing the values to be set&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+            &lt;xs:complexType&gt;
+              &lt;xs:sequence&gt;
+                &lt;xs:element name=&quot;row&quot; maxOccurs=&quot;unbounded&quot; minOccurs=&quot;0&quot;&gt;
+                  &lt;xs:complexType&gt;
+                    &lt;xs:complexContent&gt;
+                      &lt;xs:extension xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; base=&quot;RowObjectType&quot;&gt;
+                        &lt;xs:attribute name=&quot;value-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;&lt;/xs:attribute&gt;
+                      &lt;/xs:extension&gt;
+                    &lt;/xs:complexContent&gt;
+                  &lt;/xs:complexType&gt;
+                &lt;/xs:element&gt;
+              &lt;/xs:sequence&gt;
+              &lt;xs:attribute name=&quot;ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+                &lt;xs:annotation&gt;
+                  &lt;xs:documentation&gt;The reference object for this parameter&lt;/xs:documentation&gt;
+                &lt;/xs:annotation&gt;
+              &lt;/xs:attribute&gt;
+            &lt;/xs:complexType&gt;
+          &lt;/xs:element&gt;
+        &lt;/xs:sequence&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet you want to update&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;worksheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the worksheet you want to update&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;worksheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;purge&quot; default=&quot;false&quot; use=&quot;optional&quot; type=&quot;booleanType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;if true, the worksheet will be purged before the values are set&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;set-csv-values&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;SetCsvValuesType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Performs a batch update of a worksheet's cells taking values from a csv String.
+This csv file can have multiple lines and columns and you get to specify what those separators are.
+You can manually specify the csv string or else it will automatically taken from the message payload&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;SetCsvValuesType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet you want to update&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;worksheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the worksheet you want to update&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;csv&quot; default=&quot;#[payload:]&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the csv content to be set on the worksheet. You can manually specify it or else it will be taken from the message payload&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;startingRow&quot; default=&quot;1&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the number of the row where the first line of the csv will be set into. This is a 1-based index&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;startingColumn&quot; default=&quot;1&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the number of the column where the first value of each line of the csv will be set into. This is a 1-based index&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;lineSeparator&quot; default=&quot;
+&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;specifies the character to be used as a line separator. Defaults to the new line &amp;lt;code&amp;gt;\n&amp;lt;/code&amp;gt; character&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;columnSeparator&quot; default=&quot;,&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;specifies the character to be used as a column sperator. Defaults to a comma character&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;worksheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;purge&quot; default=&quot;false&quot; use=&quot;optional&quot; type=&quot;booleanType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;if true, the worksheet will be purged before the values are set&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;get-authors&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;GetAuthorsType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Returns a list of  where each entry represent a a contributor
+on a specified spreadsheet&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;GetAuthorsType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet from which the info should be taken from&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;get-column-headers&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;GetColumnHeadersType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;This processor returns the a worksheet's first row&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;GetColumnHeadersType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet from which the info should be taken from&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;worksheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the worksheet from which the info should be taken from&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;worksheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;get-spreadsheets-by-title&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;GetSpreadsheetsByTitleType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Returns a list of  with all the spreadsheets
+associated with the user which title matches the one specified.&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;GetSpreadsheetsByTitleType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;title&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title to be used in the search&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;get-worksheet-by-title&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;GetWorksheetByTitleType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Returns a list of 
+which title matches the one specified. This is not a global search. Only worksheets
+attached to a specified spreadsheet will be considered&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;GetWorksheetByTitleType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet in which you want to perform the search&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;title&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title to be used in the search&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;purge-worksheet&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;PurgeWorksheetType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;This processors deletes all the cell entries of a specified worksheet.&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;PurgeWorksheetType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet containing the worksheet to be purged&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;worksheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the worksheet to be purged&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;worksheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;get-all-cells&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;GetAllCellsType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Returns a list of  in which each
+entry represents one of the initialized cells on a worksheet&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;GetAllCellsType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet containing the worksheet on which the cells are&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;worksheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the worksheet containing the cells you want to get&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;worksheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;get-all-cells-as-csv&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;GetAllCellsAsCsvType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Returns a CSV file representing all the initialized cells in a worksheet.
+Athough this method is intended for generating a CSV file, notice that
+the column and line separator are customizable so you could use it
+to generated a text delimited file that is not strictly speaking a CSV.
+
+The generated file will have one line per cell and the following columns structure
+
+Row Number | Column Number | evaluated Value&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;GetAllCellsAsCsvType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet containing the worksheet on which the cells are&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;worksheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the worksheet containing the cells you want to get&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;columnSeparator&quot; default=&quot;,&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;specifies the character to be used as a column sperator. Defaults to a comma character&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;lineSeparator&quot; default=&quot;
+&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;specifies the character to be used as a line separator. Defaults to the new line &amp;lt;code&amp;gt;\n&amp;lt;/code&amp;gt; character&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;worksheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;get-cell-range&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;GetCellRangeType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Returns a list of  containing
+the cells contained in a given range&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;GetCellRangeType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet containing the worksheet on which the cells are&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;worksheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the worksheet containing the cells you want to get&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;worksheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;minRow&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the range starting row. This is a 1-based index&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;maxRow&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the range ending row. This is a 1-based index&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;minCol&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the range starting column. This is a 1-based index&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;maxCol&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the range ending column. This is a 1-based index&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;get-cell-range-as-csv&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;GetCellRangeAsCsvType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Returns a CSV file representing the requested cell range.
+Athough this method is intended for generating a CSV file, notice that
+the column and line separator are customizable so you could use it
+to generated a text delimited file that is not strictly speaking a CSV.
+
+The generated file will have one line per cell and the following columns structure
+
+Row Number | Column Number | evaluated Value&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;GetCellRangeAsCsvType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet containing the worksheet on which the cells are&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;worksheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the worksheet containing the cells you want to get&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;worksheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;columnSeparator&quot; default=&quot;,&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;specifies the character to be used as a column sperator. Defaults to a comma character&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;lineSeparator&quot; default=&quot;
+&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;specifies the character to be used as a line separator. Defaults to the new line &amp;lt;code&amp;gt;\n&amp;lt;/code&amp;gt; character&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;minRow&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the range starting row. This is a 1-based index&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;maxRow&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the range ending row. This is a 1-based index&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;minCol&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the range starting column. This is a 1-based index&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;maxCol&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the range ending column. This is a 1-based index&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:element xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; name=&quot;search&quot; substitutionGroup=&quot;mule:abstract-message-processor&quot; type=&quot;SearchType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;Performs a full-text search on a worksheet and returns a list of 
+in which each entry represent a cell containing a matching value&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+  &lt;/xs:element&gt;
+  &lt;xs:complexType name=&quot;SearchType&quot;&gt;
+    &lt;xs:complexContent&gt;
+      &lt;xs:extension xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:abstractMessageProcessorType&quot;&gt;
+        &lt;xs:attribute name=&quot;config-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;Specify which configuration to use for this invocation.&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;spreadsheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the spreadsheet containing the worksheet on which the cells are&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;worksheet&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;the title of the worksheet containing the cells you want to get&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;query&quot; use=&quot;required&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;a full text search string, with space-separated keywords&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;spreadsheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;worksheetIndex&quot; default=&quot;0&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The id of the access token that will be used to authenticate the call&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+      &lt;/xs:extension&gt;
+    &lt;/xs:complexContent&gt;
+  &lt;/xs:complexType&gt;
+  &lt;xs:simpleType name=&quot;AccessTypeEnumType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+          &lt;xs:enumeration value=&quot;online&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:enumeration&gt;
+          &lt;xs:enumeration value=&quot;offline&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:enumeration&gt;
+        &lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;ForcePromptEnumType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+          &lt;xs:enumeration value=&quot;auto&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:enumeration&gt;
+          &lt;xs:enumeration value=&quot;force&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:enumeration&gt;
+        &lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;IdentifierPolicyEnumType&quot;&gt;
+    &lt;xs:annotation&gt;
+      &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+    &lt;/xs:annotation&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+          &lt;xs:enumeration value=&quot;PROFILE&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:enumeration&gt;
+          &lt;xs:enumeration value=&quot;EMAIL&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:enumeration&gt;
+        &lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;integerType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:integer&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;decimalType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:decimal&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;floatType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:float&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;doubleType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:double&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;dateTimeType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:dateTime&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;longType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:long&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;byteType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:byte&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;booleanType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:boolean&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;anyUriType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:anyURI&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+  &lt;xs:simpleType name=&quot;charType&quot;&gt;
+    &lt;xs:union&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction base=&quot;xs:string&quot;&gt;
+          &lt;xs:minLength value=&quot;1&quot;&gt;&lt;/xs:minLength&gt;
+          &lt;xs:maxLength value=&quot;1&quot;&gt;&lt;/xs:maxLength&gt;
+        &lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+      &lt;xs:simpleType&gt;
+        &lt;xs:restriction xmlns:mule=&quot;http://www.mulesoft.org/schema/mule/core&quot; base=&quot;mule:propertyPlaceholderType&quot;&gt;&lt;/xs:restriction&gt;
+      &lt;/xs:simpleType&gt;
+    &lt;/xs:union&gt;
+  &lt;/xs:simpleType&gt;
+&lt;/xs:schema&gt;</pre>
+</div><!-- jd-descr -->
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>

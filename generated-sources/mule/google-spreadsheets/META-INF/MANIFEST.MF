@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Google Spreadsheets
+Bundle-SymbolicName: org.mule.tooling.ui.contribution.google-spreadsheets;singleton:=true
+Bundle-Version: 1.0.0.201403261236
+Bundle-Activator: org.mule.tooling.ui.contribution.GoogleSpreadsheetsActivator
+Bundle-Vendor: mariano.gonzalez@mulesoft.com
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.mule.tooling.core;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Eclipse-BundleShape: dir

@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core" prefix="google-spreadsheets" url="http://www.mulesoft.org/schema/mule/google-spreadsheets">
+  <global-cloud-connector metaData="static" connectivityTesting="disabled" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="" localId="parentConfig" icon="" description="" caption="Google Spreadsheets" versions="[3.4.0,8.0.0]"></global-cloud-connector>
+  <global-cloud-connector metaData="static" connectivityTesting="disabled" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/parentConfig" abstract="false" image="icons/large/google-spreadsheets-connector-48x32.png" localId="config-with-oauth" icon="icons/small/google-spreadsheets-connector-24x16.png" description="Global Google Spreadsheets configuration information." caption="Google Spreadsheets" versions="[3.4.0,8.0.0]">
+    <attribute-category description="Google-spreadsheets configuration properties." caption="General">
+      <group caption="Generic" id="google-spreadsheetsGenericProperties">
+        <name required="true" description="Give a name to this configuration so it can be later referenced by config-ref." caption="Name" name="name"></name>
+      </group>
+      <group caption="General" id="general">
+        <string defaultValue="Mule-GoogleSpreadsheetsConnector/1.0" javaType="java.lang.String" required="false" description="Application name to communicate to google." caption="Application Name" name="applicationName"></string>
+        <string javaType="java.lang.String" required="true" description="The OAuth consumer key." caption="Consumer Key" name="consumerKey"></string>
+        <string javaType="java.lang.String" required="true" description="The OAuth consumer secret." caption="Consumer Secret" name="consumerSecret"></string>
+        <string defaultValue="https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://spreadsheets.google.com/feeds https://docs.google.com/feeds" javaType="java.lang.String" required="false" description="The OAuth scopes you want to request." caption="Scope" name="scope"></string>
+        <enum allowsCustom="true" defaultValue="EMAIL" javaType="org.mule.modules.google.IdentifierPolicy" required="false" supportsExpressions="true" description="This policy represents which id we want to use to represent each google account.
+
+PROFILE means that we want the google profile id. That means, the user's primary key in google's DB.
+This is a long number represented as a string.
+
+EMAIL means you want to use the account's email address." caption="Identifier Policy" name="identifierPolicy">
+          <option value="EMAIL"></option>
+          <option value="PROFILE"></option>
+        </enum>
+      </group>
+    </attribute-category>
+    <attribute-category description="OAuth." caption="Oauth">
+      <group caption="Oauth Callback Config" id="oauthCallbackConfigGroup">
+        <childElement inplace="true" description="" caption="" name="http://www.mulesoft.org/schema/mule/google-spreadsheets/oauth-callback-config"></childElement>
+      </group>
+      <group caption="Oauth Object Store Config" id="oauthStoreConfigGroup">
+        <childElement inplace="true" description="" caption="" name="http://www.mulesoft.org/schema/mule/google-spreadsheets/oauth-store-config"></childElement>
+      </group>
+    </attribute-category>
+  </global-cloud-connector>
+  <cloud-connector abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="abstractGoogle-spreadsheetsConnectorGeneric" icon="icons/small/google-spreadsheets-connector-24x16.png" description="Interact with Google-spreadsheets." caption="Abstractgoogle-spreadsheetsconnectorgeneric">
+    <attribute-category description="General." caption="General">
+      <group caption="Generic" id="abstractGoogle-spreadsheetsConnectorGeneric">
+        <globalRef requiredType="http://www.mulesoft.org/schema/mule/google-spreadsheets/config-with-oauth" required="true" description="Specify which configuration to use for this invocation." caption="Config Reference" name="config-ref"></globalRef>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" image="icons/large/google-spreadsheets-connector-48x32.png" localId="google-spreadsheets-connector" icon="icons/small/google-spreadsheets-connector-24x16.png" description="Connector for accessing, creating and modifying google docs spreadsheets.
+This connector uses OAuth2 for authentication." caption="Google Spreadsheets" aliasId="org.mule.tooling.ui.modules.core.pattern.google-spreadsheets" versions="[3.4.0,8.0.0]">
+    <attribute-category description="General." caption="General">
+      <group caption="Generic" id="google-spreadsheetsConnectorGeneric">
+        <modeSwitch alwaysCombo="true" description="Operation." caption="Operation" name="Google-spreadsheets operations to execute">
+          <mode modeLabel="Authorize" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/authorize"></mode>
+          <mode modeLabel="Unauthorize" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/unauthorize"></mode>
+          <mode modeLabel="Create spreadsheet" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/create-spreadsheet"></mode>
+          <mode modeLabel="Create worksheet" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/create-worksheet"></mode>
+          <mode modeLabel="Delete worksheet" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/delete-worksheet"></mode>
+          <mode modeLabel="Get all cells" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/get-all-cells"></mode>
+          <mode modeLabel="Get all cells as csv" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/get-all-cells-as-csv"></mode>
+          <mode modeLabel="Get all spreadsheets" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/get-all-spreadsheets"></mode>
+          <mode modeLabel="Get all worksheets" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/get-all-worksheets"></mode>
+          <mode modeLabel="Get authors" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/get-authors"></mode>
+          <mode modeLabel="Get cell range" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/get-cell-range"></mode>
+          <mode modeLabel="Get cell range as csv" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/get-cell-range-as-csv"></mode>
+          <mode modeLabel="Get column headers" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/get-column-headers"></mode>
+          <mode modeLabel="Get spreadsheets by title" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/get-spreadsheets-by-title"></mode>
+          <mode modeLabel="Get worksheet by title" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/get-worksheet-by-title"></mode>
+          <mode modeLabel="Purge worksheet" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/purge-worksheet"></mode>
+          <mode modeLabel="Search" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/search"></mode>
+          <mode modeLabel="Set csv values" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/set-csv-values"></mode>
+          <mode modeLabel="Set row values" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/set-row-values"></mode>
+          <mode modeLabel="Update worksheet metadata" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/update-worksheet-metadata"></mode>
+        </modeSwitch>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="authorize" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Authorize">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string required="false" description="Any value that you wish to be sent with the callback." caption="State" name="state"></string>
+        <string required="false" description="The URL defined by the Service Provider to obtain an access token." caption="Access Token Url" name="accessTokenUrl"></string>
+        <string required="false" description="The URL defined by the Service Provider where the resource owner will be redirected to grant authorization to the connector." caption="Authorization Url" name="authorizationUrl"></string>
+      </group>
+      <group caption="Additional Authorization Parameters" id="additionalAuthorizationParameters">
+        <enum allowsCustom="true" javaType="org.mule.modules.google.AccessType" required="false" supportsExpressions="true" description="Access_type." caption="Access_type" name="access_type">
+          <option value="offline"></option>
+          <option value="online"></option>
+        </enum>
+        <enum allowsCustom="true" javaType="org.mule.modules.google.ForcePrompt" required="false" supportsExpressions="true" description="Force_prompt." caption="Force_prompt" name="force_prompt">
+          <option value="auto"></option>
+          <option value="force"></option>
+        </enum>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="create-spreadsheet" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Create Spreadsheet">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title you want the new spreadsheet to have." caption="Title" name="title"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.module.google.spreadsheet.model.Worksheet" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="create-worksheet" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Create Worksheet">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet that will contain the new worksheet." caption="Spreadsheet" name="spreadsheet"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+        <string javaType="java.lang.String" required="true" description="The title you want the new worksheet to have." caption="Title" name="title"></string>
+        <integer step="1" min="0" javaType="int" required="true" description="The initial number of columns you want the worksheet to have." caption="Col Count" name="colCount"></integer>
+        <integer step="1" min="0" javaType="int" required="true" description="The initial number of rows you want the worksheet to have." caption="Row Count" name="rowCount"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="delete-worksheet" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Delete Worksheet">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet that contains the worksheet to be deleted." caption="Spreadsheet" name="spreadsheet"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the worksheet you want to delete." caption="Worksheet" name="worksheet"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Worksheet Index" name="worksheetIndex"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;org.mule.module.google.spreadsheet.model.Row&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="get-all-cells" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Get All Cells">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet containing the worksheet on which the cells are." caption="Spreadsheet" name="spreadsheet"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the worksheet containing the cells you want to get." caption="Worksheet" name="worksheet"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Worksheet Index" name="worksheetIndex"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="get-all-cells-as-csv" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Get All Cells As Csv">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string defaultValue="," javaType="java.lang.String" required="false" description="Specifies the character to be used as a column sperator. Defaults to a comma character." caption="Column Separator" name="columnSeparator"></string>
+        <string defaultValue="
+" javaType="java.lang.String" required="false" description="Specifies the character to be used as a line separator. Defaults to the new line \n character." caption="Line Separator" name="lineSeparator"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet containing the worksheet on which the cells are." caption="Spreadsheet" name="spreadsheet"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the worksheet containing the cells you want to get." caption="Worksheet" name="worksheet"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Worksheet Index" name="worksheetIndex"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;org.mule.module.google.spreadsheet.model.Spreadsheet&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="get-all-spreadsheets" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Get All Spreadsheets">
+    <attribute-category description="General." caption="General"></attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;org.mule.module.google.spreadsheet.model.Worksheet&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="get-all-worksheets" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Get All Worksheets">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet you want to get the worksheets from." caption="Spreadsheet" name="spreadsheet"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;com.google.gdata.data.Person&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="get-authors" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Get Authors">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet from which the info should be taken from." caption="Spreadsheet" name="spreadsheet"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;org.mule.module.google.spreadsheet.model.Row&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="get-cell-range" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Get Cell Range">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet containing the worksheet on which the cells are." caption="Spreadsheet" name="spreadsheet"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the worksheet containing the cells you want to get." caption="Worksheet" name="worksheet"></string>
+        <integer step="1" min="0" javaType="int" required="true" description="The range ending column. This is a 1-based index." caption="Max Col" name="maxCol"></integer>
+        <integer step="1" min="0" javaType="int" required="true" description="The range ending row. This is a 1-based index." caption="Max Row" name="maxRow"></integer>
+        <integer step="1" min="0" javaType="int" required="true" description="The range starting column. This is a 1-based index." caption="Min Col" name="minCol"></integer>
+        <integer step="1" min="0" javaType="int" required="true" description="The range starting row. This is a 1-based index." caption="Min Row" name="minRow"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Worksheet Index" name="worksheetIndex"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.lang.String" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="get-cell-range-as-csv" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Get Cell Range As Csv">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet containing the worksheet on which the cells are." caption="Spreadsheet" name="spreadsheet"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the worksheet containing the cells you want to get." caption="Worksheet" name="worksheet"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Worksheet Index" name="worksheetIndex"></integer>
+        <string defaultValue="," javaType="java.lang.String" required="false" description="Specifies the character to be used as a column sperator. Defaults to a comma character." caption="Column Separator" name="columnSeparator"></string>
+        <string defaultValue="
+" javaType="java.lang.String" required="false" description="Specifies the character to be used as a line separator. Defaults to the new line \n character." caption="Line Separator" name="lineSeparator"></string>
+        <integer step="1" min="0" javaType="int" required="true" description="The range ending column. This is a 1-based index." caption="Max Col" name="maxCol"></integer>
+        <integer step="1" min="0" javaType="int" required="true" description="The range ending row. This is a 1-based index." caption="Max Row" name="maxRow"></integer>
+        <integer step="1" min="0" javaType="int" required="true" description="The range starting column. This is a 1-based index." caption="Min Col" name="minCol"></integer>
+        <integer step="1" min="0" javaType="int" required="true" description="The range starting row. This is a 1-based index." caption="Min Row" name="minRow"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="org.mule.module.google.spreadsheet.model.Row" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="get-column-headers" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Get Column Headers">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet from which the info should be taken from." caption="Spreadsheet" name="spreadsheet"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the worksheet from which the info should be taken from." caption="Worksheet" name="worksheet"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Worksheet Index" name="worksheetIndex"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;org.mule.module.google.spreadsheet.model.Spreadsheet&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="get-spreadsheets-by-title" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Get Spreadsheets By Title">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title to be used in the search." caption="Title" name="title"></string>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;org.mule.module.google.spreadsheet.model.Worksheet&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="get-worksheet-by-title" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Get Worksheet By Title">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet in which you want to perform the search." caption="Spreadsheet" name="spreadsheet"></string>
+        <string javaType="java.lang.String" required="true" description="The title to be used in the search." caption="Title" name="title"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="purge-worksheet" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Purge Worksheet">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet containing the worksheet to be purged." caption="Spreadsheet" name="spreadsheet"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the worksheet to be purged." caption="Worksheet" name="worksheet"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Worksheet Index" name="worksheetIndex"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="java.util.List&lt;org.mule.module.google.spreadsheet.model.Row&gt;" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="search" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Search">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="A full text search string, with space-separated keywords." caption="Query" name="query"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet containing the worksheet on which the cells are." caption="Spreadsheet" name="spreadsheet"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the worksheet containing the cells you want to get." caption="Worksheet" name="worksheet"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Worksheet Index" name="worksheetIndex"></integer>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="set-csv-values" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Set Csv Values">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string defaultValue="#[payload:]" javaType="java.lang.String" required="false" description="The csv content to be set on the worksheet. You can manually specify it or else it will be taken from the message payload." caption="Csv" name="csv"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet you want to update." caption="Spreadsheet" name="spreadsheet"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the worksheet you want to update." caption="Worksheet" name="worksheet"></string>
+        <integer step="1" min="0" defaultValue="1" javaType="int" required="false" description="The number of the column where the first value of each line of the csv will be set into. This is a 1-based index." caption="Starting Column" name="startingColumn"></integer>
+        <integer step="1" min="0" defaultValue="1" javaType="int" required="false" description="The number of the row where the first line of the csv will be set into. This is a 1-based index." caption="Starting Row" name="startingRow"></integer>
+        <string defaultValue="," javaType="java.lang.String" required="false" description="Specifies the character to be used as a column sperator. Defaults to a comma character." caption="Column Separator" name="columnSeparator"></string>
+        <string defaultValue="
+" javaType="java.lang.String" required="false" description="Specifies the character to be used as a line separator. Defaults to the new line \n character." caption="Line Separator" name="lineSeparator"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Worksheet Index" name="worksheetIndex"></integer>
+        <boolean defaultValue="false" javaType="boolean" required="false" supportsExpressions="true" description="If true, the worksheet will be purged before the values are set." caption="Purge" name="purge"></boolean>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="set-row-values" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Set Row Values">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet you want to update." caption="Spreadsheet" name="spreadsheet"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the worksheet you want to update." caption="Worksheet" name="worksheet"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Worksheet Index" name="worksheetIndex"></integer>
+        <boolean defaultValue="false" javaType="boolean" required="false" supportsExpressions="true" description="If true, the worksheet will be purged before the values are set." caption="Purge" name="purge"></boolean>
+        <element-controller-listOfPojo listName="rows" defaultValue="#[payload:]" itemName="row" localName="set-row-values-rows" javaType="java.util.List&lt;org.mule.module.google.spreadsheet.model.Row&gt;" description="A list of  taken from the message payload describing the values to be set." caption="Rows"></element-controller-listOfPojo>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="unauthorize" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Unauthorize">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <cloud-connector returnType="void" metaData="static" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="update-worksheet-metadata" icon="icons/small/google-spreadsheets-connector-24x16.png" caption="Update Worksheet Metadata">
+    <attribute-category description="General." caption="General">
+      <group caption="General" id="general">
+        <string javaType="java.lang.String" required="true" description="The title of the spreadsheet you want to update." caption="Spreadsheet" name="spreadsheet"></string>
+        <string defaultValue="" javaType="java.lang.String" required="false" description="If specified, it changes the worksheet's summary." caption="Summary" name="summary"></string>
+        <string defaultValue="" javaType="java.lang.String" required="false" description="If specified, it changes the title you want to set." caption="Title" name="title"></string>
+        <string javaType="java.lang.String" required="true" description="The title of the worksheet you want to update." caption="Worksheet" name="worksheet"></string>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="If a value greater than zero is specified, it changes the amount of columns in the worksheet." caption="Col Count" name="colCount"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="If a value greater than zero is specified, it changes the amount of rows in the worksheet." caption="Row Count" name="rowCount"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several spreadsheet to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Spreadsheet Index" name="spreadsheetIndex"></integer>
+        <integer step="1" min="0" defaultValue="0" javaType="int" required="false" description="Google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use." caption="Worksheet Index" name="worksheetIndex"></integer>
+        <boolean javaType="java.lang.Boolean" required="false" supportsExpressions="true" description="If specified, it changes the worksheet's editability." caption="Can Edit" name="canEdit"></boolean>
+        <boolean javaType="java.lang.Boolean" required="false" supportsExpressions="true" description="If specified, it changes the value of the draft property." caption="Draft" name="draft"></boolean>
+      </group>
+    </attribute-category>
+    <attribute-category description="Connection" caption="Connection">
+      <group caption="Connection" id="connection">
+        <string javaType="java.lang.String" required="false" description="The id of the access token that will be used to authenticate the call." caption="Access Token Id" name="accessTokenId"></string>
+      </group>
+    </attribute-category>
+  </cloud-connector>
+  <nested abstract="true" localId="oauth-callback-config" description="" caption="">
+    <string description="The domain name to use when setting up the callback endpoint." caption="Domain" name="domain"></string>
+    <string description="The local port to use when setting up the callback endpoint." caption="Local Port" name="localPort"></string>
+    <string description="The remote port is the port used to build the external callback URL." caption="Remote Port" name="remotePort"></string>
+    <string description="The path to use when setting up the callback endpoint." caption="Path" name="path"></string>
+    <boolean defaultValue="false" fillLine="true" description="Async." caption="Async" name="async"></boolean>
+  </nested>
+  <nested abstract="true" localId="oauth-store-config" description="Configuration element for storage of access tokens" caption="">
+    <string description="Object store reference." caption="Object Store Reference" name="objectStore-ref"></string>
+  </nested>
+</namespace>

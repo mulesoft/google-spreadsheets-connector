@@ -1,0 +1,5073 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <meta name="description" content="Documentation for Google Spreadsheet Connector." />
+
+<link rel="shortcut icon" type="image/x-icon" href="../../../../../../../favicon.ico" />
+<title>
+
+  GoogleSpreadSheetConnectorOAuth2Adapter
+
+
+| Google Spreadsheet Connector
+
+</title>
+<link href="../../../../../../../assets/mule-developer-docs.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../../assets/mule-developer-prettify.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../../../assets/customizations.css" rel="stylesheet" type="text/css" />
+<link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet' type='text/css'>
+<script src="../../../../../../../assets/search_autocomplete.js" type="text/javascript"></script>
+<script src="../../../../../../../assets/jquery-resizable.min.js" type="text/javascript"></script>
+<script src="../../../../../../../assets/jquery-toc.js" type="text/javascript"></script>
+<script src="../../../../../../../assets/mule-developer-docs.js" type="text/javascript"></script>
+<script src="../../../../../../../assets/prettify.js" type="text/javascript"></script>
+<script type="text/javascript">
+  setToRoot("../../../../../../../", "../../../../../../../assets/");
+</script>
+<script src="../../../../../../../assets/mule-developer-reference.js" type="text/javascript"></script>
+<script src="../../../../../../../assets/navtree_data.js" type="text/javascript"></script>
+<script src="../../../../../../../assets/customizations.js" type="text/javascript"></script>
+<noscript>
+  <style type="text/css">
+    html,body{overflow:auto;}
+    #body-content{position:relative; top:0;}
+    #doc-content{overflow:visible;border-left:3px solid #666;}
+    #side-nav{padding:0;}
+    #side-nav .toggle-list ul {display:block;}
+    #resize-packages-nav{border-bottom:3px solid #666;}
+  </style>
+</noscript>
+<script type="text/javascript" charset="utf-8">
+  var is_ssl = ("https:" == document.location.protocol);
+  var asset_host = is_ssl ? "https://s3.amazonaws.com/getsatisfaction.com/" : "http://s3.amazonaws.com/getsatisfaction.com/";
+  document.write(unescape("%3Cscript src='" + asset_host + "javascripts/feedback-v2.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  var feedback_widget_options = {};
+
+  feedback_widget_options.display = "overlay";
+  feedback_widget_options.company = "mulesoft";
+  feedback_widget_options.placement = "right";
+  feedback_widget_options.color = "#2F74AE";
+  feedback_widget_options.style = "question";
+
+  feedback_widget_options.tag = "Google Spreadsheet Connector";
+
+  feedback_widget_options.limit = "3";
+
+  var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
+</script>
+</head>
+
+<body class="">
+
+<div id="header">
+    <div id="headerLeft">
+    
+      <span id="masthead-title">Google Spreadsheet Connector</span>
+    
+    <ul id="header-tabs" class="">
+    
+    	<li id="guide"><a href="../../../../../../../guide/install.html">
+	    	<span class="en">Install Guide</span>
+    	</a></li>
+    
+    	<li id="java"><a href="../../../../../../../java/packages.html">
+	    	<span class="en">Java API Reference</span>
+    	</a></li>
+    
+    	<li id="mule"><a href="../../../../../../../mule/modules.html">
+	    	<span class="en">Mule API Reference</span>
+    	</a></li>
+    
+    </ul>
+    </div>
+    <div id="headerRight">
+      <a href="http://www.mulesoft.com" tabindex="-1">
+      <img src="../../../../../../../assets//images/mulesoft-logo-final.gif" alt="MuleSoft" border="0" id="mulesoftlogo"></a><br/>
+      
+  <div id="search" >
+      <div id="searchForm">
+          <form accept-charset="utf-8" class="gsc-search-box" 
+                onsubmit="return submit_search()">
+            <table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody>
+                <tr>
+                  <td class="gsc-input">
+                    <input id="search_autocomplete" class="gsc-input" type="text" size="33" autocomplete="off"
+                      title="search developer docs" name="q"
+                      value="search developer docs"
+                      onFocus="search_focus_changed(this, true)"
+                      onBlur="search_focus_changed(this, false)"
+                      onkeydown="return search_changed(event, true, '../../../../../../../')"
+                      onkeyup="return search_changed(event, false, '../../../../../../../')" />
+                  <div id="search_filtered_div" class="no-display">
+                      <table id="search_filtered" cellspacing=0>
+                      </table>
+                  </div>
+                  </td>
+                  <td class="gsc-search-button">
+                    <input type="submit" value="Search" title="search" id="search-button" class="gsc-search-button" />
+                  </td>
+                  <td class="gsc-clear-button">
+                    <div title="clear results" class="gsc-clear-button">&nbsp;</div>
+                  </td>
+                </tr></tbody>
+              </table>
+          </form>
+      </div><!-- searchForm -->
+  </div><!-- search -->
+      
+    </div>
+</div><!-- header -->
+
+
+  <div class="g-section g-tpl-240" id="body-content">
+    <div class="g-unit g-first side-nav-resizable" id="side-nav">
+      <div id="swapper">
+        <div id="nav-panels">
+          <div id="resize-packages-nav">
+            <div id="packages-nav">
+              <div id="index-links">
+                <a href="../../../../../../../java/packages.html"  >Package Index</a> |
+                <a href="../../../../../../../java/classes.html" >Class Index</a>
+              </div>
+              <ul>
+                
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/package-summary.html">org.mule.module.google.spreadsheet</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapter/package-summary.html">org.mule.module.google.spreadsheet.adapter</a></li>
+    <li class="selected api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/package-summary.html">org.mule.module.google.spreadsheet.adapters</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/agents/package-summary.html">org.mule.module.google.spreadsheet.agents</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/basic/package-summary.html">org.mule.module.google.spreadsheet.basic</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/callback/package-summary.html">org.mule.module.google.spreadsheet.callback</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/config/package-summary.html">org.mule.module.google.spreadsheet.config</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/connection/package-summary.html">org.mule.module.google.spreadsheet.connection</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/devkit/package-summary.html">org.mule.module.google.spreadsheet.devkit</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/package-summary.html">org.mule.module.google.spreadsheet.model</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/holders/package-summary.html">org.mule.module.google.spreadsheet.model.holders</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/transformers/package-summary.html">org.mule.module.google.spreadsheet.model.transformers</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/package-summary.html">org.mule.module.google.spreadsheet.oauth</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/process/package-summary.html">org.mule.module.google.spreadsheet.process</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/processors/package-summary.html">org.mule.module.google.spreadsheet.processors</a></li>
+    <li class="api apilevel-">
+  <a href="../../../../../../../java/org/mule/modules/google/transformers/package-summary.html">org.mule.modules.google.transformers</a></li>
+              </ul><br/>
+            </div> <!-- end packages -->
+          </div> <!-- end resize-packages -->
+          <div id="classes-nav">
+            <ul>
+              
+              
+    <li><h2>Classes</h2>
+      <ul>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorCapabilitiesAdapter.html">GoogleSpreadSheetConnectorCapabilitiesAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorHttpCallbackAdapter.html">GoogleSpreadSheetConnectorHttpCallbackAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorLifecycleAdapter.html">GoogleSpreadSheetConnectorLifecycleAdapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorMetadataAdapater.html">GoogleSpreadSheetConnectorMetadataAdapater</a></li>
+          <li class="selected api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html">GoogleSpreadSheetConnectorOAuth2Adapter</a></li>
+          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorProcessAdapter.html">GoogleSpreadSheetConnectorProcessAdapter</a></li>
+      </ul>
+    </li>
+              
+              
+              
+              
+            </ul><br/>
+          </div><!-- end classes -->
+        </div><!-- end nav-panels -->
+        <div id="nav-tree" style="display:none">
+          <div id="index-links">
+            <a href="../../../../../../../packages.html"  >Package Index</a> | 
+            <a href="../../../../../../../classes.html" >Class Index</a>
+          </div>
+        </div><!-- end nav-tree -->
+      </div><!-- end swapper -->
+    </div> <!-- end side-nav -->
+    <script>
+      if (!isMobile) {
+        $("<a href='#' id='nav-swap' onclick='swapNav();return false;' style='font-size:10px;line-height:9px;margin-left:1em;text-decoration:none;'><span id='tree-link'>Use Tree Navigation</span><span id='panel-link' style='display:none'>Use Panel Navigation</span></a>").appendTo("#side-nav");
+        chooseDefaultNav();
+        if ($("#nav-tree").is(':visible')) {
+          init_default_navtree("../../../../../../../");
+        } else {
+          addLoadEvent(function() {
+            scrollIntoView("packages-nav");
+            scrollIntoView("classes-nav");
+          });
+        }
+        $("#swapper").css({borderBottom:"2px solid #aaa"});
+      } else {
+        swapNav(); // tree view should be used on mobile
+      }
+    </script>
+
+
+
+<div class="g-unit" id="doc-content">
+
+<div id="api-info-block">
+
+
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+   
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+   
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+   
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+  
+   
+  
+  
+  
+  
+
+
+<div class="sum-details-links">
+
+
+Summary:
+
+
+
+
+
+
+  <a href="#inhconstants">Inherited Constants</a>
+  
+
+
+  &#124; <a href="#lfields">Fields</a>
+  
+
+
+  &#124; <a href="#inhfields">Inherited Fields</a>
+  
+
+
+  &#124; <a href="#pubctors">Ctors</a>
+  
+
+
+
+  &#124; <a href="#pubmethods">Methods</a>
+  
+
+
+
+  &#124; <a href="#inhmethods">Inherited Methods</a>
+
+&#124; <a href="#" onclick="return toggleAllClassInherited()" id="toggleAllClassInherited">[Expand All]</a>
+
+</div><!-- end sum-details-links -->
+<div class="api-level">
+  
+
+
+  
+  
+
+</div>
+</div><!-- end api-info-block -->
+
+
+<!-- ======== START OF CLASS DATA ======== -->
+
+<div id="jd-header">
+    public
+     
+     
+    
+    class
+<h1>GoogleSpreadSheetConnectorOAuth2Adapter</h1>
+
+
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  
+
+  
+    extends <a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorProcessAdapter.html">GoogleSpreadSheetConnectorProcessAdapter</a><br/>
+  
+  
+  
+
+  
+  
+      implements 
+      
+        MuleContextAware 
+      
+        Initialisable 
+      
+        Startable 
+      
+        Stoppable 
+      
+        <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/OAuth2Adapter.html">OAuth2Adapter</a> 
+      
+  
+  
+
+
+</div><!-- end header -->
+
+<div id="naMessage"></div>
+
+<div id="jd-content" class="api apilevel-">
+<table class="jd-inheritance-table">
+
+
+    <tr>
+        
+        <td colspan="8" class="jd-inheritance-class-cell">java.lang.Object</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="7" class="jd-inheritance-class-cell">org.mule.modules.google.AbstractGoogleOAuthConnector</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="6" class="jd-inheritance-class-cell"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html">org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="5" class="jd-inheritance-class-cell"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorCapabilitiesAdapter.html">org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorCapabilitiesAdapter</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="4" class="jd-inheritance-class-cell"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorMetadataAdapater.html">org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="3" class="jd-inheritance-class-cell"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorLifecycleAdapter.html">org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorLifecycleAdapter</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="2" class="jd-inheritance-class-cell"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorProcessAdapter.html">org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorProcessAdapter</a></td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="1" class="jd-inheritance-class-cell">org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorOAuth2Adapter</td>
+    </tr>
+    
+
+</table>
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Class Overview</h2>
+<p>A <code>GoogleSpreadSheetConnectorOAuth2Adapter</code> is a wrapper around <code><a href="../../../../../../../java/org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html">GoogleSpreadSheetConnector</a></code> that adds OAuth capabilites to the pojo.
+ 
+</p>
+
+
+
+
+
+</div><!-- jd-descr -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jd-descr">
+
+
+<h2>Summary</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- =========== ENUM CONSTANT SUMMARY =========== -->
+<table id="inhconstants" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Constants</div></th></tr>
+
+
+
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorMetadataAdapater.html">org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater</a>
+<div id="inherited-constants-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater">
+  <div id="inherited-constants-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorMetadataAdapater.html#DEVKIT_BUILD">DEVKIT_BUILD</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorMetadataAdapater.html#DEVKIT_VERSION">DEVKIT_VERSION</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorMetadataAdapater.html#MODULE_NAME">MODULE_NAME</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorMetadataAdapater.html#MODULE_VERSION">MODULE_VERSION</a></td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.modules.google.AbstractGoogleOAuthConnector" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.modules.google.AbstractGoogleOAuthConnector-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+org.mule.modules.google.AbstractGoogleOAuthConnector
+<div id="inherited-constants-org.mule.modules.google.AbstractGoogleOAuthConnector">
+  <div id="inherited-constants-org.mule.modules.google.AbstractGoogleOAuthConnector-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.modules.google.AbstractGoogleOAuthConnector-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">USER_PROFILE_SCOPE</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Disposable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Disposable-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Disposable
+<div id="inherited-constants-org.mule.api.lifecycle.Disposable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Disposable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Disposable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Initialisable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Initialisable-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Initialisable
+<div id="inherited-constants-org.mule.api.lifecycle.Initialisable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Initialisable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Initialisable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Startable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Startable-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Startable
+<div id="inherited-constants-org.mule.api.lifecycle.Startable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Startable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Startable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-constants-org.mule.api.lifecycle.Stoppable" class="jd-expando-trigger closed"
+          ><img id="inherited-constants-org.mule.api.lifecycle.Stoppable-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From interface
+org.mule.api.lifecycle.Stoppable
+<div id="inherited-constants-org.mule.api.lifecycle.Stoppable">
+  <div id="inherited-constants-org.mule.api.lifecycle.Stoppable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-constants-org.mule.api.lifecycle.Stoppable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol">String</td>
+        <td class="jd-linkcol">PHASE_NAME</td>
+        <td class="jd-descrcol" width="100%"></td>
+    </tr>
+    
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="lfields" class="jd-sumtable"><tr><th colspan="12">Fields</th></tr>
+
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          static
+          final
+          Pattern</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#ACCESS_CODE_PATTERN">ACCESS_CODE_PATTERN</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          static
+          final
+          Pattern</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#EXPIRATION_TIME_PATTERN">EXPIRATION_TIME_PATTERN</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          static
+          final
+          Logger</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#LOGGER">LOGGER</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          static
+          final
+          Pattern</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#REFRESH_TOKEN_PATTERN">REFRESH_TOKEN_PATTERN</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#accessTokenUrl">accessTokenUrl</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#authorizationUrl">authorizationUrl</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          Date</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#expiration">expiration</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          MuleContext</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#muleContext">muleContext</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/RestoreAccessTokenCallback.html">RestoreAccessTokenCallback</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#oauthRestoreAccessToken">oauthRestoreAccessToken</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/SaveAccessTokenCallback.html">SaveAccessTokenCallback</a></nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#oauthSaveAccessToken">oauthSaveAccessToken</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#oauthVerifier">oauthVerifier</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          public
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#redirectUri">redirectUri</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#refreshToken">refreshToken</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+
+</table>
+
+
+
+
+
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="inhfields" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Fields</div></th></tr>
+
+
+
+
+
+
+
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+<a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html">org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector</a>
+<div id="inherited-fields-org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector">
+  <div id="inherited-fields-org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#accessToken">accessToken</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#applicationName">applicationName</a></td>
+          <td class="jd-descrcol" width="100%">Application name to communicate to google
+</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#consumerKey">consumerKey</a></td>
+          <td class="jd-descrcol" width="100%">The OAuth consumer key 
+</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#consumerSecret">consumerSecret</a></td>
+          <td class="jd-descrcol" width="100%">The OAuth consumer secret 
+</td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          DocsService</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#docService">docService</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          FeedURLFactory</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#factory">factory</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          IdentifierPolicy</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#identifierPolicy">identifierPolicy</a></td>
+          <td class="jd-descrcol" width="100%">This policy represents which id we want to use to represent each google account.</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          static
+          
+          Logger</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#logger">logger</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#scope">scope</a></td>
+          <td class="jd-descrcol" width="100%">The OAuth scopes you want to request
+</td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          SpreadsheetService</nobr></td>
+          <td class="jd-linkcol"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#spreadsheetService">spreadsheetService</a></td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.mule.modules.google.AbstractGoogleOAuthConnector" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-org.mule.modules.google.AbstractGoogleOAuthConnector-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+org.mule.modules.google.AbstractGoogleOAuthConnector
+<div id="inherited-fields-org.mule.modules.google.AbstractGoogleOAuthConnector">
+  <div id="inherited-fields-org.mule.modules.google.AbstractGoogleOAuthConnector-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-org.mule.modules.google.AbstractGoogleOAuthConnector-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          String</nobr></td>
+          <td class="jd-linkcol">userId</td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
+
+
+
+
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<table id="pubctors" class="jd-sumtable"><tr><th colspan="12">Public Constructors</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            </nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#GoogleSpreadSheetConnectorOAuth2Adapter()">GoogleSpreadSheetConnectorOAuth2Adapter</a></span>()</nobr>
+        
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#authorize(java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String)">authorize</a></span>(Map&lt;String,&nbsp;String&gt; extraParameters, String authorizationUrl, String redirectUri)</nobr>
+        
+        <div class="jd-descrdiv">Build authorization URL and create the inbound endpoint for the callback</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#fetchAccessToken(java.lang.String, java.lang.String)">fetchAccessToken</a></span>(String accessTokenUrl, String redirectUri)</nobr>
+        
+        <div class="jd-descrdiv">Acquire access token and secret</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#getAccessTokenUrl()">getAccessTokenUrl</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves accessTokenUrl
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#getAuthorizationUrl()">getAuthorizationUrl</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves authorizationUrl
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/RestoreAccessTokenCallback.html">RestoreAccessTokenCallback</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#getOauthRestoreAccessToken()">getOauthRestoreAccessToken</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves oauthRestoreAccessToken
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/SaveAccessTokenCallback.html">SaveAccessTokenCallback</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#getOauthSaveAccessToken()">getOauthSaveAccessToken</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves oauthSaveAccessToken
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#getOauthVerifier()">getOauthVerifier</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves oauthVerifier
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            &lt;P&gt;
+            <a href="../../../../../../../java/org/mule/module/google/spreadsheet/process/ProcessTemplate.html">ProcessTemplate</a>&lt;P,&nbsp;<a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorCapabilitiesAdapter.html">GoogleSpreadSheetConnectorCapabilitiesAdapter</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#getProcessTemplate()">getProcessTemplate</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#getRefreshToken()">getRefreshToken</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieves refreshToken
+ 
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#hasBeenAuthorized()">hasBeenAuthorized</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#hasTokenExpired()">hasTokenExpired</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#initialise()">initialise</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#refreshAccessToken(java.lang.String)">refreshAccessToken</a></span>(String accessTokenUrl)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#reset()">reset</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#restoreAccessToken()">restoreAccessToken</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#setAccessTokenUrl(java.lang.String)">setAccessTokenUrl</a></span>(String value)</nobr>
+        
+        <div class="jd-descrdiv">Sets accessTokenUrl</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#setAuthorizationUrl(java.lang.String)">setAuthorizationUrl</a></span>(String value)</nobr>
+        
+        <div class="jd-descrdiv">Sets authorizationUrl</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#setExpiration(java.util.Date)">setExpiration</a></span>(Date value)</nobr>
+        
+        <div class="jd-descrdiv">Sets expiration</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#setMuleContext(org.mule.api.MuleContext)">setMuleContext</a></span>(MuleContext value)</nobr>
+        
+        <div class="jd-descrdiv">Sets muleContext</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#setOauthRestoreAccessToken(org.mule.module.google.spreadsheet.oauth.RestoreAccessTokenCallback)">setOauthRestoreAccessToken</a></span>(<a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/RestoreAccessTokenCallback.html">RestoreAccessTokenCallback</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets oauthRestoreAccessToken</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#setOauthSaveAccessToken(org.mule.module.google.spreadsheet.oauth.SaveAccessTokenCallback)">setOauthSaveAccessToken</a></span>(<a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/SaveAccessTokenCallback.html">SaveAccessTokenCallback</a> value)</nobr>
+        
+        <div class="jd-descrdiv">Sets oauthSaveAccessToken</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#setOauthVerifier(java.lang.String)">setOauthVerifier</a></span>(String value)</nobr>
+        
+        <div class="jd-descrdiv">Sets oauthVerifier</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorOAuth2Adapter.html#setRefreshToken(java.lang.String)">setRefreshToken</a></span>(String value)</nobr>
+        
+        <div class="jd-descrdiv">Sets refreshToken</div>
+  
+  </td></tr>
+
+
+
+</table>
+
+
+
+
+
+
+
+<!-- ========== METHOD SUMMARY =========== -->
+<table id="inhmethods" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorProcessAdapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorProcessAdapter-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorProcessAdapter.html">org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorProcessAdapter</a>
+
+<div id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorProcessAdapter">
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorProcessAdapter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorProcessAdapter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            &lt;P&gt;
+            <a href="../../../../../../../java/org/mule/module/google/spreadsheet/process/ProcessTemplate.html">ProcessTemplate</a>&lt;P,&nbsp;<a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorCapabilitiesAdapter.html">GoogleSpreadSheetConnectorCapabilitiesAdapter</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorProcessAdapter.html#getProcessTemplate()">getProcessTemplate</a></span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorLifecycleAdapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorLifecycleAdapter-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorLifecycleAdapter.html">org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorLifecycleAdapter</a>
+
+<div id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorLifecycleAdapter">
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorLifecycleAdapter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorLifecycleAdapter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorLifecycleAdapter.html#dispose()">dispose</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorLifecycleAdapter.html#initialise()">initialise</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorLifecycleAdapter.html#start()">start</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorLifecycleAdapter.html#stop()">stop</a></span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorMetadataAdapater.html">org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater</a>
+
+<div id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater">
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorMetadataAdapater-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorMetadataAdapater.html#getDevkitBuild()">getDevkitBuild</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the build of the DevKit used to create this module
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorMetadataAdapater.html#getDevkitVersion()">getDevkitVersion</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the version of the DevKit used to create this module
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorMetadataAdapater.html#getModuleName()">getModuleName</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the user-friendly name of this module
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorMetadataAdapater.html#getModuleVersion()">getModuleVersion</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the version of this module
+</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorCapabilitiesAdapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorCapabilitiesAdapter-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorCapabilitiesAdapter.html">org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorCapabilitiesAdapter</a>
+
+<div id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorCapabilitiesAdapter">
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorCapabilitiesAdapter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.adapters.GoogleSpreadSheetConnectorCapabilitiesAdapter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorCapabilitiesAdapter.html#isCapableOf(org.mule.module.google.spreadsheet.basic.Capability)">isCapableOf</a></span>(<a href="../../../../../../../java/org/mule/module/google/spreadsheet/basic/Capability.html">Capability</a> capability)</nobr>
+        
+        <div class="jd-descrdiv">Returns true if this module implements such capability
+ 
+</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  <a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html">org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector</a>
+
+<div id="inherited-methods-org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector">
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#createSpreadsheet(java.lang.String)">createSpreadsheet</a></span>(String title)</nobr>
+        
+        <div class="jd-descrdiv">Creates a new spreadsheet using a given title
+  
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Worksheet.html">Worksheet</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#createWorksheet(java.lang.String, int, java.lang.String, int, int)">createWorksheet</a></span>(String spreadsheet, int spreadsheetIndex, String title, int rowCount, int colCount)</nobr>
+        
+        <div class="jd-descrdiv">Creates a new worksheet for an specified spreadsheet
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#deleteWorksheet(java.lang.String, java.lang.String, int, int)">deleteWorksheet</a></span>(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex)</nobr>
+        
+        <div class="jd-descrdiv">Deletes an specified worksheet
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getAccessToken()">getAccessToken</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getAccessTokenId()">getAccessTokenId</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getAllCells(java.lang.String, java.lang.String, int, int)">getAllCells</a></span>(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex)</nobr>
+        
+        <div class="jd-descrdiv">Returns a list of <code><a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a></code> in which each
+ entry represents one of the initialized cells on a worksheet
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getAllCellsAsCsv(java.lang.String, java.lang.String, java.lang.String, java.lang.String, int, int)">getAllCellsAsCsv</a></span>(String spreadsheet, String worksheet, String columnSeparator, String lineSeparator, int spreadsheetIndex, int worksheetIndex)</nobr>
+        
+        <div class="jd-descrdiv">Returns a CSV file representing all the initialized cells in a worksheet.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Spreadsheet.html">Spreadsheet</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getAllSpreadsheets()">getAllSpreadsheets</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns all the spreadsheets associated with the user's account
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Worksheet.html">Worksheet</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getAllWorksheets(java.lang.String, int)">getAllWorksheets</a></span>(String spreadsheet, int spreadsheetIndex)</nobr>
+        
+        <div class="jd-descrdiv">Lists all the worksheets contained in an specified spreadsheet
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getApplicationName()">getApplicationName</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;Person&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getAuthors(java.lang.String, int)">getAuthors</a></span>(String spreadsheet, int spreadsheetIndex)</nobr>
+        
+        <div class="jd-descrdiv">Returns a list of com.google.gdata.data.Person where each entry represent a a contributor
+ on a specified spreadsheet
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getCellRange(java.lang.String, java.lang.String, int, int, int, int, int, int)">getCellRange</a></span>(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex, int minRow, int maxRow, int minCol, int maxCol)</nobr>
+        
+        <div class="jd-descrdiv">Returns a list of <code><a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a></code> containing
+ the cells contained in a given range
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getCellRangeAsCsv(java.lang.String, java.lang.String, int, int, java.lang.String, java.lang.String, int, int, int, int)">getCellRangeAsCsv</a></span>(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex, String columnSeparator, String lineSeparator, int minRow, int maxRow, int minCol, int maxCol)</nobr>
+        
+        <div class="jd-descrdiv">Returns a CSV file representing the requested cell range.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            <a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getColumnHeaders(java.lang.String, java.lang.String, int, int)">getColumnHeaders</a></span>(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex)</nobr>
+        
+        <div class="jd-descrdiv">This processor returns the a worksheet's first row
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getConsumerKey()">getConsumerKey</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getConsumerSecret()">getConsumerSecret</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            IdentifierPolicy</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getIdentifierPolicy()">getIdentifierPolicy</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getScope()">getScope</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Spreadsheet.html">Spreadsheet</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getSpreadsheetsByTitle(java.lang.String)">getSpreadsheetsByTitle</a></span>(String title)</nobr>
+        
+        <div class="jd-descrdiv">Returns a list of <code><a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Spreadsheet.html">Spreadsheet</a></code> with all the spreadsheets
+ associated with the user which title matches the one specified.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Worksheet.html">Worksheet</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getWorksheetByTitle(java.lang.String, java.lang.String, int)">getWorksheetByTitle</a></span>(String spreadsheet, String title, int spreadsheetIndex)</nobr>
+        
+        <div class="jd-descrdiv">Returns a list of <code><a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Worksheet.html">Worksheet</a></code> 
+ which title matches the one specified.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#postAuth()">postAuth</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#purgeWorksheet(java.lang.String, java.lang.String, int, int)">purgeWorksheet</a></span>(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex)</nobr>
+        
+        <div class="jd-descrdiv">This processors deletes all the cell entries of a specified worksheet.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            List&lt;<a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a>&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#search(java.lang.String, java.lang.String, java.lang.String, int, int)">search</a></span>(String spreadsheet, String worksheet, String query, int spreadsheetIndex, int worksheetIndex)</nobr>
+        
+        <div class="jd-descrdiv">Performs a full-text search on a worksheet and returns a list of <code><a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a></code> 
+ in which each entry represent a cell containing a matching value
+ 
+ </div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#setAccessToken(java.lang.String)">setAccessToken</a></span>(String accessToken)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#setApplicationName(java.lang.String)">setApplicationName</a></span>(String applicationName)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#setConsumerKey(java.lang.String)">setConsumerKey</a></span>(String consumerKey)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#setConsumerSecret(java.lang.String)">setConsumerSecret</a></span>(String consumerSecret)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#setCsvValues(java.lang.String, java.lang.String, java.lang.String, int, int, java.lang.String, java.lang.String, int, int, boolean)">setCsvValues</a></span>(String spreadsheet, String worksheet, String csv, int startingRow, int startingColumn, String lineSeparator, String columnSeparator, int spreadsheetIndex, int worksheetIndex, boolean purge)</nobr>
+        
+        <div class="jd-descrdiv">Performs a batch update of a worksheet's cells taking values from a csv String.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#setDocService(com.google.gdata.client.docs.DocsService)">setDocService</a></span>(DocsService docService)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#setIdentifierPolicy(org.mule.modules.google.IdentifierPolicy)">setIdentifierPolicy</a></span>(IdentifierPolicy identifierPolicy)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#setRowValues(java.util.List<org.mule.module.google.spreadsheet.model.Row>, java.lang.String, java.lang.String, int, int, boolean)">setRowValues</a></span>(List&lt;<a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a>&gt; rows, String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex, boolean purge)</nobr>
+        
+        <div class="jd-descrdiv">Performs a batch update of a worksheet's cells taking values from a list of <code><a href="../../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a></code>
+ taken from the message payload.</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#setScope(java.lang.String)">setScope</a></span>(String scope)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#setSpreadsheetService(com.google.gdata.client.spreadsheet.SpreadsheetService)">setSpreadsheetService</a></span>(SpreadsheetService spreadsheetService)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#updateWorksheetMetadata(java.lang.String, java.lang.String, java.lang.String, java.lang.Boolean, java.lang.Boolean, java.lang.String, int, int, int, int)">updateWorksheetMetadata</a></span>(String spreadsheet, String worksheet, String title, Boolean draft, Boolean canEdit, String summary, int rowCount, int colCount, int spreadsheetIndex, int worksheetIndex)</nobr>
+        
+        <div class="jd-descrdiv">This processor allows updating a worksheet's metadata, constituted by
+ its title, dimensions, summary, draft and editability status.</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.modules.google.AbstractGoogleOAuthConnector" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.modules.google.AbstractGoogleOAuthConnector-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  org.mule.modules.google.AbstractGoogleOAuthConnector
+
+<div id="inherited-methods-org.mule.modules.google.AbstractGoogleOAuthConnector">
+  <div id="inherited-methods-org.mule.modules.google.AbstractGoogleOAuthConnector-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.modules.google.AbstractGoogleOAuthConnector-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getAccessToken</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getUserId</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">setUserId</span>(String arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-java.lang.Object" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-java.lang.Object-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  java.lang.Object
+
+<div id="inherited-methods-java.lang.Object">
+  <div id="inherited-methods-java.lang.Object-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-java.lang.Object-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">clone</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">equals</span>(Object arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">finalize</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            Class&lt;?&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getClass</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            int</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">hashCode</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notify</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">notifyAll</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">toString</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0, int arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">wait</span>(long arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.context.MuleContextAware" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.context.MuleContextAware-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.context.MuleContextAware
+
+<div id="inherited-methods-org.mule.api.context.MuleContextAware">
+  <div id="inherited-methods-org.mule.api.context.MuleContextAware-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.context.MuleContextAware-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">setMuleContext</span>(MuleContext arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Disposable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Disposable-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Disposable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Disposable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Disposable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Disposable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">dispose</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Initialisable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Initialisable-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Initialisable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Initialisable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Initialisable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Initialisable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">initialise</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Startable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Startable-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Startable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Startable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Startable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Startable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">start</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.lifecycle.Stoppable" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.lifecycle.Stoppable-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.lifecycle.Stoppable
+
+<div id="inherited-methods-org.mule.api.lifecycle.Stoppable">
+  <div id="inherited-methods-org.mule.api.lifecycle.Stoppable-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.lifecycle.Stoppable-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">stop</span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.google.spreadsheet.basic.Capabilities" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.google.spreadsheet.basic.Capabilities-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../../../../org/mule/module/google/spreadsheet/basic/Capabilities.html">org.mule.module.google.spreadsheet.basic.Capabilities</a>
+
+<div id="inherited-methods-org.mule.module.google.spreadsheet.basic.Capabilities">
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.basic.Capabilities-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.basic.Capabilities-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/basic/Capabilities.html#isCapableOf(org.mule.module.google.spreadsheet.basic.Capability)">isCapableOf</a></span>(<a href="../../../../../../../java/org/mule/module/google/spreadsheet/basic/Capability.html">Capability</a> capability)</nobr>
+        
+        <div class="jd-descrdiv">Returns true if this module implements such
+ capability</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.google.spreadsheet.basic.MetadataAware" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.google.spreadsheet.basic.MetadataAware-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../../../../org/mule/module/google/spreadsheet/basic/MetadataAware.html">org.mule.module.google.spreadsheet.basic.MetadataAware</a>
+
+<div id="inherited-methods-org.mule.module.google.spreadsheet.basic.MetadataAware">
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.basic.MetadataAware-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.basic.MetadataAware-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/basic/MetadataAware.html#getDevkitBuild()">getDevkitBuild</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the build of the DevKit used to create this module
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/basic/MetadataAware.html#getDevkitVersion()">getDevkitVersion</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the version of the DevKit used to create this module
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/basic/MetadataAware.html#getModuleName()">getModuleName</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the user-friendly name of this module
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/basic/MetadataAware.html#getModuleVersion()">getModuleVersion</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Returns the version of this module
+</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.google.spreadsheet.oauth.OAuth2Adapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.google.spreadsheet.oauth.OAuth2Adapter-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuth2Adapter.html">org.mule.module.google.spreadsheet.oauth.OAuth2Adapter</a>
+
+<div id="inherited-methods-org.mule.module.google.spreadsheet.oauth.OAuth2Adapter">
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.oauth.OAuth2Adapter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.oauth.OAuth2Adapter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuth2Adapter.html#authorize(java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String)">authorize</a></span>(Map&lt;String,&nbsp;String&gt; extraParameters, String accessTokenUrl, String redirectUri)</nobr>
+        
+        <div class="jd-descrdiv">Build authorization URL and create the inbound endpoint for the callback</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuth2Adapter.html#fetchAccessToken(java.lang.String, java.lang.String)">fetchAccessToken</a></span>(String accessTokenUrl, String redirectUri)</nobr>
+        
+        <div class="jd-descrdiv">Acquire access token and secret</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuth2Adapter.html#getRefreshToken()">getRefreshToken</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuth2Adapter.html#hasTokenExpired()">hasTokenExpired</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuth2Adapter.html#refreshAccessToken(java.lang.String)">refreshAccessToken</a></span>(String accessTokenUrl)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuth2Adapter.html#setExpiration(java.util.Date)">setExpiration</a></span>(Date value)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.google.spreadsheet.oauth.OAuthAdapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.google.spreadsheet.oauth.OAuthAdapter-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuthAdapter.html">org.mule.module.google.spreadsheet.oauth.OAuthAdapter</a>
+
+<div id="inherited-methods-org.mule.module.google.spreadsheet.oauth.OAuthAdapter">
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.oauth.OAuthAdapter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.oauth.OAuthAdapter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuthAdapter.html#getAccessToken()">getAccessToken</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieve access token
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/RestoreAccessTokenCallback.html">RestoreAccessTokenCallback</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuthAdapter.html#getOauthRestoreAccessToken()">getOauthRestoreAccessToken</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the callback to be called when the access token and secret need to be restored
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/SaveAccessTokenCallback.html">SaveAccessTokenCallback</a></nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuthAdapter.html#getOauthSaveAccessToken()">getOauthSaveAccessToken</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Get the callback to be called when the access token and secret need to be saved for
+ later restoration
+</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            String</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuthAdapter.html#getOauthVerifier()">getOauthVerifier</a></span>()</nobr>
+        
+        <div class="jd-descrdiv">Retrieve OAuth verifier</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuthAdapter.html#hasBeenAuthorized()">hasBeenAuthorized</a></span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuthAdapter.html#setAccessToken(java.lang.String)">setAccessToken</a></span>(String value)</nobr>
+        
+        <div class="jd-descrdiv">Set access token</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuthAdapter.html#setOauthRestoreAccessToken(org.mule.module.google.spreadsheet.oauth.RestoreAccessTokenCallback)">setOauthRestoreAccessToken</a></span>(<a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/RestoreAccessTokenCallback.html">RestoreAccessTokenCallback</a> restoreCallback)</nobr>
+        
+        <div class="jd-descrdiv">Set the callback to be called when the access token and secret need to be restored</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuthAdapter.html#setOauthSaveAccessToken(org.mule.module.google.spreadsheet.oauth.SaveAccessTokenCallback)">setOauthSaveAccessToken</a></span>(<a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/SaveAccessTokenCallback.html">SaveAccessTokenCallback</a> saveCallback)</nobr>
+        
+        <div class="jd-descrdiv">Set the callback to be called when the access token and secret need to be saved for
+ later restoration</div>
+  
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/OAuthAdapter.html#setOauthVerifier(java.lang.String)">setOauthVerifier</a></span>(String value)</nobr>
+        
+        <div class="jd-descrdiv">Set OAuth verifier</div>
+  
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.module.google.spreadsheet.process.ProcessAdapter" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.module.google.spreadsheet.process.ProcessAdapter-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  <a href="../../../../../../../org/mule/module/google/spreadsheet/process/ProcessAdapter.html">org.mule.module.google.spreadsheet.process.ProcessAdapter</a>
+
+<div id="inherited-methods-org.mule.module.google.spreadsheet.process.ProcessAdapter">
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.process.ProcessAdapter-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.module.google.spreadsheet.process.ProcessAdapter-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            &lt;T&gt;
+            <a href="../../../../../../../java/org/mule/module/google/spreadsheet/process/ProcessTemplate.html">ProcessTemplate</a>&lt;T,&nbsp;O&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/process/ProcessAdapter.html#getProcessTemplate()">getProcessTemplate</a></span>()</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+</table>
+
+
+</div><!-- jd-descr (summary) -->
+
+<!-- Details -->
+
+
+
+
+
+
+
+
+<!-- XML Attributes -->
+
+
+<!-- Enum Values -->
+
+
+<!-- Constants -->
+
+
+<!-- Fields -->
+
+
+<!-- ========= FIELD DETAIL ======== -->
+<h2>Fields</h2>
+
+
+
+
+<A NAME="ACCESS_CODE_PATTERN"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+        static 
+        final 
+        Pattern
+      </span>
+        ACCESS_CODE_PATTERN
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="EXPIRATION_TIME_PATTERN"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+        static 
+        final 
+        Pattern
+      </span>
+        EXPIRATION_TIME_PATTERN
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="LOGGER"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+        static 
+        final 
+        Logger
+      </span>
+        LOGGER
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="REFRESH_TOKEN_PATTERN"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+        static 
+        final 
+        Pattern
+      </span>
+        REFRESH_TOKEN_PATTERN
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="accessTokenUrl"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        String
+      </span>
+        accessTokenUrl
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="authorizationUrl"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        String
+      </span>
+        authorizationUrl
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="expiration"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        Date
+      </span>
+        expiration
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="muleContext"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        MuleContext
+      </span>
+        muleContext
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="oauthRestoreAccessToken"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/RestoreAccessTokenCallback.html">RestoreAccessTokenCallback</a>
+      </span>
+        oauthRestoreAccessToken
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="oauthSaveAccessToken"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/SaveAccessTokenCallback.html">SaveAccessTokenCallback</a>
+      </span>
+        oauthSaveAccessToken
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="oauthVerifier"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        String
+      </span>
+        oauthVerifier
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="redirectUri"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+        String
+      </span>
+        redirectUri
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+<A NAME="refreshToken"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        private 
+         
+         
+        String
+      </span>
+        refreshToken
+    </h4>
+      <div class="api-level">
+        
+
+
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    
+    </div>
+</div>
+
+
+
+
+<!-- Public ctors -->
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<h2>Public Constructors</h2>
+
+
+
+<A NAME="GoogleSpreadSheetConnectorOAuth2Adapter()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        
+      </span>
+      <span class="sympad">GoogleSpreadSheetConnectorOAuth2Adapter</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<!-- Protected ctors -->
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+<!-- Public methdos -->
+
+<h2>Public Methods</h2>
+
+
+
+<A NAME="authorize(java.util.Map<java.lang.String, java.lang.String>, java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">authorize</span>
+      <span class="normal">(Map&lt;String,&nbsp;String&gt; extraParameters, String authorizationUrl, String redirectUri)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Build authorization URL and create the inbound endpoint for the callback</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>extraParameters</td>
+          <td>Extra query string parameters that should be added to the authorization URL</td>
+        </tr>
+        <tr>
+          <th>authorizationUrl</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>redirectUri</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>The authorization URL
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="fetchAccessToken(java.lang.String, java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">fetchAccessToken</span>
+      <span class="normal">(String accessTokenUrl, String redirectUri)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Acquire access token and secret</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>accessTokenUrl</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>redirectUri</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/UnableToAcquireAccessTokenException.html">UnableToAcquireAccessTokenException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getAccessTokenUrl()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getAccessTokenUrl</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves accessTokenUrl
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getAuthorizationUrl()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getAuthorizationUrl</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves authorizationUrl
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getOauthRestoreAccessToken()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/RestoreAccessTokenCallback.html">RestoreAccessTokenCallback</a>
+      </span>
+      <span class="sympad">getOauthRestoreAccessToken</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves oauthRestoreAccessToken
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getOauthSaveAccessToken()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/SaveAccessTokenCallback.html">SaveAccessTokenCallback</a>
+      </span>
+      <span class="sympad">getOauthSaveAccessToken</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves oauthSaveAccessToken
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getOauthVerifier()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getOauthVerifier</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves oauthVerifier
+ 
+</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Returns</h5>
+      <ul class="nolist"><li>A String representing the OAuth verifier
+</li></ul>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="getProcessTemplate()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        <a href="../../../../../../../java/org/mule/module/google/spreadsheet/process/ProcessTemplate.html">ProcessTemplate</a>&lt;P,&nbsp;<a href="../../../../../../../java/org/mule/module/google/spreadsheet/adapters/GoogleSpreadSheetConnectorCapabilitiesAdapter.html">GoogleSpreadSheetConnectorCapabilitiesAdapter</a>&gt;
+      </span>
+      <span class="sympad">getProcessTemplate</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="getRefreshToken()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        String
+      </span>
+      <span class="sympad">getRefreshToken</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Retrieves refreshToken
+ 
+</p></div>
+
+    </div>
+</div>
+
+
+<A NAME="hasBeenAuthorized()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">hasBeenAuthorized</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/NotAuthorizedException.html">NotAuthorizedException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="hasTokenExpired()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">hasTokenExpired</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="initialise()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">initialise</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th>InitialisationException</td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="refreshAccessToken(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">refreshAccessToken</span>
+      <span class="normal">(String accessTokenUrl)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>accessTokenUrl</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Throws</h5>
+      <table class="jd-tagtable">  
+        <tr>
+            <th><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/UnableToAcquireAccessTokenException.html">UnableToAcquireAccessTokenException</a></td>
+            <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="reset()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">reset</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="restoreAccessToken()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        boolean
+      </span>
+      <span class="sympad">restoreAccessToken</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="setAccessTokenUrl(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setAccessTokenUrl</span>
+      <span class="normal">(String value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets accessTokenUrl</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setAuthorizationUrl(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setAuthorizationUrl</span>
+      <span class="normal">(String value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets authorizationUrl</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setExpiration(java.util.Date)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setExpiration</span>
+      <span class="normal">(Date value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets expiration</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setMuleContext(org.mule.api.MuleContext)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setMuleContext</span>
+      <span class="normal">(MuleContext value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets muleContext</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setOauthRestoreAccessToken(org.mule.module.google.spreadsheet.oauth.RestoreAccessTokenCallback)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setOauthRestoreAccessToken</span>
+      <span class="normal">(<a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/RestoreAccessTokenCallback.html">RestoreAccessTokenCallback</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets oauthRestoreAccessToken</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setOauthSaveAccessToken(org.mule.module.google.spreadsheet.oauth.SaveAccessTokenCallback)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setOauthSaveAccessToken</span>
+      <span class="normal">(<a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/SaveAccessTokenCallback.html">SaveAccessTokenCallback</a> value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets oauthSaveAccessToken</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setOauthVerifier(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setOauthVerifier</span>
+      <span class="normal">(String value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets oauthVerifier</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setRefreshToken(java.lang.String)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        public 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setRefreshToken</span>
+      <span class="normal">(String value)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p>Sets refreshToken</p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>value</td>
+          <td>Value to set
+</td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- ========= METHOD DETAIL ======== -->
+
+
+
+<!-- ========= END OF CLASS DATA ========= -->
+<A NAME="navbar_top"></A>
+
+<div id="footer">
+Generated by <a href="http://www.mulesoft.com/devkit">Mule DevKit</a>. Document generation technology based on <a href="http://code.google.com/p/doclava/">Google's Doclava</a>.
+</div> <!-- end footer -->
+
+</div> <!-- jd-content -->
+
+</div><!-- end doc-content -->
+
+</div> <!-- end body-content --> 
+
+<script type="text/javascript">
+init(); /* initialize mule-developer-docs.js */
+</script>
+
+</body>
+</html>
