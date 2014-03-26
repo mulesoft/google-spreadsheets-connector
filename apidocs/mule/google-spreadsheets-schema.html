@@ -66,6 +66,49 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -228,7 +271,7 @@
           <th>Schema Version</th><td>1.0</td>
         </tr>
 <tr>
-          <th>Minimum Mule Version</th><td>3.4</td>
+          <th>Minimum Mule Version</th><td>3.5</td>
         </tr>
     </tbody></table>
   </div>
@@ -263,6 +306,11 @@ This connector uses OAuth2 for authentication.&lt;/xs:documentation&gt;
                     &lt;xs:attribute name=&quot;async&quot; default=&quot;false&quot; use=&quot;optional&quot; type=&quot;xs:boolean&quot;&gt;&lt;/xs:attribute&gt;
                     &lt;xs:attribute name=&quot;path&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;&lt;/xs:attribute&gt;
                     &lt;xs:attribute name=&quot;connector-ref&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;&lt;/xs:attribute&gt;
+                    &lt;xs:attribute name=&quot;defaultAccessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+                      &lt;xs:annotation&gt;
+                        &lt;xs:documentation&gt;A Mule Expression to use as access token id&lt;/xs:documentation&gt;
+                      &lt;/xs:annotation&gt;
+                    &lt;/xs:attribute&gt;
                   &lt;/xs:extension&gt;
                 &lt;/xs:complexContent&gt;
               &lt;/xs:complexType&gt;
@@ -300,22 +348,17 @@ This connector uses OAuth2 for authentication.&lt;/xs:documentation&gt;
               &lt;xs:documentation&gt;The OAuth scopes you want to request&lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
           &lt;/xs:attribute&gt;
-          &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;identifierPolicy&quot; default=&quot;EMAIL&quot; use=&quot;optional&quot; type=&quot;IdentifierPolicyEnumType&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;This policy represents which id we want to use to represent each google account.
-
-PROFILE means that we want the google profile id. That means, the user's primary key in google's DB.
-This is a long number represented as a string.
-
-EMAIL means you want to use the account's email address&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:attribute&gt;
           &lt;xs:attribute name=&quot;applicationName&quot; default=&quot;Mule-GoogleSpreadsheetsConnector/1.0&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
             &lt;xs:annotation&gt;
               &lt;xs:documentation&gt;Application name to communicate to google&lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
           &lt;/xs:attribute&gt;
           &lt;xs:attribute name=&quot;accessTokenUrl&quot; default=&quot;https://accounts.google.com/o/oauth2/token&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+            &lt;xs:annotation&gt;
+              &lt;xs:documentation&gt;The URL defined by the Service Provider to obtain an access token&lt;/xs:documentation&gt;
+            &lt;/xs:annotation&gt;
+          &lt;/xs:attribute&gt;
+          &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;onNoToken&quot; default=&quot;EXCEPTION&quot; use=&quot;optional&quot; type=&quot;OnNoTokenPolicyEnumType&quot;&gt;
             &lt;xs:annotation&gt;
               &lt;xs:documentation&gt;The URL defined by the Service Provider to obtain an access token&lt;/xs:documentation&gt;
             &lt;/xs:annotation&gt;
@@ -365,6 +408,11 @@ EMAIL means you want to use the account's email address&lt;/xs:documentation&gt;
         &lt;xs:attribute name=&quot;accessTokenUrl&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;The URL defined by the Service Provider to obtain an access token&lt;/xs:documentation&gt;
+          &lt;/xs:annotation&gt;
+        &lt;/xs:attribute&gt;
+        &lt;xs:attribute name=&quot;accessTokenId&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+          &lt;xs:annotation&gt;
+            &lt;xs:documentation&gt;The Id with which the obtained access token will be stored. If not provided, then it will be the config name&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
         &lt;xs:attribute name=&quot;authorizationUrl&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
@@ -800,7 +848,7 @@ You can manually specify the csv string or else it will automatically taken from
             &lt;xs:documentation&gt;the title of the worksheet you want to update&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
-        &lt;xs:attribute name=&quot;csv&quot; default=&quot;#[payload:]&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
+        &lt;xs:attribute name=&quot;csv&quot; default=&quot;#[payload]&quot; use=&quot;optional&quot; type=&quot;xs:string&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;the csv content to be set on the worksheet. You can manually specify it or else it will be taken from the message payload&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
@@ -1163,22 +1211,22 @@ the cells contained in a given range&lt;/xs:documentation&gt;
             &lt;xs:documentation&gt;google's api allows for several worksheets to have the same name. In this cases it returns a list with all the ones matching the given title. Use this optional attribute to specify the zero-based list index of the want you want to use&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
-        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;minRow&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;minRow&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;the range starting row. This is a 1-based index&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
-        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;maxRow&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;maxRow&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;the range ending row. This is a 1-based index&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
-        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;minCol&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;minCol&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;the range starting column. This is a 1-based index&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
-        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;maxCol&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;maxCol&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;the range ending column. This is a 1-based index&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
@@ -1242,22 +1290,22 @@ Row Number | Column Number | evaluated Value&lt;/xs:documentation&gt;
             &lt;xs:documentation&gt;specifies the character to be used as a line separator. Defaults to the new line &amp;lt;code&amp;gt;\n&amp;lt;/code&amp;gt; character&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
-        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;minRow&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;minRow&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;the range starting row. This is a 1-based index&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
-        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;maxRow&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;maxRow&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;the range ending row. This is a 1-based index&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
-        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;minCol&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;minCol&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;the range starting column. This is a 1-based index&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
         &lt;/xs:attribute&gt;
-        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;maxCol&quot; use=&quot;required&quot; type=&quot;integerType&quot;&gt;
+        &lt;xs:attribute xmlns=&quot;http://www.mulesoft.org/schema/mule/google-spreadsheets&quot; name=&quot;maxCol&quot; use=&quot;optional&quot; type=&quot;integerType&quot;&gt;
           &lt;xs:annotation&gt;
             &lt;xs:documentation&gt;the range ending column. This is a 1-based index&lt;/xs:documentation&gt;
           &lt;/xs:annotation&gt;
@@ -1365,23 +1413,12 @@ in which each entry represent a cell containing a matching value&lt;/xs:document
       &lt;/xs:simpleType&gt;
     &lt;/xs:union&gt;
   &lt;/xs:simpleType&gt;
-  &lt;xs:simpleType name=&quot;IdentifierPolicyEnumType&quot;&gt;
-    &lt;xs:annotation&gt;
-      &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-    &lt;/xs:annotation&gt;
+  &lt;xs:simpleType name=&quot;OnNoTokenPolicyEnumType&quot;&gt;
     &lt;xs:union&gt;
       &lt;xs:simpleType&gt;
         &lt;xs:restriction base=&quot;xs:string&quot;&gt;
-          &lt;xs:enumeration value=&quot;PROFILE&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:enumeration&gt;
-          &lt;xs:enumeration value=&quot;EMAIL&quot;&gt;
-            &lt;xs:annotation&gt;
-              &lt;xs:documentation&gt;&lt;/xs:documentation&gt;
-            &lt;/xs:annotation&gt;
-          &lt;/xs:enumeration&gt;
+          &lt;xs:enumeration value=&quot;EXCEPTION&quot;&gt;&lt;/xs:enumeration&gt;
+          &lt;xs:enumeration value=&quot;STOP_FLOW&quot;&gt;&lt;/xs:enumeration&gt;
         &lt;/xs:restriction&gt;
       &lt;/xs:simpleType&gt;
       &lt;xs:simpleType&gt;

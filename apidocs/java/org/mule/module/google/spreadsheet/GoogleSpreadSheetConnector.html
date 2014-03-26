@@ -65,6 +65,49 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -211,10 +254,6 @@
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/google/spreadsheet/agents/package-summary.html">org.mule.module.google.spreadsheet.agents</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/google/spreadsheet/basic/package-summary.html">org.mule.module.google.spreadsheet.basic</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/google/spreadsheet/callback/package-summary.html">org.mule.module.google.spreadsheet.callback</a></li>
-    <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/google/spreadsheet/config/package-summary.html">org.mule.module.google.spreadsheet.config</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/google/spreadsheet/connection/package-summary.html">org.mule.module.google.spreadsheet.connection</a></li>
@@ -228,8 +267,6 @@
   <a href="../../../../../../java/org/mule/module/google/spreadsheet/model/transformers/package-summary.html">org.mule.module.google.spreadsheet.model.transformers</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/google/spreadsheet/oauth/package-summary.html">org.mule.module.google.spreadsheet.oauth</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../../java/org/mule/module/google/spreadsheet/process/package-summary.html">org.mule.module.google.spreadsheet.process</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../java/org/mule/module/google/spreadsheet/processors/package-summary.html">org.mule.module.google.spreadsheet.processors</a></li>
     <li class="api apilevel-">
@@ -296,6 +333,13 @@
   
   
    
+  
+  
+
+  
+   
+  
+  
   
   
 
@@ -588,6 +632,8 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 
+
+
 </table>
 
 
@@ -670,17 +716,6 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
       <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
-          
-          
-          IdentifierPolicy</nobr></td>
-          <td class="jd-linkcol"><a href="../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#identifierPolicy">identifierPolicy</a></td>
-          <td class="jd-descrcol" width="100%">This policy represents which id we want to use to represent each google account.</td>
-      </tr>
-      
-    
-      <tr class=" api apilevel-" >
-          <td class="jd-typecol"><nobr>
-          private
           static
           
           Logger</nobr></td>
@@ -689,7 +724,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
       </tr>
       
     
-      <tr class="alt-color api apilevel-" >
+      <tr class=" api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -701,7 +736,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
       </tr>
       
     
-      <tr class=" api apilevel-" >
+      <tr class="alt-color api apilevel-" >
           <td class="jd-typecol"><nobr>
           private
           
@@ -747,6 +782,17 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
           private
           
           
+          MuleContext</nobr></td>
+          <td class="jd-linkcol">muleContext</td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
           String</nobr></td>
           <td class="jd-linkcol">userId</td>
           <td class="jd-descrcol" width="100%"></td>
@@ -757,6 +803,8 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
   </div>
 </div>
 </td></tr>
+
+
 
 
 
@@ -884,22 +932,6 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
             
             
             
-            String</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getAccessTokenId()">getAccessTokenId</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
             List&lt;<a href="../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -914,7 +946,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -932,7 +964,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -952,7 +984,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -972,7 +1004,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -988,7 +1020,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1009,7 +1041,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1019,7 +1051,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
             List&lt;<a href="../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a>&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getCellRange(java.lang.String, java.lang.String, int, int, int, int, int, int)">getCellRange</a></span>(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex, int minRow, int maxRow, int minCol, int maxCol)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getCellRange(java.lang.String, java.lang.String, int, int, java.lang.Integer, java.lang.Integer, java.lang.Integer, java.lang.Integer)">getCellRange</a></span>(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex, Integer minRow, Integer maxRow, Integer minCol, Integer maxCol)</nobr>
         
         <div class="jd-descrdiv">Returns a list of <code><a href="../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a></code> containing
  the cells contained in a given range
@@ -1030,7 +1062,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1040,7 +1072,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getCellRangeAsCsv(java.lang.String, java.lang.String, int, int, java.lang.String, java.lang.String, int, int, int, int)">getCellRangeAsCsv</a></span>(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex, String columnSeparator, String lineSeparator, int minRow, int maxRow, int minCol, int maxCol)</nobr>
+        <span class="sympad"><a href="../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getCellRangeAsCsv(java.lang.String, java.lang.String, int, int, java.lang.String, java.lang.String, java.lang.Integer, java.lang.Integer, java.lang.Integer, java.lang.Integer)">getCellRangeAsCsv</a></span>(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex, String columnSeparator, String lineSeparator, Integer minRow, Integer maxRow, Integer minCol, Integer maxCol)</nobr>
         
         <div class="jd-descrdiv">Returns a CSV file representing the requested cell range.</div>
   
@@ -1048,7 +1080,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1068,7 +1100,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1084,7 +1116,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1095,22 +1127,6 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getConsumerSecret()">getConsumerSecret</a></span>()</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            IdentifierPolicy</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#getIdentifierPolicy()">getIdentifierPolicy</a></span>()</nobr>
         
   </td></tr>
 
@@ -1333,22 +1349,6 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#setIdentifierPolicy(org.mule.modules.google.IdentifierPolicy)">setIdentifierPolicy</a></span>(IdentifierPolicy identifierPolicy)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            void</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
         <span class="sympad"><a href="../../../../../../org/mule/module/google/spreadsheet/GoogleSpreadSheetConnector.html#setRowValues(java.util.List<org.mule.module.google.spreadsheet.model.Row>, java.lang.String, java.lang.String, int, int, boolean)">setRowValues</a></span>(List&lt;<a href="../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a>&gt; rows, String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex, boolean purge)</nobr>
         
         <div class="jd-descrdiv">Performs a batch update of a worksheet's cells taking values from a list of <code><a href="../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a></code>
@@ -1358,7 +1358,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1374,7 +1374,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class="alt-color api apilevel-" >
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1390,7 +1390,7 @@ org.mule.modules.google.AbstractGoogleOAuthConnector
 
 
 	 
-    <tr class=" api apilevel-" >
+    <tr class="alt-color api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1466,6 +1466,22 @@ From class
             
             
             
+            MuleContext</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getMuleContext</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
             String</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
@@ -1475,7 +1491,39 @@ From class
 
 
 	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">registerTransformer</span>(Transformer arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
     <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">setMuleContext</span>(MuleContext arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -1698,6 +1746,48 @@ From class
 </td></tr>
 
 
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.api.context.MuleContextAware" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.api.context.MuleContextAware-trigger"
+          src="../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From interface
+
+  org.mule.api.context.MuleContextAware
+
+<div id="inherited-methods-org.mule.api.context.MuleContextAware">
+  <div id="inherited-methods-org.mule.api.context.MuleContextAware-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.api.context.MuleContextAware-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">setMuleContext</span>(MuleContext arg0)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
+
 </table>
 
 
@@ -1906,42 +1996,6 @@ From class
     <div class="jd-details-descr">
       
   <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    
-    </div>
-</div>
-
-
-
-<A NAME="identifierPolicy"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        private 
-         
-         
-        IdentifierPolicy
-      </span>
-        identifierPolicy
-    </h4>
-      <div class="api-level">
-        
-
-
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p>This policy represents which id we want to use to represent each google account.
- 
- PROFILE means that we want the google profile id. That means, the user's primary key in google's DB.
- This is a long number represented as a string.
- 
- EMAIL means you want to use the account's email address
-</p></div>
 
     
     </div>
@@ -2318,37 +2372,6 @@ From class
         String
       </span>
       <span class="sympad">getAccessToken</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getAccessTokenId()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        String
-      </span>
-      <span class="sympad">getAccessTokenId</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -2754,7 +2777,7 @@ From class
 </div>
 
 
-<A NAME="getCellRange(java.lang.String, java.lang.String, int, int, int, int, int, int)"></A>
+<A NAME="getCellRange(java.lang.String, java.lang.String, int, int, java.lang.Integer, java.lang.Integer, java.lang.Integer, java.lang.Integer)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2767,7 +2790,7 @@ From class
         List&lt;<a href="../../../../../../java/org/mule/module/google/spreadsheet/model/Row.html">Row</a>&gt;
       </span>
       <span class="sympad">getCellRange</span>
-      <span class="normal">(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex, int minRow, int maxRow, int minCol, int maxCol)</span>
+      <span class="normal">(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex, Integer minRow, Integer maxRow, Integer minCol, Integer maxCol)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -2847,7 +2870,7 @@ From class
 </div>
 
 
-<A NAME="getCellRangeAsCsv(java.lang.String, java.lang.String, int, int, java.lang.String, java.lang.String, int, int, int, int)"></A>
+<A NAME="getCellRangeAsCsv(java.lang.String, java.lang.String, int, int, java.lang.String, java.lang.String, java.lang.Integer, java.lang.Integer, java.lang.Integer, java.lang.Integer)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -2860,7 +2883,7 @@ From class
         String
       </span>
       <span class="sympad">getCellRangeAsCsv</span>
-      <span class="normal">(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex, String columnSeparator, String lineSeparator, int minRow, int maxRow, int minCol, int maxCol)</span>
+      <span class="normal">(String spreadsheet, String worksheet, int spreadsheetIndex, int worksheetIndex, String columnSeparator, String lineSeparator, Integer minRow, Integer maxRow, Integer minCol, Integer maxCol)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -3075,37 +3098,6 @@ From class
         String
       </span>
       <span class="sympad">getConsumerSecret</span>
-      <span class="normal">()</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-
-    </div>
-</div>
-
-
-<A NAME="getIdentifierPolicy()"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        IdentifierPolicy
-      </span>
-      <span class="sympad">getIdentifierPolicy</span>
       <span class="normal">()</span>
     </h4>
       <div class="api-level">
@@ -3757,46 +3749,6 @@ From class
       <table class="jd-tagtable">
         <tr>
           <th>docService</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="setIdentifierPolicy(org.mule.modules.google.IdentifierPolicy)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">setIdentifierPolicy</span>
-      <span class="normal">(IdentifierPolicy identifierPolicy)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>identifierPolicy</td>
           <td></td>
         </tr>
       </table>

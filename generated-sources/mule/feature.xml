@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.mule.tooling.ui.extension.google-spreadsheet" label="Google Spreadsheet Connector Mule Studio Extension" provider-name="Mulesoft, Inc." version="1.5.0.201403261236"><license>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><feature id="org.mule.tooling.ui.extension.google-spreadsheet.3.5.0" label="Google Spreadsheets Connector (Mule 3.5+)" provider-name="Mulesoft, Inc." version="2.0.0.201403261237"><license>
 Common Public Attribution License Version 1.0 (CPAL)
 ====================================================
 
@@ -487,4 +487,4 @@ Display of Attribution Information is required in Larger Works which are defined
 in the CPAL as a work which combines Covered Code or portions thereof with code
 not governed by the terms of the CPAL.
 
-</license><plugin download-size="0" id="org.mule.tooling.ui.contribution.google-spreadsheets" install-size="0" unpack="true" version="1.0.0.201403261236"/></feature>
+</license><plugin download-size="0" id="org.mule.tooling.ui.contribution.google-spreadsheets.3.5.0" install-size="0" unpack="true" version="2.0.0.201403261237"/></feature>

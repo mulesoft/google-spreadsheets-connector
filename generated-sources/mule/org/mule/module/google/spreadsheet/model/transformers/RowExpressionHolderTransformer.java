@@ -14,15 +14,15 @@ import org.mule.api.transformer.MessageTransformer;
 import org.mule.api.transformer.TransformerException;
 import org.mule.api.transformer.TransformerMessagingException;
 import org.mule.config.i18n.CoreMessages;
+import org.mule.devkit.processor.ExpressionEvaluatorSupport;
 import org.mule.module.google.spreadsheet.model.Cell;
 import org.mule.module.google.spreadsheet.model.Row;
 import org.mule.module.google.spreadsheet.model.holders.RowExpressionHolder;
-import org.mule.module.google.spreadsheet.processors.AbstractExpressionEvaluator;
 import org.mule.transformer.types.DataTypeFactory;
 
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-03-26T12:36:12-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-26T12:37:34-05:00", comments = "Build M4.1875.17b58a3")
 public class RowExpressionHolderTransformer
-    extends AbstractExpressionEvaluator
+    extends ExpressionEvaluatorSupport
     implements DiscoverableTransformer, MessageTransformer
 {
 

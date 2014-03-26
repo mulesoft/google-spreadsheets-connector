@@ -4,20 +4,20 @@ package org.mule.module.google.spreadsheet.adapters;
 import javax.annotation.Generated;
 import org.mule.api.MuleEvent;
 import org.mule.api.MuleMessage;
+import org.mule.api.devkit.ProcessAdapter;
+import org.mule.api.devkit.ProcessTemplate;
+import org.mule.api.devkit.ProcessTemplate;
 import org.mule.api.processor.MessageProcessor;
 import org.mule.api.routing.filter.Filter;
 import org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector;
-import org.mule.module.google.spreadsheet.process.ProcessAdapter;
-import org.mule.module.google.spreadsheet.process.ProcessCallback;
-import org.mule.module.google.spreadsheet.process.ProcessTemplate;
-import org.mule.module.google.spreadsheet.process.ProcessTemplate;
+import org.mule.security.oauth.callback.ProcessCallback;
 
 
 /**
  * A <code>GoogleSpreadSheetConnectorProcessAdapter</code> is a wrapper around {@link GoogleSpreadSheetConnector } that enables custom processing strategies.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-03-26T12:36:12-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-26T12:37:34-05:00", comments = "Build M4.1875.17b58a3")
 public class GoogleSpreadSheetConnectorProcessAdapter
     extends GoogleSpreadSheetConnectorLifecycleAdapter
     implements ProcessAdapter<GoogleSpreadSheetConnectorCapabilitiesAdapter>

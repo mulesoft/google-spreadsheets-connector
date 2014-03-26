@@ -1,66 +1,115 @@
 
 package org.mule.module.google.spreadsheet.adapters;
 
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Map;
-import java.util.regex.Matcher;
+import java.util.Set;
 import java.util.regex.Pattern;
 import javax.annotation.Generated;
 import org.apache.log4j.Logger;
-import org.mule.api.MuleContext;
-import org.mule.api.context.MuleContextAware;
-import org.mule.api.lifecycle.Initialisable;
+import org.mule.api.devkit.ProcessTemplate;
 import org.mule.api.lifecycle.InitialisationException;
-import org.mule.api.lifecycle.Startable;
-import org.mule.api.lifecycle.Stoppable;
+import org.mule.common.security.oauth.AuthorizationParameter;
+import org.mule.common.security.oauth.exception.NotAuthorizedException;
+import org.mule.common.security.oauth.exception.UnableToAcquireAccessTokenException;
 import org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector;
-import org.mule.module.google.spreadsheet.oauth.NotAuthorizedException;
-import org.mule.module.google.spreadsheet.oauth.OAuth2Adapter;
-import org.mule.module.google.spreadsheet.oauth.OAuthProcessTemplate;
-import org.mule.module.google.spreadsheet.oauth.RestoreAccessTokenCallback;
-import org.mule.module.google.spreadsheet.oauth.SaveAccessTokenCallback;
-import org.mule.module.google.spreadsheet.oauth.UnableToAcquireAccessTokenException;
-import org.mule.module.google.spreadsheet.process.ProcessTemplate;
-import org.mule.util.IOUtils;
+import org.mule.modules.google.AccessType;
+import org.mule.modules.google.ForcePrompt;
+import org.mule.security.oauth.OAuth2Adapter;
+import org.mule.security.oauth.OAuth2Connector;
+import org.mule.security.oauth.OAuth2Manager;
+import org.mule.security.oauth.OnNoTokenPolicy;
 
 
 /**
  * A {@code GoogleSpreadSheetConnectorOAuth2Adapter} is a wrapper around {@link GoogleSpreadSheetConnector } that adds OAuth capabilites to the pojo.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-03-26T12:36:12-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-26T12:37:34-05:00", comments = "Build M4.1875.17b58a3")
 public class GoogleSpreadSheetConnectorOAuth2Adapter
     extends GoogleSpreadSheetConnectorProcessAdapter
-    implements MuleContextAware, Initialisable, Startable, Stoppable, OAuth2Adapter
+    implements OAuth2Adapter, OAuth2Connector
 {
 
+    private OAuth2Manager<OAuth2Adapter> oauthManager;
     private final static Pattern ACCESS_CODE_PATTERN = Pattern.compile("\"access_token\"[ ]*:[ ]*\"([^\\\"]*)\"");
     private final static Pattern REFRESH_TOKEN_PATTERN = Pattern.compile("\"refresh_token\"[ ]*:[ ]*\"([^\\\"]*)\"");
     private final static Pattern EXPIRATION_TIME_PATTERN = Pattern.compile("\"expires_in\"[ ]*:[ ]*([\\d]*)");
-    private MuleContext muleContext;
+    private String name;
+    private OnNoTokenPolicy onNoTokenPolicy;
     private String oauthVerifier;
     private String refreshToken;
-    private SaveAccessTokenCallback oauthSaveAccessToken;
-    private RestoreAccessTokenCallback oauthRestoreAccessToken;
     public String redirectUri;
     private String authorizationUrl = null;
     private String accessTokenUrl = null;
     private Date expiration;
     private final static Logger LOGGER = Logger.getLogger(GoogleSpreadSheetConnectorOAuth2Adapter.class);
 
+    public GoogleSpreadSheetConnectorOAuth2Adapter(OAuth2Manager<OAuth2Adapter> oauthManager) {
+        this.oauthManager = oauthManager;
+    }
+
     /**
-     * Sets muleContext
+     * Retrieves ACCESS_CODE_PATTERN
+     * 
+     */
+    @Override
+    public Pattern getAccessCodePattern() {
+        return this.ACCESS_CODE_PATTERN;
+    }
+
+    /**
+     * Retrieves REFRESH_TOKEN_PATTERN
+     * 
+     */
+    @Override
+    public Pattern getRefreshTokenPattern() {
+        return this.REFRESH_TOKEN_PATTERN;
+    }
+
+    /**
+     * Retrieves EXPIRATION_TIME_PATTERN
+     * 
+     */
+    @Override
+    public Pattern getExpirationTimePattern() {
+        return this.EXPIRATION_TIME_PATTERN;
+    }
+
+    /**
+     * Retrieves name
+     * 
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * Sets name
      * 
      * @param value Value to set
      */
-    public void setMuleContext(MuleContext value) {
-        this.muleContext = value;
+    @Override
+    public void setName(String value) {
+        this.name = value;
+    }
+
+    /**
+     * Retrieves onNoTokenPolicy
+     * 
+     */
+    public OnNoTokenPolicy getOnNoTokenPolicy() {
+        return this.onNoTokenPolicy;
+    }
+
+    /**
+     * Sets onNoTokenPolicy
+     * 
+     * @param value Value to set
+     */
+    public void setOnNoTokenPolicy(OnNoTokenPolicy value) {
+        this.onNoTokenPolicy = value;
     }
 
     /**
@@ -95,40 +144,6 @@ public class GoogleSpreadSheetConnectorOAuth2Adapter
      */
     public void setRefreshToken(String value) {
         this.refreshToken = value;
-    }
-
-    /**
-     * Retrieves oauthSaveAccessToken
-     * 
-     */
-    public SaveAccessTokenCallback getOauthSaveAccessToken() {
-        return this.oauthSaveAccessToken;
-    }
-
-    /**
-     * Sets oauthSaveAccessToken
-     * 
-     * @param value Value to set
-     */
-    public void setOauthSaveAccessToken(SaveAccessTokenCallback value) {
-        this.oauthSaveAccessToken = value;
-    }
-
-    /**
-     * Retrieves oauthRestoreAccessToken
-     * 
-     */
-    public RestoreAccessTokenCallback getOauthRestoreAccessToken() {
-        return this.oauthRestoreAccessToken;
-    }
-
-    /**
-     * Sets oauthRestoreAccessToken
-     * 
-     * @param value Value to set
-     */
-    public void setOauthRestoreAccessToken(RestoreAccessTokenCallback value) {
-        this.oauthRestoreAccessToken = value;
     }
 
     /**
@@ -181,234 +196,20 @@ public class GoogleSpreadSheetConnectorOAuth2Adapter
     }
 
     public String authorize(Map<String, String> extraParameters, String authorizationUrl, String redirectUri) {
-        StringBuilder urlBuilder = new StringBuilder();
-        if (authorizationUrl!= null) {
-            urlBuilder.append(authorizationUrl);
-        } else {
-            urlBuilder.append(this.authorizationUrl);
-        }
-        urlBuilder.append("?");
-        urlBuilder.append("response_type=code&");
-        urlBuilder.append("client_id=");
-        urlBuilder.append(getConsumerKey());
-        urlBuilder.append("&redirect_uri=");
-        urlBuilder.append(redirectUri);
-        String scope = getScope();
-        if (scope!= null) {
-            urlBuilder.append("&scope=");
-            urlBuilder.append(scope);
-        }
-        for (String parameter: extraParameters.keySet()) {
-            urlBuilder.append("&");
-            urlBuilder.append(parameter);
-            urlBuilder.append("=");
-            urlBuilder.append(extraParameters.get(parameter));
-        }
-        LOGGER.debug(("Authorization URL has been generated as follows: " + urlBuilder));
-        return urlBuilder.toString();
+        return oauthManager.buildAuthorizeUrl(extraParameters, authorizationUrl, redirectUri);
     }
 
-    public boolean restoreAccessToken() {
-        if (oauthRestoreAccessToken!= null) {
-            if (LOGGER.isDebugEnabled()) {
-                StringBuilder messageStringBuilder = new StringBuilder();
-                messageStringBuilder.append("Attempting to restore access token...");
-                LOGGER.debug(messageStringBuilder.toString());
-            }
-            try {
-                oauthRestoreAccessToken.restoreAccessToken();
-                setAccessToken(oauthRestoreAccessToken.getAccessToken());
-                if (LOGGER.isDebugEnabled()) {
-                    StringBuilder messageStringBuilder = new StringBuilder();
-                    messageStringBuilder.append("Access token and secret has been restored successfully ");
-                    messageStringBuilder.append("[accessToken = ");
-                    messageStringBuilder.append(oauthRestoreAccessToken.getAccessToken());
-                    messageStringBuilder.append("] ");
-                    LOGGER.debug(messageStringBuilder.toString());
-                }
-                return true;
-            } catch (Exception e) {
-                LOGGER.error("Cannot restore access token, an unexpected error occurred", e);
-            }
-        }
-        return false;
-    }
-
-    public void fetchAccessToken(String accessTokenUrl, String redirectUri)
+    public void fetchAccessToken(String redirectUri)
         throws UnableToAcquireAccessTokenException
     {
-        StringBuilder builder = new StringBuilder();
-        try {
-            builder.append("code=");
-            builder.append(URLEncoder.encode(oauthVerifier, "UTF-8"));
-            builder.append("&client_id=");
-            builder.append(URLEncoder.encode(getConsumerKey(), "UTF-8"));
-            builder.append("&client_secret=");
-            builder.append(URLEncoder.encode(getConsumerSecret(), "UTF-8"));
-            builder.append("&grant_type=");
-            builder.append(URLEncoder.encode("authorization_code", "UTF-8"));
-            builder.append("&redirect_uri=");
-            builder.append(URLEncoder.encode(redirectUri));
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        }
-        fetchAndExtract(accessTokenUrl, builder.toString());
+        oauthManager.fetchAccessToken(this, redirectUri);
     }
 
-    public void refreshAccessToken(String accessTokenUrl)
+    @Override
+    public void refreshAccessToken(String accessTokenId)
         throws UnableToAcquireAccessTokenException
     {
-        if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("Trying to refresh access token...");
-        }
-        if (this.refreshToken == null) {
-            throw new IllegalStateException("Cannot refresh access token since refresh token is null");
-        }
-        StringBuilder builder = new StringBuilder();
-        builder.append("grant_type=refresh_token");
-        builder.append("&client_id=");
-        builder.append(getConsumerKey());
-        builder.append("&client_secret=");
-        builder.append(getConsumerSecret());
-        builder.append("&refresh_token=");
-        builder.append(refreshToken);
-        builder.append("&scope=");
-        try {
-            builder.append(URLEncoder.encode(getScope(), "UTF-8"));
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        }
-        setAccessToken(null);
-        fetchAndExtract(accessTokenUrl, builder.toString());
-    }
-
-    private void fetchAndExtract(String accessTokenUrl, String requestBodyParam)
-        throws UnableToAcquireAccessTokenException
-    {
-        restoreAccessToken();
-        if (getAccessToken() == null) {
-            try {
-                if (LOGGER.isDebugEnabled()) {
-                    StringBuilder messageStringBuilder = new StringBuilder();
-                    messageStringBuilder.append("Retrieving access token...");
-                    LOGGER.debug(messageStringBuilder.toString());
-                }
-                HttpURLConnection conn = ((HttpURLConnection) new URL(accessTokenUrl).openConnection());
-                conn.setRequestMethod("POST");
-                conn.setDoOutput(true);
-                if (LOGGER.isDebugEnabled()) {
-                    StringBuilder messageStringBuilder = new StringBuilder();
-                    messageStringBuilder.append("Sending request to [");
-                    messageStringBuilder.append(accessTokenUrl);
-                    messageStringBuilder.append("] using the following as content [");
-                    messageStringBuilder.append(requestBodyParam);
-                    messageStringBuilder.append("]");
-                    LOGGER.debug(messageStringBuilder.toString());
-                }
-                OutputStreamWriter out = new OutputStreamWriter(conn.getOutputStream());
-                out.write(requestBodyParam);
-                out.close();
-                String response = IOUtils.toString(conn.getInputStream());
-                if (LOGGER.isDebugEnabled()) {
-                    StringBuilder messageStringBuilder = new StringBuilder();
-                    messageStringBuilder.append("Received response [");
-                    messageStringBuilder.append(response);
-                    messageStringBuilder.append("]");
-                    LOGGER.debug(messageStringBuilder.toString());
-                }
-                Matcher matcher = ACCESS_CODE_PATTERN.matcher(response);
-                if (matcher.find()&&(matcher.groupCount()>= 1)) {
-                    setAccessToken(URLDecoder.decode(matcher.group(1), "UTF-8"));
-                    if (LOGGER.isDebugEnabled()) {
-                        StringBuilder messageStringBuilder = new StringBuilder();
-                        messageStringBuilder.append("Access token retrieved successfully ");
-                        messageStringBuilder.append("[accessToken = ");
-                        messageStringBuilder.append(getAccessToken());
-                        messageStringBuilder.append("] ");
-                        LOGGER.debug(messageStringBuilder.toString());
-                    }
-                    if (oauthSaveAccessToken!= null) {
-                        try {
-                            oauthSaveAccessToken.saveAccessToken(getAccessToken(), null);
-                        } catch (Exception e) {
-                            LOGGER.error("Cannot save access token, an unexpected error occurred", e);
-                        }
-                        if (LOGGER.isDebugEnabled()) {
-                            StringBuilder messageStringBuilder = new StringBuilder();
-                            messageStringBuilder.append("Attempting to save access token...");
-                            messageStringBuilder.append("[accessToken = ");
-                            messageStringBuilder.append(getAccessToken());
-                            messageStringBuilder.append("] ");
-                            LOGGER.debug(messageStringBuilder.toString());
-                        }
-                    }
-                    if (LOGGER.isDebugEnabled()) {
-                        StringBuilder messageStringBuilder = new StringBuilder();
-                        messageStringBuilder.append("Attempting to extract expiration time using ");
-                        messageStringBuilder.append("[expirationPattern = ");
-                        messageStringBuilder.append("\"expires_in\"[ ]*:[ ]*([\\d]*)");
-                        messageStringBuilder.append("] ");
-                        LOGGER.debug(messageStringBuilder.toString());
-                    }
-                    Matcher expirationMatcher = EXPIRATION_TIME_PATTERN.matcher(response);
-                    if (expirationMatcher.find()&&(expirationMatcher.groupCount()>= 1)) {
-                        Long expirationSecsAhead = Long.parseLong(expirationMatcher.group(1));
-                        expiration = new Date((System.currentTimeMillis()+(expirationSecsAhead* 1000)));
-                        if (LOGGER.isDebugEnabled()) {
-                            StringBuilder messageStringBuilder = new StringBuilder();
-                            messageStringBuilder.append("Token expiration extracted successfully ");
-                            messageStringBuilder.append("[expiration = ");
-                            messageStringBuilder.append(expiration);
-                            messageStringBuilder.append("] ");
-                            LOGGER.debug(messageStringBuilder.toString());
-                        }
-                    } else {
-                        if (LOGGER.isDebugEnabled()) {
-                            StringBuilder messageStringBuilder = new StringBuilder();
-                            messageStringBuilder.append("Token expiration could not be extracted from ");
-                            messageStringBuilder.append("[response = ");
-                            messageStringBuilder.append(response);
-                            messageStringBuilder.append("] ");
-                            LOGGER.debug(messageStringBuilder.toString());
-                        }
-                    }
-                    if (LOGGER.isDebugEnabled()) {
-                        StringBuilder messageStringBuilder = new StringBuilder();
-                        messageStringBuilder.append("Attempting to extract refresh token time using ");
-                        messageStringBuilder.append("[refreshTokenPattern = ");
-                        messageStringBuilder.append("\"refresh_token\"[ ]*:[ ]*\"([^\\\"]*)\"");
-                        messageStringBuilder.append("] ");
-                        LOGGER.debug(messageStringBuilder.toString());
-                    }
-                    Matcher refreshTokenMatcher = REFRESH_TOKEN_PATTERN.matcher(response);
-                    if (refreshTokenMatcher.find()&&(refreshTokenMatcher.groupCount()>= 1)) {
-                        refreshToken = refreshTokenMatcher.group(1);
-                        if (LOGGER.isDebugEnabled()) {
-                            StringBuilder messageStringBuilder = new StringBuilder();
-                            messageStringBuilder.append("Refresh token extracted successfully ");
-                            messageStringBuilder.append("[refresh token = ");
-                            messageStringBuilder.append(refreshToken);
-                            messageStringBuilder.append("] ");
-                            LOGGER.debug(messageStringBuilder.toString());
-                        }
-                    } else {
-                        if (LOGGER.isDebugEnabled()) {
-                            StringBuilder messageStringBuilder = new StringBuilder();
-                            messageStringBuilder.append("Refresh token could not be extracted from ");
-                            messageStringBuilder.append("[response = ");
-                            messageStringBuilder.append(response);
-                            messageStringBuilder.append("] ");
-                            LOGGER.debug(messageStringBuilder.toString());
-                        }
-                    }
-                    postAuth();
-                } else {
-                    throw new Exception(String.format("OAuth access token could not be extracted from: %s", response));
-                }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
+        oauthManager.refreshAccessToken(this, accessTokenId);
     }
 
     public boolean hasTokenExpired() {
@@ -425,16 +226,41 @@ public class GoogleSpreadSheetConnectorOAuth2Adapter
         throws NotAuthorizedException
     {
         if (getAccessToken() == null) {
-            restoreAccessToken();
-            if (getAccessToken() == null) {
-                throw new NotAuthorizedException("This connector has not yet been authorized, please authorize by calling \"authorize\".");
-            }
+            throw new NotAuthorizedException("This connector has not yet been authorized, please authorize by calling \"authorize\".");
         }
     }
 
     @Override
-    public<P >ProcessTemplate<P, GoogleSpreadSheetConnectorCapabilitiesAdapter> getProcessTemplate() {
-        return new OAuthProcessTemplate(this);
+    public Set<AuthorizationParameter<?>> getAuthorizationParameters() {
+        AuthorizationParameter<String> access_type = new AuthorizationParameter<String>("access_type", "Indicates if your application needs to access a Google API when the user is not present at the browser.  Use offline to get a refresh token and use that when the user is not at the browser. Default is online", true, "online", AccessType.class);
+        AuthorizationParameter<String> force_prompt = new AuthorizationParameter<String>("force_prompt", "Indicates if google should remember that an app has been authorized or if each should ask authorization every time.  Use force to request authorization every time or auto to only do it the first time. Default is auto", true, "auto", ForcePrompt.class);
+        Set<AuthorizationParameter<?>> result = new HashSet<AuthorizationParameter<?>>();
+        result.add(access_type);
+        result.add(force_prompt);
+        return result;
     }
 
+    @Override
+    public<P >ProcessTemplate<P, GoogleSpreadSheetConnectorCapabilitiesAdapter> getProcessTemplate() {
+        throw new RuntimeException();
+    }
+    @Override
+    public String getAccessTokenRegex() {
+        return ACCESS_CODE_PATTERN.pattern();
+    }
+
+    @Override
+    public String getExpirationRegex() {
+        return EXPIRATION_TIME_PATTERN.pattern();
+    }
+
+    @Override
+    public String getRefreshTokenRegex() {
+        return REFRESH_TOKEN_PATTERN.pattern();
+    }
+
+    @Override
+    public String getVerifierRegex() {
+        return oauthVerifier;
+    }
 }

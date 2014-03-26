@@ -65,6 +65,49 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -211,10 +254,6 @@
     <li class="api apilevel-">
   <a href="../../../../../../../java/org/mule/module/google/spreadsheet/agents/package-summary.html">org.mule.module.google.spreadsheet.agents</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/basic/package-summary.html">org.mule.module.google.spreadsheet.basic</a></li>
-    <li class="api apilevel-">
-  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/callback/package-summary.html">org.mule.module.google.spreadsheet.callback</a></li>
-    <li class="api apilevel-">
   <a href="../../../../../../../java/org/mule/module/google/spreadsheet/config/package-summary.html">org.mule.module.google.spreadsheet.config</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../../java/org/mule/module/google/spreadsheet/connection/package-summary.html">org.mule.module.google.spreadsheet.connection</a></li>
@@ -229,8 +268,6 @@
     <li class="selected api apilevel-">
   <a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/package-summary.html">org.mule.module.google.spreadsheet.oauth</a></li>
     <li class="api apilevel-">
-  <a href="../../../../../../../java/org/mule/module/google/spreadsheet/process/package-summary.html">org.mule.module.google.spreadsheet.process</a></li>
-    <li class="api apilevel-">
   <a href="../../../../../../../java/org/mule/module/google/spreadsheet/processors/package-summary.html">org.mule.module.google.spreadsheet.processors</a></li>
     <li class="api apilevel-">
   <a href="../../../../../../../java/org/mule/modules/google/transformers/package-summary.html">org.mule.modules.google.transformers</a></li>
@@ -240,40 +277,17 @@
           <div id="classes-nav">
             <ul>
               
-    <li><h2>Interfaces</h2>
-      <ul>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/OAuth1Adapter.html">OAuth1Adapter</a></li>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/OAuth2Adapter.html">OAuth2Adapter</a></li>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/OAuthAdapter.html">OAuthAdapter</a></li>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/OAuthManager.html">OAuthManager</a>&lt;C&nbsp;extends&nbsp;<a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/OAuthAdapter.html">OAuthAdapter</a>&gt;</li>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/RestoreAccessTokenCallback.html">RestoreAccessTokenCallback</a></li>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/SaveAccessTokenCallback.html">SaveAccessTokenCallback</a></li>
-      </ul>
-    </li>
               
     <li><h2>Classes</h2>
       <ul>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/ExtractAuthorizationCodeMessageProcessor.html">ExtractAuthorizationCodeMessageProcessor</a></li>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/FetchAccessTokenMessageProcessor.html">FetchAccessTokenMessageProcessor</a></li>
           <li class="selected api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthClientFactory.html">GoogleSpreadSheetConnectorOAuthClientFactory</a></li>
           <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthManager.html">GoogleSpreadSheetConnectorOAuthManager</a></li>
           <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthState.html">GoogleSpreadSheetConnectorOAuthState</a></li>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/ManagedAccessTokenProcessInterceptor.html">ManagedAccessTokenProcessInterceptor</a>&lt;T&gt;</li>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/ManagedAccessTokenProcessTemplate.html">ManagedAccessTokenProcessTemplate</a>&lt;P&gt;</li>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/OAuthProcessTemplate.html">OAuthProcessTemplate</a>&lt;P&gt;</li>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/RefreshTokenProcessInterceptor.html">RefreshTokenProcessInterceptor</a>&lt;T&gt;</li>
       </ul>
     </li>
               
               
               
-    <li><h2>Exceptions</h2>
-      <ul>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/NotAuthorizedException.html">NotAuthorizedException</a></li>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/UnableToAcquireAccessTokenException.html">UnableToAcquireAccessTokenException</a></li>
-          <li class="api apilevel-"><a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/UnableToAcquireRequestTokenException.html">UnableToAcquireRequestTokenException</a></li>
-      </ul>
-    </li>
               
             </ul><br/>
           </div><!-- end classes -->
@@ -317,6 +331,15 @@
   
   
   
+   
+  
+  
+
+  
+   
+  
+  
+  
   
 
   
@@ -342,15 +365,18 @@ Summary:
   
 
 
+  &#124; <a href="#inhfields">Inherited Fields</a>
+  
+
 
   &#124; <a href="#pubctors">Ctors</a>
   
 
 
 
-  &#124; <a href="#pubmethods">Methods</a>
-  
 
+  &#124; <a href="#promethods">Protected Methods</a>
+  
 
 
   &#124; <a href="#inhmethods">Inherited Methods</a>
@@ -382,17 +408,16 @@ Summary:
 
 
   
-    extends Object<br/>
+  
+  
+
+  
+    extends BaseOAuthClientFactory<br/>
   
   
   
 
   
-  
-      implements 
-      
-        KeyedPoolableObjectFactory 
-      
   
   
 
@@ -407,11 +432,21 @@ Summary:
 
     <tr>
         
-        <td colspan="2" class="jd-inheritance-class-cell">java.lang.Object</td>
+        <td colspan="3" class="jd-inheritance-class-cell">java.lang.Object</td>
     </tr>
     
 
     <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
+        
+        <td colspan="2" class="jd-inheritance-class-cell">org.mule.security.oauth.BaseOAuthClientFactory</td>
+    </tr>
+    
+
+    <tr>
+        
+            <td class="jd-inheritance-space">&nbsp;</td>
         
             <td class="jd-inheritance-space">&nbsp;&nbsp;&nbsp;&#x21b3;</td>
         
@@ -496,6 +531,86 @@ Summary:
 
 
 
+<!-- =========== FIELD SUMMARY =========== -->
+<table id="inhfields" class="jd-sumtable"><tr><th>
+  <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
+  <div style="clear:left;">Inherited Fields</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-fields-org.mule.security.oauth.BaseOAuthClientFactory" class="jd-expando-trigger closed"
+          ><img id="inherited-fields-org.mule.security.oauth.BaseOAuthClientFactory-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>From class
+org.mule.security.oauth.BaseOAuthClientFactory
+<div id="inherited-fields-org.mule.security.oauth.BaseOAuthClientFactory">
+  <div id="inherited-fields-org.mule.security.oauth.BaseOAuthClientFactory-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-fields-org.mule.security.oauth.BaseOAuthClientFactory-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          static
+          
+          Logger</nobr></td>
+          <td class="jd-linkcol">logger</td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          OAuth2Manager&lt;OAuth2Adapter&gt;</nobr></td>
+          <td class="jd-linkcol">oauthManager</td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class="alt-color api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          static
+          
+          Map&lt;String,&nbsp;PropertyDescriptor&gt;</nobr></td>
+          <td class="jd-linkcol">oauthStateProperties</td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+      <tr class=" api apilevel-" >
+          <td class="jd-typecol"><nobr>
+          private
+          
+          
+          ObjectStore&lt;Serializable&gt;</nobr></td>
+          <td class="jd-linkcol">objectStore</td>
+          <td class="jd-descrcol" width="100%"></td>
+      </tr>
+      
+    
+</table>
+  </div>
+</div>
+</td></tr>
+
+
+
+
+
+
+</table>
+
+
 
 
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -514,13 +629,15 @@ Summary:
             </nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthClientFactory.html#GoogleSpreadSheetConnectorOAuthClientFactory(org.mule.module.google.spreadsheet.oauth.GoogleSpreadSheetConnectorOAuthManager)">GoogleSpreadSheetConnectorOAuthClientFactory</a></span>(<a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthManager.html">GoogleSpreadSheetConnectorOAuthManager</a> oauthManager)</nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthClientFactory.html#GoogleSpreadSheetConnectorOAuthClientFactory(org.mule.security.oauth.OAuth2Manager<org.mule.security.oauth.OAuth2Adapter>, org.mule.api.store.ObjectStore<java.io.Serializable>)">GoogleSpreadSheetConnectorOAuthClientFactory</a></span>(OAuth2Manager&lt;OAuth2Adapter&gt; oauthManager, ObjectStore&lt;Serializable&gt; objectStore)</nobr>
         
   </td></tr>
 
 
 
 </table>
+
+
 
 
 
@@ -528,7 +645,7 @@ Summary:
 
 
 <!-- ========== METHOD SUMMARY =========== -->
-<table id="pubmethods" class="jd-sumtable"><tr><th colspan="12">Public Methods</th></tr>
+<table id="promethods" class="jd-sumtable"><tr><th colspan="12">Protected Methods</th></tr>
 
 
 
@@ -540,10 +657,10 @@ Summary:
             
             
             
-            void</nobr>
+            Class&lt;?&nbsp;extends&nbsp;OAuth2Adapter&gt;</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthClientFactory.html#activateObject(java.lang.Object, java.lang.Object)">activateObject</a></span>(Object key, Object obj)</nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthClientFactory.html#getAdapterClass()">getAdapterClass</a></span>()</nobr>
         
   </td></tr>
 
@@ -559,29 +676,13 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthClientFactory.html#destroyObject(java.lang.Object, java.lang.Object)">destroyObject</a></span>(Object key, Object obj)</nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthClientFactory.html#setCustomAdapterProperties(org.mule.security.oauth.OAuth2Adapter, org.mule.common.security.oauth.OAuthState)">setCustomAdapterProperties</a></span>(OAuth2Adapter adapter, OAuthState state)</nobr>
         
   </td></tr>
 
 
 	 
     <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            Object</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthClientFactory.html#makeObject(java.lang.Object)">makeObject</a></span>(Object key)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class=" api apilevel-" >
         <td class="jd-typecol"><nobr>
             
             
@@ -591,31 +692,13 @@ Summary:
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthClientFactory.html#passivateObject(java.lang.Object, java.lang.Object)">passivateObject</a></span>(Object key, Object obj)</nobr>
-        
-  </td></tr>
-
-
-	 
-    <tr class="alt-color api apilevel-" >
-        <td class="jd-typecol"><nobr>
-            
-            
-            
-            
-            
-            boolean</nobr>
-        </td>
-        <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthClientFactory.html#validateObject(java.lang.Object, java.lang.Object)">validateObject</a></span>(Object key, Object obj)</nobr>
+        <span class="sympad"><a href="../../../../../../../org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthClientFactory.html#setCustomStateProperties(org.mule.security.oauth.OAuth2Adapter, org.mule.common.security.oauth.OAuthState)">setCustomStateProperties</a></span>(OAuth2Adapter adapter, OAuthState state)</nobr>
         
   </td></tr>
 
 
 
 </table>
-
-
 
 
 
@@ -625,6 +708,240 @@ Summary:
 <table id="inhmethods" class="jd-sumtable"><tr><th>
   <a href="#" class="toggle-all" onclick="return toggleAllInherited(this, null)">[Expand]</a>
   <div style="clear:left;">Inherited Methods</div></th></tr>
+
+
+<tr class="api apilevel-" >
+<td colspan="12">
+  <a href="#" onclick="return toggleInherited(this, null)" id="inherited-methods-org.mule.security.oauth.BaseOAuthClientFactory" class="jd-expando-trigger closed"
+          ><img id="inherited-methods-org.mule.security.oauth.BaseOAuthClientFactory-trigger"
+          src="../../../../../../../assets/images/triangle-closed.png"
+          class="jd-expando-trigger-img" /></a>
+From class
+
+  org.mule.security.oauth.BaseOAuthClientFactory
+
+<div id="inherited-methods-org.mule.security.oauth.BaseOAuthClientFactory">
+  <div id="inherited-methods-org.mule.security.oauth.BaseOAuthClientFactory-list"
+        class="jd-inheritedlinks">
+  </div>
+  <div id="inherited-methods-org.mule.security.oauth.BaseOAuthClientFactory-summary" style="display: none;">
+    <table class="jd-sumtable-expando">
+    
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">activateObject</span>(String arg0, OAuth2Adapter arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">activateObject</span>(Object arg0, Object arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">destroyObject</span>(Object arg0, Object arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">destroyObject</span>(String arg0, OAuth2Adapter arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            Class&lt;?&nbsp;extends&nbsp;OAuth2Adapter&gt;</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">getAdapterClass</span>()</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            Object</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">makeObject</span>(Object arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            OAuth2Adapter</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">makeObject</span>(String arg0)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">passivateObject</span>(String arg0, OAuth2Adapter arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">passivateObject</span>(Object arg0, Object arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">setCustomAdapterProperties</span>(OAuth2Adapter arg0, OAuthState arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            abstract
+            
+            
+            
+            
+            void</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">setCustomStateProperties</span>(OAuth2Adapter arg0, OAuthState arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class=" api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">validateObject</span>(Object arg0, Object arg1)</nobr>
+        
+  </td></tr>
+
+
+	 
+    <tr class="alt-color api apilevel-" >
+        <td class="jd-typecol"><nobr>
+            
+            
+            final
+            
+            
+            boolean</nobr>
+        </td>
+        <td class="jd-linkcol" width="100%"><nobr>
+        <span class="sympad">validateObject</span>(String arg0, OAuth2Adapter arg1)</nobr>
+        
+  </td></tr>
+
+
+</table>
+  </div>
+</div>
+</td></tr>
+
 
 
 <tr class="api apilevel-" >
@@ -859,7 +1176,7 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">activateObject</span>(Object arg0, Object arg1)</nobr>
+        <span class="sympad">activateObject</span>(K arg0, V arg1)</nobr>
         
   </td></tr>
 
@@ -875,7 +1192,7 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">destroyObject</span>(Object arg0, Object arg1)</nobr>
+        <span class="sympad">destroyObject</span>(K arg0, V arg1)</nobr>
         
   </td></tr>
 
@@ -888,10 +1205,10 @@ From interface
             
             
             
-            Object</nobr>
+            V</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">makeObject</span>(Object arg0)</nobr>
+        <span class="sympad">makeObject</span>(K arg0)</nobr>
         
   </td></tr>
 
@@ -907,7 +1224,7 @@ From interface
             void</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">passivateObject</span>(Object arg0, Object arg1)</nobr>
+        <span class="sympad">passivateObject</span>(K arg0, V arg1)</nobr>
         
   </td></tr>
 
@@ -923,7 +1240,7 @@ From interface
             boolean</nobr>
         </td>
         <td class="jd-linkcol" width="100%"><nobr>
-        <span class="sympad">validateObject</span>(Object arg0, Object arg1)</nobr>
+        <span class="sympad">validateObject</span>(K arg0, V arg1)</nobr>
         
   </td></tr>
 
@@ -1005,7 +1322,7 @@ From interface
 
 
 
-<A NAME="GoogleSpreadSheetConnectorOAuthClientFactory(org.mule.module.google.spreadsheet.oauth.GoogleSpreadSheetConnectorOAuthManager)"></A>
+<A NAME="GoogleSpreadSheetConnectorOAuthClientFactory(org.mule.security.oauth.OAuth2Manager<org.mule.security.oauth.OAuth2Adapter>, org.mule.api.store.ObjectStore<java.io.Serializable>)"></A>
 
 <div class="jd-details api apilevel-"> 
     <h4 class="jd-details-title">
@@ -1018,7 +1335,7 @@ From interface
         
       </span>
       <span class="sympad">GoogleSpreadSheetConnectorOAuthClientFactory</span>
-      <span class="normal">(<a href="../../../../../../../java/org/mule/module/google/spreadsheet/oauth/GoogleSpreadSheetConnectorOAuthManager.html">GoogleSpreadSheetConnectorOAuthManager</a> oauthManager)</span>
+      <span class="normal">(OAuth2Manager&lt;OAuth2Adapter&gt; oauthManager, ObjectStore&lt;Serializable&gt; objectStore)</span>
     </h4>
       <div class="api-level">
         <div>
@@ -1036,6 +1353,10 @@ From interface
       <table class="jd-tagtable">
         <tr>
           <th>oauthManager</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>objectStore</td>
           <td></td>
         </tr>
       </table>
@@ -1056,266 +1377,133 @@ From interface
 <!-- ========= METHOD DETAIL ======== -->
 <!-- Public methdos -->
 
-<h2>Public Methods</h2>
-
-
-
-<A NAME="activateObject(java.lang.Object, java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">activateObject</span>
-      <span class="normal">(Object key, Object obj)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>key</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>obj</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>Exception</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="destroyObject(java.lang.Object, java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">destroyObject</span>
-      <span class="normal">(Object key, Object obj)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>key</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>obj</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>Exception</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="makeObject(java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        Object
-      </span>
-      <span class="sympad">makeObject</span>
-      <span class="normal">(Object key)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>key</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>Exception</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="passivateObject(java.lang.Object, java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        void
-      </span>
-      <span class="sympad">passivateObject</span>
-      <span class="normal">(Object key, Object obj)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>key</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>obj</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Throws</h5>
-      <table class="jd-tagtable">  
-        <tr>
-            <th>Exception</td>
-            <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-<A NAME="validateObject(java.lang.Object, java.lang.Object)"></A>
-
-<div class="jd-details api apilevel-"> 
-    <h4 class="jd-details-title">
-      <span class="normal">
-        public 
-         
-         
-         
-         
-        boolean
-      </span>
-      <span class="sympad">validateObject</span>
-      <span class="normal">(Object key, Object obj)</span>
-    </h4>
-      <div class="api-level">
-        <div>
-
-</div>
-        
-  
-
-      </div>
-    <div class="jd-details-descr">
-      
-  <div class="jd-tagdata jd-tagdescr"><p></p></div>
-  <div class="jd-tagdata">
-      <h5 class="jd-tagtitle">Parameters</h5>
-      <table class="jd-tagtable">
-        <tr>
-          <th>key</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th>obj</td>
-          <td></td>
-        </tr>
-      </table>
-  </div>
-
-    </div>
-</div>
-
-
-
 
 
 <!-- ========= METHOD DETAIL ======== -->
+
+<h2>Protected Methods</h2>
+
+
+
+<A NAME="getAdapterClass()"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        Class&lt;?&nbsp;extends&nbsp;OAuth2Adapter&gt;
+      </span>
+      <span class="sympad">getAdapterClass</span>
+      <span class="normal">()</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+
+    </div>
+</div>
+
+
+<A NAME="setCustomAdapterProperties(org.mule.security.oauth.OAuth2Adapter, org.mule.common.security.oauth.OAuthState)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setCustomAdapterProperties</span>
+      <span class="normal">(OAuth2Adapter adapter, OAuthState state)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>adapter</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>state</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
+<A NAME="setCustomStateProperties(org.mule.security.oauth.OAuth2Adapter, org.mule.common.security.oauth.OAuthState)"></A>
+
+<div class="jd-details api apilevel-"> 
+    <h4 class="jd-details-title">
+      <span class="normal">
+        protected 
+         
+         
+         
+         
+        void
+      </span>
+      <span class="sympad">setCustomStateProperties</span>
+      <span class="normal">(OAuth2Adapter adapter, OAuthState state)</span>
+    </h4>
+      <div class="api-level">
+        <div>
+
+</div>
+        
+  
+
+      </div>
+    <div class="jd-details-descr">
+      
+  <div class="jd-tagdata jd-tagdescr"><p></p></div>
+  <div class="jd-tagdata">
+      <h5 class="jd-tagtitle">Parameters</h5>
+      <table class="jd-tagtable">
+        <tr>
+          <th>adapter</td>
+          <td></td>
+        </tr>
+        <tr>
+          <th>state</td>
+          <td></td>
+        </tr>
+      </table>
+  </div>
+
+    </div>
+</div>
+
+
 
 
 

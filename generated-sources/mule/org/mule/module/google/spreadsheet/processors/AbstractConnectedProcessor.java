@@ -2,30 +2,16 @@
 package org.mule.module.google.spreadsheet.processors;
 
 import javax.annotation.Generated;
+import org.mule.devkit.processor.DevkitBasedMessageProcessor;
 
-@Generated(value = "Mule DevKit Version 3.4.3", date = "2014-03-26T12:36:12-05:00", comments = "Build 3.4.3.1620.30ea288")
+@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-26T12:37:34-05:00", comments = "Build M4.1875.17b58a3")
 public abstract class AbstractConnectedProcessor
-    extends AbstractExpressionEvaluator
+    extends DevkitBasedMessageProcessor
 {
 
-    private Object accessTokenId;
-    private String _accessTokenIdType;
 
-    /**
-     * Retrieves accessTokenId
-     * 
-     */
-    public Object getAccessTokenId() {
-        return this.accessTokenId;
-    }
-
-    /**
-     * Sets accessTokenId
-     * 
-     * @param value Value to set
-     */
-    public void setAccessTokenId(Object value) {
-        this.accessTokenId = value;
+    public AbstractConnectedProcessor(String operationName) {
+        super(operationName);
     }
 
 }
