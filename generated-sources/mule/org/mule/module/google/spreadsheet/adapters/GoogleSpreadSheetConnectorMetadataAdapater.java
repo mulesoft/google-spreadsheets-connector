@@ -10,7 +10,7 @@ import org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector;
  * A <code>GoogleSpreadSheetConnectorMetadataAdapater</code> is a wrapper around {@link GoogleSpreadSheetConnector } that adds support for querying metadata about the extension.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-26T12:37:34-05:00", comments = "Build M4.1875.17b58a3")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-16T09:58:04-05:00", comments = "Build master.1915.dd1962d")
 public class GoogleSpreadSheetConnectorMetadataAdapater
     extends GoogleSpreadSheetConnectorCapabilitiesAdapter
     implements MetadataAware
@@ -18,8 +18,8 @@ public class GoogleSpreadSheetConnectorMetadataAdapater
 
     private final static String MODULE_NAME = "Google Spreadsheets";
     private final static String MODULE_VERSION = "2.0.0-SNAPSHOT";
-    private final static String DEVKIT_VERSION = "3.5.0-M4";
-    private final static String DEVKIT_BUILD = "M4.1875.17b58a3";
+    private final static String DEVKIT_VERSION = "3.5.0-SNAPSHOT";
+    private final static String DEVKIT_BUILD = "master.1915.dd1962d";
     private final static String MIN_MULE_VERSION = "3.5";
 
     public String getModuleName() {

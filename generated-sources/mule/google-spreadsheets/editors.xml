@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <namespace xmlns="http://www.mulesoft.org/schema/mule/tooling.attributes" xmlns:mule="http://www.mulesoft.org/schema/mule/core" prefix="google-spreadsheets" url="http://www.mulesoft.org/schema/mule/google-spreadsheets">
-  <global-cloud-connector metaData="static" connectivityTesting="disabled" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="" localId="parentConfig" icon="" description="" caption="Google Spreadsheets" versions="[3.5.0,8.0.0]"></global-cloud-connector>
+  <global-cloud-connector extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" abstract="true" image="" localId="parentConfig" icon="" description="" caption="Google Spreadsheets" versions="[3.5.0,8.0.0]"></global-cloud-connector>
   <global-cloud-connector metaData="static" connectivityTesting="disabled" extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/parentConfig" abstract="false" image="icons/large/google-spreadsheets-connector-48x32.png" localId="config-with-oauth" icon="icons/small/google-spreadsheets-connector-24x16.png" description="Global Google Spreadsheets configuration information." caption="Google Spreadsheets" versions="[3.5.0,8.0.0]">
     <attribute-category description="Google-spreadsheets configuration properties." caption="General">
-      <group caption="Generic" id="google-spreadsheetsGenericProperties">
+      <group caption="Basic Settings" id="google-spreadsheetsGenericProperties">
         <name required="true" description="Give a name to this configuration so it can be later referenced by config-ref." caption="Name" name="name"></name>
       </group>
       <group caption="General" id="general">
@@ -29,15 +29,15 @@
   </global-cloud-connector>
   <cloud-connector abstract="true" image="icons/large/google-spreadsheets-connector-48x32.png" localId="abstractGoogle-spreadsheetsConnectorGeneric" icon="icons/small/google-spreadsheets-connector-24x16.png" description="Interact with Google-spreadsheets." caption="Abstractgoogle-spreadsheetsconnectorgeneric">
     <attribute-category description="General." caption="General">
-      <group caption="Generic" id="abstractGoogle-spreadsheetsConnectorGeneric">
-        <globalRef requiredType="http://www.mulesoft.org/schema/mule/google-spreadsheets/config-with-oauth" required="true" description="Specify which configuration to use for this invocation." caption="Config Reference" name="config-ref"></globalRef>
+      <group caption="Basic Settings" id="abstractGoogle-spreadsheetsConnectorGeneric">
+        <globalRef requiredType="http://www.mulesoft.org/schema/mule/google-spreadsheets/config-with-oauth" required="true" description="Specify which configuration to use for this invocation." caption="Connector Configuration" name="config-ref"></globalRef>
       </group>
     </attribute-category>
   </cloud-connector>
   <cloud-connector extends="http://www.mulesoft.org/schema/mule/google-spreadsheets/abstractGoogle-spreadsheetsConnectorGeneric" image="icons/large/google-spreadsheets-connector-48x32.png" localId="google-spreadsheets-connector" icon="icons/small/google-spreadsheets-connector-24x16.png" description="Connector for accessing, creating and modifying google docs spreadsheets.
 This connector uses OAuth2 for authentication." caption="Google Spreadsheets" aliasId="org.mule.tooling.ui.modules.core.pattern.google-spreadsheets" versions="[3.5.0,8.0.0]">
     <attribute-category description="General." caption="General">
-      <group caption="Generic" id="google-spreadsheetsConnectorGeneric">
+      <group caption="Basic Settings" id="google-spreadsheetsConnectorGeneric">
         <modeSwitch alwaysCombo="true" description="Operation." caption="Operation" name="Google-spreadsheets operations to execute">
           <mode modeLabel="Authorize" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/authorize"></mode>
           <mode modeLabel="Unauthorize" modeId="http://www.mulesoft.org/schema/mule/google-spreadsheets/unauthorize"></mode>

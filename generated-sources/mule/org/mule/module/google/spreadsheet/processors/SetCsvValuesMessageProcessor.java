@@ -35,7 +35,7 @@ import org.mule.security.oauth.callback.ProcessCallback;
  * SetCsvValuesMessageProcessor invokes the {@link org.mule.module.google.spreadsheet.GoogleSpreadSheetConnector#setCsvValues(java.lang.String, java.lang.String, java.lang.String, int, int, java.lang.String, java.lang.String, int, int, boolean)} method in {@link GoogleSpreadSheetConnector }. For each argument there is a field in this processor to match it.  Before invoking the actual method the processor will evaluate and transform where possible to the expected argument type.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-M4", date = "2014-03-26T12:37:34-05:00", comments = "Build M4.1875.17b58a3")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-16T09:58:04-05:00", comments = "Build master.1915.dd1962d")
 public class SetCsvValuesMessageProcessor
     extends AbstractConnectedProcessor
     implements MessageProcessor, OperationMetaDataEnabled
@@ -207,7 +207,7 @@ public class SetCsvValuesMessageProcessor
             final Integer _transformedSpreadsheetIndex = ((Integer) evaluateAndTransform(getMuleContext(), event, SetCsvValuesMessageProcessor.class.getDeclaredField("_spreadsheetIndexType").getGenericType(), null, spreadsheetIndex));
             final Integer _transformedWorksheetIndex = ((Integer) evaluateAndTransform(getMuleContext(), event, SetCsvValuesMessageProcessor.class.getDeclaredField("_worksheetIndexType").getGenericType(), null, worksheetIndex));
             final Boolean _transformedPurge = ((Boolean) evaluateAndTransform(getMuleContext(), event, SetCsvValuesMessageProcessor.class.getDeclaredField("_purgeType").getGenericType(), null, purge));
-            ProcessTemplate<Object, Object> processTemplate = ((ProcessAdapter<Object> ) moduleObject).getProcessTemplate();
+            final ProcessTemplate<Object, Object> processTemplate = ((ProcessAdapter<Object> ) moduleObject).getProcessTemplate();
             processTemplate.execute(new ProcessCallback<Object,Object>() {
 
 
