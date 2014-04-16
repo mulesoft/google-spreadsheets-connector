@@ -926,7 +926,12 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
 		return accessToken;
 	}
 
-	public void setAccessToken(String accessToken) {
+    @Override
+    public Object getClient() {
+        return this.spreadsheetService;
+    }
+
+    public void setAccessToken(String accessToken) {
 		this.accessToken = accessToken;
 	}
 
