@@ -26,7 +26,7 @@ import org.mule.security.oauth.OnNoTokenPolicy;
  * A {@code GoogleSpreadSheetConnectorOAuth2Adapter} is a wrapper around {@link GoogleSpreadSheetConnector } that adds OAuth capabilites to the pojo.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-16T09:58:04-05:00", comments = "Build master.1915.dd1962d")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-16T10:04:10-05:00", comments = "Build master.1915.dd1962d")
 public class GoogleSpreadSheetConnectorOAuth2Adapter
     extends GoogleSpreadSheetConnectorProcessAdapter
     implements OAuth2Adapter, OAuth2Connector

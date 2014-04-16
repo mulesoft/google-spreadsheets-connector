@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Google Spreadsheets
 Bundle-SymbolicName: org.mule.tooling.ui.contribution.google-spreadsheets.3.5.0;singleton:=true
-Bundle-Version: 2.0.0.201404160958
+Bundle-Version: 2.0.0.201404161004
 Bundle-Activator: org.mule.tooling.ui.contribution.GoogleSpreadsheetsActivator
 Bundle-Vendor: mariano.gonzalez@mulesoft.com
 Require-Bundle: org.eclipse.ui,

@@ -17,7 +17,7 @@ import org.mule.security.oauth.callback.ProcessCallback;
  * A <code>GoogleSpreadSheetConnectorProcessAdapter</code> is a wrapper around {@link GoogleSpreadSheetConnector } that enables custom processing strategies.
  * 
  */
-@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-16T09:58:04-05:00", comments = "Build master.1915.dd1962d")
+@Generated(value = "Mule DevKit Version 3.5.0-SNAPSHOT", date = "2014-04-16T10:04:10-05:00", comments = "Build master.1915.dd1962d")
 public class GoogleSpreadSheetConnectorProcessAdapter
     extends GoogleSpreadSheetConnectorLifecycleAdapter
     implements ProcessAdapter<GoogleSpreadSheetConnectorCapabilitiesAdapter>
