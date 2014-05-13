@@ -8,13 +8,9 @@
     <transformer>false</transformer>
   </properties>
     <oauthConfig>
-        <required caption="Name" group="Basic Settings" javaType="java.lang.String" name="name" type="name"> </required>
-        <required caption="Consumer Key" group="General" javaType="java.lang.String" name="consumerKey" prefix="" type="string"> </required>
-        <required caption="Consumer Secret" group="General" javaType="java.lang.String" name="consumerSecret" prefix="" type="string"> </required>
-        <required name="objectStore-ref" prefix=""> </required>
-        <required name="ref" prefix=""> </required>
-        <required name="oauth-callback-config" prefix=""> </required>
-        <required name="ref" prefix=""> </required>
+        <required caption="Name" group="Basic Settings" javaType="java.lang.String" name="name" type="name">Google_Spreadsheets</required>
+        <required caption="Consumer Key" group="General" javaType="java.lang.String" name="consumerKey" prefix="google_spreadsheets" type="string">ConsumerKey</required>
+        <required caption="Consumer Secret" group="General" javaType="java.lang.String" name="consumerSecret" prefix="google_spreadsheets" type="string">ConsumerSecret</required>
     </oauthConfig>
     <message-processors>
         <authorize name="Authorize">
@@ -43,7 +39,7 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Title" group="General" javaType="java.lang.String" name="title" type="string"> </required>
+                <required caption="Title" group="General" javaType="java.lang.String" name="title" type="string">Sample Spreadsheet</required>
             </attributes>
             <childElements/>
         </create-spreadsheet>
@@ -52,7 +48,7 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
             </attributes>
             <childElements/>
         </get-all-worksheets>
@@ -61,10 +57,10 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Title" group="General" javaType="java.lang.String" name="title" type="string"> </required>
-                <required caption="Row Count" group="General" javaType="int" name="rowCount" type="integer"> </required>
-                <required caption="Col Count" group="General" javaType="int" name="colCount" type="integer"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Title" group="General" javaType="java.lang.String" name="title" type="string">Sample Spreadsheet</required>
+                <required caption="Row Count" group="General" javaType="int" name="rowCount" type="integer">100</required>
+                <required caption="Col Count" group="General" javaType="int" name="colCount" type="integer">10</required>
             </attributes>
             <childElements/>
         </create-worksheet>
@@ -73,18 +69,18 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string">Mule Sheet</required>
             </attributes>
             <childElements/>
         </delete-worksheet>
         <update-worksheet-metadata name="Update worksheet metadata">
-            <datamapper input="" output="Boolean"/>
+            <datamapper input="" output=""/>
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string">Mule Sheet</required>
             </attributes>
             <childElements/>
         </update-worksheet-metadata>
@@ -93,8 +89,8 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string">Mule Sheet</required>
             </attributes>
             <childElements/>
         </set-row-values>
@@ -103,8 +99,8 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string">Mule Sheet</required>
             </attributes>
             <childElements/>
         </set-csv-values>
@@ -113,7 +109,7 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
             </attributes>
             <childElements/>
         </get-authors>
@@ -122,8 +118,8 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string">Mule Sheet</required>
             </attributes>
             <childElements/>
         </get-column-headers>
@@ -132,7 +128,7 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Title" group="General" javaType="java.lang.String" name="title" type="string"> </required>
+                <required caption="Title" group="General" javaType="java.lang.String" name="title" type="string">Sample Spreadsheet</required>
             </attributes>
             <childElements/>
         </get-spreadsheets-by-title>
@@ -141,8 +137,8 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Title" group="General" javaType="java.lang.String" name="title" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Title" group="General" javaType="java.lang.String" name="title" type="string">Sample Spreadsheet</required>
             </attributes>
             <childElements/>
         </get-worksheet-by-title>
@@ -151,8 +147,8 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string">Sample Spreadsheet</required>
             </attributes>
             <childElements/>
         </purge-worksheet>
@@ -161,8 +157,8 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string">Mule Sheet</required>
             </attributes>
             <childElements/>
         </get-all-cells>
@@ -171,28 +167,28 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string">Mule Sheet</required>
             </attributes>
             <childElements/>
         </get-all-cells-as-csv>
         <get-cell-range name="Get cell range">
-            <datamapper input="List&lt;Row&gt;" output="Integer"/>
+            <datamapper input="List&lt;Row&gt;" output=""/>
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string">Mule Sheet</required>
             </attributes>
             <childElements/>
         </get-cell-range>
         <get-cell-range-as-csv name="Get cell range as csv">
-            <datamapper input="" output="Integer"/>
+            <datamapper input="" output=""/>
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string">Mule Sheet</required>
             </attributes>
             <childElements/>
         </get-cell-range-as-csv>
@@ -201,9 +197,9 @@
             <auto-paging>false</auto-paging>
             <query-support>false</query-support>
             <attributes>
-                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"> </required>
-                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"> </required>
-                <required caption="Query" group="General" javaType="java.lang.String" name="query" type="string"> </required>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string">Sample Spreadsheet</required>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string">Mule Sheet</required>
+                <required caption="Query" group="General" javaType="java.lang.String" name="query" type="string">select upper(name), year(startDate)</required>
             </attributes>
             <childElements/>
         </search>
