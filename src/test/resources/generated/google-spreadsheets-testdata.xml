@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<connector name="Google Spreadsheets">
+    <global-config>
+        <config-with-oauth>
+            <attributes>
+                <optional caption="Name" group="Basic Settings" javaType="java.lang.String" name="name" type="name"/>
+                <required caption="Consumer Key" group="General" javaType="java.lang.String" name="consumerKey" type="string"/>
+                <required caption="Consumer Secret" group="General" javaType="java.lang.String" name="consumerSecret" type="string"/>
+                <optional caption="Scope" default="https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://spreadsheets.google.com/feeds https://docs.google.com/feeds" group="General" javaType="java.lang.String" name="scope" type="string"/>
+                <optional caption="Application Name" default="Mule-GoogleSpreadsheetsConnector/1.0" group="General" javaType="java.lang.String" name="applicationName" type="string"/>
+                <optional caption="On No Token" default="EXCEPTION" group="General" javaType="java.lang.String" name="onNoToken" type="enum"/>
+            </attributes>
+            <childElements>
+                <optional name="oauth-store-config">
+                    <attributes controlled="complex">
+                        <required name="objectStore-ref"/>
+                    </attributes>
+                    <attributes controlled="useReference">
+                        <required name="ref"/>
+                    </attributes>
+                </optional>
+                <required name="oauth-callback-config">
+                    <attributes controlled="complex">
+                        <optional name="localPort"/>
+                        <optional name="remotePort"/>
+                        <optional name="domain"/>
+                        <optional default="false" name="async"/>
+                        <optional name="path"/>
+                        <optional name="connector-ref"/>
+                        <optional name="defaultAccessTokenId"/>
+                    </attributes>
+                    <attributes controlled="useReference">
+                        <required name="ref"/>
+                    </attributes>
+                </required>
+            </childElements>
+        </config-with-oauth>
+    </global-config>
+    <message-processors>
+        <authorize>
+            <attributes>
+                <optional caption="State" group="General" javaType="java.lang.String" name="state" type="string"/>
+                <optional caption="Access_type" default="online" group="Additional Authorization Parameters" javaType="org.mule.modules.google.AccessType" name="access_type" type="enum"/>
+                <optional caption="Force_prompt" default="auto" group="Additional Authorization Parameters" javaType="org.mule.modules.google.ForcePrompt" name="force_prompt" type="enum"/>
+                <optional caption="Access Token Id" group="General" javaType="java.lang.String" name="accessTokenId" type="string"/>
+            </attributes>
+        </authorize>
+        <unauthorize>
+            <attributes>
+                <optional caption="Access Token Id" group="General" javaType="java.lang.String" name="accessTokenId" type="string"/>
+            </attributes>
+        </unauthorize>
+        <get-all-spreadsheets>
+            <attributes/>
+        </get-all-spreadsheets>
+        <create-spreadsheet>
+            <attributes>
+                <required caption="Title" group="General" javaType="java.lang.String" name="title" type="string"/>
+            </attributes>
+        </create-spreadsheet>
+        <get-all-worksheets>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+            </attributes>
+        </get-all-worksheets>
+        <create-worksheet>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+                <required caption="Title" group="General" javaType="java.lang.String" name="title" type="string"/>
+                <required caption="Row Count" group="General" javaType="int" name="rowCount" type="integer"/>
+                <required caption="Col Count" group="General" javaType="int" name="colCount" type="integer"/>
+            </attributes>
+        </create-worksheet>
+        <delete-worksheet>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+                <optional caption="Worksheet Index" default="0" group="General" javaType="int" name="worksheetIndex" type="integer"/>
+            </attributes>
+        </delete-worksheet>
+        <update-worksheet-metadata>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"/>
+                <optional caption="Title" group="General" javaType="java.lang.String" name="title" type="string"/>
+                <optional caption="Draft" group="General" javaType="java.lang.Boolean" name="draft" type="boolean"/>
+                <optional caption="Can Edit" group="General" javaType="java.lang.Boolean" name="canEdit" type="boolean"/>
+                <optional caption="Summary" group="General" javaType="java.lang.String" name="summary" type="string"/>
+                <optional caption="Row Count" default="0" group="General" javaType="int" name="rowCount" type="integer"/>
+                <optional caption="Col Count" default="0" group="General" javaType="int" name="colCount" type="integer"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+                <optional caption="Worksheet Index" default="0" group="General" javaType="int" name="worksheetIndex" type="integer"/>
+            </attributes>
+        </update-worksheet-metadata>
+        <set-row-values>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+                <optional caption="Worksheet Index" default="0" group="General" javaType="int" name="worksheetIndex" type="integer"/>
+                <optional caption="Purge" default="false" group="General" javaType="boolean" name="purge" type="boolean"/>
+            </attributes>
+            <childElements/>
+        </set-row-values>
+        <set-csv-values>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"/>
+                <optional caption="Csv" default="#[payload]" group="General" javaType="java.lang.String" name="csv" type="string"/>
+                <optional caption="Starting Row" default="1" group="General" javaType="int" name="startingRow" type="integer"/>
+                <optional caption="Starting Column" default="1" group="General" javaType="int" name="startingColumn" type="integer"/>
+                <optional caption="Line Separator" default=" " group="General" javaType="java.lang.String" name="lineSeparator" type="string"/>
+                <optional caption="Column Separator" default="," group="General" javaType="java.lang.String" name="columnSeparator" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+                <optional caption="Worksheet Index" default="0" group="General" javaType="int" name="worksheetIndex" type="integer"/>
+                <optional caption="Purge" default="false" group="General" javaType="boolean" name="purge" type="boolean"/>
+            </attributes>
+        </set-csv-values>
+        <get-authors>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+            </attributes>
+        </get-authors>
+        <get-column-headers>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+                <optional caption="Worksheet Index" default="0" group="General" javaType="int" name="worksheetIndex" type="integer"/>
+            </attributes>
+        </get-column-headers>
+        <get-spreadsheets-by-title>
+            <attributes>
+                <required caption="Title" group="General" javaType="java.lang.String" name="title" type="string"/>
+            </attributes>
+        </get-spreadsheets-by-title>
+        <get-worksheet-by-title>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <required caption="Title" group="General" javaType="java.lang.String" name="title" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+            </attributes>
+        </get-worksheet-by-title>
+        <purge-worksheet>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+                <optional caption="Worksheet Index" default="0" group="General" javaType="int" name="worksheetIndex" type="integer"/>
+            </attributes>
+        </purge-worksheet>
+        <get-all-cells>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+                <optional caption="Worksheet Index" default="0" group="General" javaType="int" name="worksheetIndex" type="integer"/>
+            </attributes>
+        </get-all-cells>
+        <get-all-cells-as-csv>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"/>
+                <optional caption="Column Separator" default="," group="General" javaType="java.lang.String" name="columnSeparator" type="string"/>
+                <optional caption="Line Separator" default=" " group="General" javaType="java.lang.String" name="lineSeparator" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+                <optional caption="Worksheet Index" default="0" group="General" javaType="int" name="worksheetIndex" type="integer"/>
+            </attributes>
+        </get-all-cells-as-csv>
+        <get-cell-range>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+                <optional caption="Worksheet Index" default="0" group="General" javaType="int" name="worksheetIndex" type="integer"/>
+                <optional caption="Min Row" group="General" javaType="java.lang.Integer" name="minRow" type="integer"/>
+                <optional caption="Max Row" group="General" javaType="java.lang.Integer" name="maxRow" type="integer"/>
+                <optional caption="Min Col" group="General" javaType="java.lang.Integer" name="minCol" type="integer"/>
+                <optional caption="Max Col" group="General" javaType="java.lang.Integer" name="maxCol" type="integer"/>
+            </attributes>
+        </get-cell-range>
+        <get-cell-range-as-csv>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+                <optional caption="Worksheet Index" default="0" group="General" javaType="int" name="worksheetIndex" type="integer"/>
+                <optional caption="Column Separator" default="," group="General" javaType="java.lang.String" name="columnSeparator" type="string"/>
+                <optional caption="Line Separator" default=" " group="General" javaType="java.lang.String" name="lineSeparator" type="string"/>
+                <optional caption="Min Row" group="General" javaType="java.lang.Integer" name="minRow" type="integer"/>
+                <optional caption="Max Row" group="General" javaType="java.lang.Integer" name="maxRow" type="integer"/>
+                <optional caption="Min Col" group="General" javaType="java.lang.Integer" name="minCol" type="integer"/>
+                <optional caption="Max Col" group="General" javaType="java.lang.Integer" name="maxCol" type="integer"/>
+            </attributes>
+        </get-cell-range-as-csv>
+        <search>
+            <attributes>
+                <required caption="Spreadsheet" group="General" javaType="java.lang.String" name="spreadsheet" type="string"/>
+                <required caption="Worksheet" group="General" javaType="java.lang.String" name="worksheet" type="string"/>
+                <required caption="Query" group="General" javaType="java.lang.String" name="query" type="string"/>
+                <optional caption="Spreadsheet Index" default="0" group="General" javaType="int" name="spreadsheetIndex" type="integer"/>
+                <optional caption="Worksheet Index" default="0" group="General" javaType="int" name="worksheetIndex" type="integer"/>
+            </attributes>
+        </search>
+    </message-processors>
+    <inbound-endpoint/>
+    <outbound-endpoints/>
+</connector>
