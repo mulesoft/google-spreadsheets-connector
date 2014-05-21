@@ -13,30 +13,29 @@
  */
 package org.mule.module.google.spreadsheet;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
-
+import com.google.api.client.auth.oauth2.BearerToken;
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.gdata.client.authn.oauth.OAuthException;
+import com.google.gdata.client.docs.DocsService;
+import com.google.gdata.client.spreadsheet.*;
+import com.google.gdata.data.Link;
+import com.google.gdata.data.Person;
+import com.google.gdata.data.PlainTextConstruct;
+import com.google.gdata.data.batch.BatchOperationType;
+import com.google.gdata.data.batch.BatchUtils;
+import com.google.gdata.data.spreadsheet.*;
+import com.google.gdata.util.ServiceException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.mule.api.annotations.Configurable;
 import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Processor;
-import org.mule.api.annotations.oauth.OAuth2;
-import org.mule.api.annotations.oauth.OAuthAccessToken;
-import org.mule.api.annotations.oauth.OAuthAuthorizationParameter;
-import org.mule.api.annotations.oauth.OAuthConsumerKey;
-import org.mule.api.annotations.oauth.OAuthConsumerSecret;
-import org.mule.api.annotations.oauth.OAuthInvalidateAccessTokenOn;
-import org.mule.api.annotations.oauth.OAuthPostAuthorization;
-import org.mule.api.annotations.oauth.OAuthProtected;
-import org.mule.api.annotations.oauth.OAuthScope;
+import org.mule.api.annotations.ReconnectOn;
+import org.mule.api.annotations.oauth.*;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 import org.mule.module.google.spreadsheet.model.Cell;
-import org.mule.module.google.spreadsheet.model.ModelParser;
-import org.mule.module.google.spreadsheet.model.Row;
-import org.mule.module.google.spreadsheet.model.Spreadsheet;
+import org.mule.module.google.spreadsheet.model.*;
 import org.mule.module.google.spreadsheet.model.Worksheet;
 import org.mule.modules.google.AbstractGoogleOAuthConnector;
 import org.mule.modules.google.AccessType;
@@ -45,27 +44,9 @@ import org.mule.modules.google.GoogleUserIdExtractor;
 import org.mule.modules.google.oauth.invalidation.InvalidationAwareCredential;
 import org.mule.modules.google.oauth.invalidation.OAuthTokenExpiredException;
 
-import com.google.api.client.auth.oauth2.BearerToken;
-import com.google.api.client.auth.oauth2.Credential;
-import com.google.gdata.client.authn.oauth.OAuthException;
-import com.google.gdata.client.docs.DocsService;
-import com.google.gdata.client.spreadsheet.CellQuery;
-import com.google.gdata.client.spreadsheet.FeedURLFactory;
-import com.google.gdata.client.spreadsheet.SpreadsheetQuery;
-import com.google.gdata.client.spreadsheet.SpreadsheetService;
-import com.google.gdata.client.spreadsheet.WorksheetQuery;
-import com.google.gdata.data.Link;
-import com.google.gdata.data.Person;
-import com.google.gdata.data.PlainTextConstruct;
-import com.google.gdata.data.batch.BatchOperationType;
-import com.google.gdata.data.batch.BatchUtils;
-import com.google.gdata.data.spreadsheet.CellEntry;
-import com.google.gdata.data.spreadsheet.CellFeed;
-import com.google.gdata.data.spreadsheet.SpreadsheetEntry;
-import com.google.gdata.data.spreadsheet.SpreadsheetFeed;
-import com.google.gdata.data.spreadsheet.WorksheetEntry;
-import com.google.gdata.data.spreadsheet.WorksheetFeed;
-import com.google.gdata.util.ServiceException;
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
 
 /**
  * Connector for accessing, creating and modifying google docs spreadsheets.
@@ -87,6 +68,7 @@ import com.google.gdata.util.ServiceException;
 											" Use force to request authorization every time or auto to only do it the first time. Default is auto", optional=true)
 		}
 )
+@ReconnectOn(exceptions = OAuthTokenExpiredException.class)
 public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
 	
 	private static Logger logger = Logger.getLogger(GoogleSpreadSheetConnector.class);
@@ -110,7 +92,6 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @OAuthScope
     @Configurable
-    @Optional
     @Default(USER_PROFILE_SCOPE + " https://spreadsheets.google.com/feeds https://docs.google.com/feeds")
     private String scope;
     
@@ -120,7 +101,6 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      * Application name to communicate to google
      */
     @Configurable
-    @Optional
     @Default("Mule-GoogleSpreadsheetsConnector/1.0")
     private String applicationName;
     
@@ -162,7 +142,6 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public List<Spreadsheet> getAllSpreadsheets() throws OAuthException, IOException, ServiceException {
         return ModelParser.parseSpreadsheet(this.spreadsheetService.getFeed(factory.getSpreadsheetsFeedUrl(), SpreadsheetFeed.class));
     }
@@ -180,7 +159,6 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public void createSpreadsheet(String title) throws OAuthException, IOException, ServiceException {
 
     	com.google.gdata.data.docs.SpreadsheetEntry newEntry = new com.google.gdata.data.docs.SpreadsheetEntry();
@@ -204,10 +182,9 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
-    public List<Worksheet> getAllWorksheets(String spreadsheet, @Optional @Default("0") int spreadsheetIndex) throws IOException, ServiceException {
-    	
-    	SpreadsheetEntry ss = this.getSpreadsheetEntry(spreadsheet, spreadsheetIndex);
+    public List<Worksheet> getAllWorksheets(String spreadsheet, @Default("0") int spreadsheetIndex) throws IOException, ServiceException {
+
+        SpreadsheetEntry ss = this.getSpreadsheetEntry(spreadsheet, spreadsheetIndex);
     	return ModelParser.parseWorksheet(ss.getWorksheets());
     }
     
@@ -229,11 +206,10 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public Worksheet createWorksheet(
 			String spreadsheet,
-    		@Optional @Default("0") int spreadsheetIndex,
-    		String title,
+            @Default("0") int spreadsheetIndex,
+            String title,
     		int rowCount,
     		int colCount) throws IOException, ServiceException {
     	
@@ -267,14 +243,13 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public void deleteWorksheet(
 					String spreadsheet,
 		    		String worksheet,
-		    		@Optional @Default("0") int spreadsheetIndex,
-		    		@Optional @Default("0") int worksheetIndex) throws IOException, ServiceException {
-    	
-    	WorksheetEntry ws = this.getItem(this.getWorksheetEntriesByTitle(spreadsheet, worksheet, spreadsheetIndex), worksheetIndex);
+                    @Default("0") int spreadsheetIndex,
+                    @Default("0") int worksheetIndex) throws IOException, ServiceException {
+
+        WorksheetEntry ws = this.getItem(this.getWorksheetEntriesByTitle(spreadsheet, worksheet, spreadsheetIndex), worksheetIndex);
     	ws.delete();
     }
     
@@ -304,20 +279,19 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public void updateWorksheetMetadata(
 			String spreadsheet,
     		String worksheet,
-    		@Optional @Default("") String title,
-    		@Optional Boolean draft,
+            @Default("") String title,
+            @Optional Boolean draft,
     		@Optional Boolean canEdit,
-    		@Optional @Default("") String summary,
-    		@Optional @Default("0") int rowCount,
-    		@Optional @Default("0") int colCount,
-    		@Optional @Default("0") int spreadsheetIndex,
-			@Optional @Default("0") int worksheetIndex) throws IOException, ServiceException {
-    	
-    	WorksheetEntry ws = this.getWorksheetEntry(accessToken, spreadsheet, worksheet, spreadsheetIndex, worksheetIndex);
+            @Default("") String summary,
+            @Default("0") int rowCount,
+            @Default("0") int colCount,
+            @Default("0") int spreadsheetIndex,
+            @Default("0") int worksheetIndex) throws IOException, ServiceException {
+
+        WorksheetEntry ws = this.getWorksheetEntry(accessToken, spreadsheet, worksheet, spreadsheetIndex, worksheetIndex);
 		
     	if (!StringUtils.isEmpty(title)) {
     		ws.setTitle(new PlainTextConstruct(title));
@@ -367,16 +341,15 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public void setRowValues(
-			@Optional @Default("#[payload]") List<Row> rows,
-			String spreadsheet,
+            @Default("#[payload]") List<Row> rows,
+            String spreadsheet,
     		String worksheet,
-    		@Optional @Default("0") int spreadsheetIndex,
-			@Optional @Default("0") int worksheetIndex,
-			@Optional @Default("false") boolean purge) throws Exception {
-    	
-    	if (rows == null || rows.isEmpty()) {
+            @Default("0") int spreadsheetIndex,
+            @Default("0") int worksheetIndex,
+            @Default("false") boolean purge) throws Exception {
+
+        if (rows == null || rows.isEmpty()) {
     		logger.warn("Worksheet contains no rows... skipping update and possible purge");
     		return;
     	}
@@ -416,7 +389,6 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      * 
      * {@sample.xml ../../../doc/GoogleSpreadSheets-connector.xml.sample GoogleSpreadSheets:set-csv-values}
      * 
-     * @param rows a list of {@link org.mule.module.google.spreadsheet.model.Row} taken from the message payload describing the values to be set
      * @param spreadsheet the title of the spreadsheet you want to update
      * @param worksheet  the title of the worksheet you want to update
      * @param csv the csv content to be set on the worksheet. You can manually specify it or else it will be taken from the message payload
@@ -435,20 +407,19 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public void setCsvValues(
 			String spreadsheet,
     		String worksheet,
-    		@Optional @Default("#[payload]") String csv,
-    		@Optional @Default("1") int startingRow,
-    		@Optional @Default("1") int startingColumn,
-    		@Optional @Default("\n") String lineSeparator,
-    		@Optional @Default(",") String columnSeparator,
-    		@Optional @Default("0") int spreadsheetIndex,
-			@Optional @Default("0") int worksheetIndex,
-			@Optional @Default("false") boolean purge) throws Exception {
-    	
-    	if (StringUtils.isEmpty(csv)) {
+            @Default("#[payload]") String csv,
+            @Default("1") int startingRow,
+            @Default("1") int startingColumn,
+            @Default("\n") String lineSeparator,
+            @Default(",") String columnSeparator,
+            @Default("0") int spreadsheetIndex,
+            @Default("0") int worksheetIndex,
+            @Default("false") boolean purge) throws Exception {
+
+        if (StringUtils.isEmpty(csv)) {
     		if (logger.isDebugEnabled()) {
     			logger.debug("received empty csv value... exiting without updating values nor purging");
     		}
@@ -483,8 +454,7 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
-    public List<Person> getAuthors(String spreadsheet, @Optional @Default("0") int spreadsheetIndex) throws IOException, ServiceException {
+    public List<Person> getAuthors(String spreadsheet, @Default("0") int spreadsheetIndex) throws IOException, ServiceException {
     	
     	return this.getSpreadsheetEntry(spreadsheet, spreadsheetIndex).getAuthors();
     }
@@ -509,15 +479,14 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public Row getColumnHeaders(
 			String spreadsheet,
     		String worksheet,
-    		@Optional @Default("0") int spreadsheetIndex,
-			@Optional @Default("0") int worksheetIndex) throws IOException, ServiceException {
-    	
-    	
-		WorksheetEntry worksheetEntry = this.getWorksheetEntry(accessToken, spreadsheet, worksheet, spreadsheetIndex, worksheetIndex);
+            @Default("0") int spreadsheetIndex,
+            @Default("0") int worksheetIndex) throws IOException, ServiceException {
+
+
+        WorksheetEntry worksheetEntry = this.getWorksheetEntry(accessToken, spreadsheet, worksheet, spreadsheetIndex, worksheetIndex);
     	
 		// Get the appropriate URL for a cell feed
 		URL cellFeedUrl = worksheetEntry.getCellFeedUrl();
@@ -547,7 +516,6 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public List<Spreadsheet> getSpreadsheetsByTitle(String title) throws IOException, ServiceException {
     	SpreadsheetQuery spreadsheetQuery = new SpreadsheetQuery(factory.getSpreadsheetsFeedUrl());
         spreadsheetQuery.setTitleQuery(title);
@@ -572,13 +540,12 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public List<Worksheet> getWorksheetByTitle(
     							String spreadsheet,
     				    		String title,
-    				    		@Optional @Default("0") int spreadsheetIndex) throws IOException, ServiceException {
-    	
-    	return ModelParser.parseWorksheet(this.getWorksheetEntriesByTitle(spreadsheet, title, spreadsheetIndex));
+                                @Default("0") int spreadsheetIndex) throws IOException, ServiceException {
+
+        return ModelParser.parseWorksheet(this.getWorksheetEntriesByTitle(spreadsheet, title, spreadsheetIndex));
     }
     
     /**
@@ -599,14 +566,13 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public void purgeWorksheet(
 			String spreadsheet,
     		String worksheet,
-    		@Optional @Default("0") int spreadsheetIndex,
-			@Optional @Default("0") int worksheetIndex) throws IOException, ServiceException {
-    	
-    	WorksheetEntry worksheetEntry = this.getWorksheetEntry(accessToken, spreadsheet, worksheet, spreadsheetIndex, worksheetIndex);
+            @Default("0") int spreadsheetIndex,
+            @Default("0") int worksheetIndex) throws IOException, ServiceException {
+
+        WorksheetEntry worksheetEntry = this.getWorksheetEntry(accessToken, spreadsheet, worksheet, spreadsheetIndex, worksheetIndex);
     	
     	CellFeed cellFeed = this.spreadsheetService.getFeed(worksheetEntry.getCellFeedUrl(), CellFeed.class);
 
@@ -635,14 +601,13 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public List<Row> getAllCells(
 			String spreadsheet,
     		String worksheet,
-    		@Optional @Default("0") int spreadsheetIndex,
-			@Optional @Default("0") int worksheetIndex) throws IOException, ServiceException {
-    	
-    	WorksheetEntry worksheetEntry = this.getWorksheetEntry(accessToken, spreadsheet, worksheet, spreadsheetIndex, worksheetIndex);
+            @Default("0") int spreadsheetIndex,
+            @Default("0") int worksheetIndex) throws IOException, ServiceException {
+
+        WorksheetEntry worksheetEntry = this.getWorksheetEntry(accessToken, spreadsheet, worksheet, spreadsheetIndex, worksheetIndex);
 
     	// Get the appropriate URL for a cell feed
     	URL cellFeedUrl = worksheetEntry.getCellFeedUrl();
@@ -677,16 +642,15 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public String getAllCellsAsCsv(
 			String spreadsheet,
     		String worksheet,
-    		@Optional @Default(",") String columnSeparator,
-			@Optional @Default("\n") String lineSeparator,
-    		@Optional @Default("0") int spreadsheetIndex,
-			@Optional @Default("0") int worksheetIndex) throws IOException, ServiceException {
-    	
-    	if (StringUtils.isEmpty(lineSeparator)) {
+            @Default(",") String columnSeparator,
+            @Default("\n") String lineSeparator,
+            @Default("0") int spreadsheetIndex,
+            @Default("0") int worksheetIndex) throws IOException, ServiceException {
+
+        if (StringUtils.isEmpty(lineSeparator)) {
     		lineSeparator = "\n";
     	}
     	
@@ -704,8 +668,7 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      * 
      * {@sample.xml ../../../doc/GoogleSpreadSheets-connector.xml.sample GoogleSpreadSheets:get-cell-range}
      * 
-     * @param accessToken OAuth accessToken
-     * @param spreadsheet the title of the spreadsheet containing the worksheet on which the cells are 
+     * @param spreadsheet the title of the spreadsheet containing the worksheet on which the cells are
      * @param worksheet the title of the worksheet containing the cells you want to get
      * @param spreadsheetIndex google's api allows for several spreadsheet to have the same name. In this cases
      * 							it returns a list with all the ones matching the given title. Use this optional
@@ -723,13 +686,12 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public List<Row> getCellRange(
 			String spreadsheet,
 			String worksheet,
-    		@Optional @Default("0") int spreadsheetIndex,
-			@Optional @Default("0") int worksheetIndex,
-    		@Optional Integer minRow,
+            @Default("0") int spreadsheetIndex,
+            @Default("0") int worksheetIndex,
+            @Optional Integer minRow,
     		@Optional Integer maxRow,
     		@Optional Integer minCol,
     		@Optional Integer maxCol) throws IOException, ServiceException {
@@ -775,15 +737,14 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public String getCellRangeAsCsv(
 			String spreadsheet,
 			String worksheet,
-			@Optional @Default("0") int spreadsheetIndex,
-			@Optional @Default("0") int worksheetIndex,
-			@Optional @Default(",") String columnSeparator,
-			@Optional @Default("\n") String lineSeparator,
-			@Optional Integer minRow,
+            @Default("0") int spreadsheetIndex,
+            @Default("0") int worksheetIndex,
+            @Default(",") String columnSeparator,
+            @Default("\n") String lineSeparator,
+            @Optional Integer minRow,
 			@Optional Integer maxRow,
 			@Optional Integer minCol,
 			@Optional Integer maxCol) throws IOException, ServiceException {
@@ -823,15 +784,14 @@ public class GoogleSpreadSheetConnector extends AbstractGoogleOAuthConnector {
      */
     @Processor
     @OAuthProtected
-	@OAuthInvalidateAccessTokenOn(exception=OAuthTokenExpiredException.class)
     public List<Row> search(
 			String spreadsheet,
     		String worksheet,
     		String query,
-    		@Optional @Default("0") int spreadsheetIndex,
-			@Optional @Default("0") int worksheetIndex) throws IOException, ServiceException {
-    	
-      CellQuery cellQuery = new CellQuery(this.getCellFeedUrl(spreadsheet, worksheet, spreadsheetIndex, worksheetIndex));
+            @Default("0") int spreadsheetIndex,
+            @Default("0") int worksheetIndex) throws IOException, ServiceException {
+
+        CellQuery cellQuery = new CellQuery(this.getCellFeedUrl(spreadsheet, worksheet, spreadsheetIndex, worksheetIndex));
       cellQuery.setFullTextQuery(query);
       
       return ModelParser.parseCell(this.spreadsheetService.query(cellQuery, CellFeed.class));
