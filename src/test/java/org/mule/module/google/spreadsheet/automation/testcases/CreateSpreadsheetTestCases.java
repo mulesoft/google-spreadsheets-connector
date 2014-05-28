@@ -9,68 +9,50 @@
 
 package org.mule.module.google.spreadsheet.automation.testcases;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+import org.mule.module.google.spreadsheet.automation.RegressionTests;
+import org.mule.module.google.spreadsheet.automation.SmokeTests;
+import org.mule.modules.tests.ConnectorTestUtils;
+
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.util.List;
-import java.util.Map;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.experimental.categories.Category;
-import org.mule.api.MuleEvent;
-import org.mule.api.processor.MessageProcessor;
-import org.mule.module.google.spreadsheet.model.Spreadsheet;
-
+@Ignore
 public class CreateSpreadsheetTestCases extends GoogleSpreadsheetsTestParent {
 
-	@Before
-	public void setUp() {
-		try {
-			testObjects = (Map<String, Object>) context.getBean("createSpreadsheet");
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
-	
-	@Category({SmokeTests.class, RegressionTests.class})
-	@Test
-	public void testCreateSpreadsheet() {
-		try {
-			String title = (String) testObjects.get("title");
-			
-			MessageProcessor flow = lookupFlowConstruct("create-spreadsheet");
-			MuleEvent response = flow.process(getTestEvent(testObjects));
-			
-			List<Spreadsheet> spreadsheets = getAllSpreadsheets();
+    private String spreadsheetTitle;
 
-			boolean found = false;
-			for (Spreadsheet spreadsheet : spreadsheets) {
-				if (spreadsheet.getTitle().equals(title)) {
-					found = true;
-				}
-			}
-			assertTrue(found);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
-	
-	@After
-	public void tearDown() {
-		try {
-			String title = (String) testObjects.get("title");
-			deleteSpreadsheet(title);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
-		
+    @Before
+    public void setUp() throws Exception {
+        initializeTestRunMessage("createSpreadsheet");
+        spreadsheetTitle = getTestRunMessageValue("spreadsheet");
+    }
+
+    @Test
+    @Category({SmokeTests.class, RegressionTests.class})
+    public void testCreateSpreadsheet() {
+        try {
+
+            // The Spreadsheets API does not currently provide a way to delete a spreadsheet.
+            // Please manually delete to create the spreadsheet using the test cases.
+            if (isSpreadsheetAvailable(spreadsheetTitle))
+                return;
+
+            runFlowAndGetPayload("create-spreadsheet");
+
+            assertTrue(isSpreadsheetAvailable(spreadsheetTitle));
+        } catch (Exception e) {
+            fail(ConnectorTestUtils.getStackTrace(e));
+        }
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        deleteSpreadsheet(spreadsheetTitle);
+    }
+
 }

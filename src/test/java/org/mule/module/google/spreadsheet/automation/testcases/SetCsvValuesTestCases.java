@@ -9,90 +9,65 @@
 
 package org.mule.module.google.spreadsheet.automation.testcases;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.util.List;
-import java.util.Map;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.mule.api.MuleEvent;
-import org.mule.api.processor.MessageProcessor;
 import org.mule.module.google.spreadsheet.CsvToRowsAdapter;
+import org.mule.module.google.spreadsheet.automation.RegressionTests;
+import org.mule.module.google.spreadsheet.automation.SmokeTests;
 import org.mule.module.google.spreadsheet.model.Row;
-import org.mule.module.google.spreadsheet.model.Worksheet;
+import org.mule.modules.tests.ConnectorTestUtils;
+
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class SetCsvValuesTestCases extends GoogleSpreadsheetsTestParent {
 
-	@Before
-	public void setUp() {
-		try {
-			testObjects = (Map<String, Object>) context.getBean("setCsvValues");
-			
-			String spreadsheetTitle = (String) testObjects.get("spreadsheet");
-			createSpreadsheet(spreadsheetTitle);
+    private String spreadsheetTitle;
 
-			String worksheetTitle = (String) testObjects.get("worksheet");
-			int rowCount = (Integer) testObjects.get("rowCount");
-			int colCount = (Integer) testObjects.get("colCount");
-			
-			Worksheet worksheet = createWorksheet(spreadsheetTitle, worksheetTitle, rowCount, colCount);
-			testObjects.put("worksheetObject", worksheet);			
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Category({SmokeTests.class, RegressionTests.class})
-	@Test
-	public void testSetCsvValues() {
-		try {
-			int startingRow = (Integer) testObjects.get("startingRow");
-			int startingColumn = (Integer) testObjects.get("startingColumn");
-			String columnSeparator = (String) testObjects.get("columnSeparator");
-			String lineSeparator = (String) testObjects.get("lineSeparator");
-			
-			String csv = (String) testObjects.get("csv");
-			String spreadsheetTitle = (String) testObjects.get("spreadsheet");
-			Worksheet worksheet = (Worksheet) testObjects.get("worksheetObject");
-			
-			testObjects.put("worksheet", worksheet.getTitle());
+    @Before
+    public void setUp() throws Exception {
+        initializeTestRunMessage("setCsvValues");
 
-			MessageProcessor flow = lookupFlowConstruct("set-csv-values");
-			MuleEvent response = flow.process(getTestEvent(testObjects));
+        spreadsheetTitle = getTestRunMessageValue("spreadsheet");
+        createSpreadsheet(spreadsheetTitle);
 
-			List<Row> retrievedRows = getAllCells(spreadsheetTitle, worksheet.getTitle());
-			List<Row> csvRows = CsvToRowsAdapter.adapt(csv, startingRow, startingColumn, columnSeparator, lineSeparator);
-			
-			for (Row row : csvRows) {
-				assertTrue(retrievedRows.contains(row));
-				Row retrievedRow = retrievedRows.get(retrievedRows.indexOf(row));
-				
-				boolean equals = isRowEqual(row, retrievedRow);
-				assertTrue(equals);
-			}
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
-	
-	@After
-	public void tearDown() {
-		try {
-			String spreadsheet = (String) testObjects.get("spreadsheet");
-			deleteSpreadsheet(spreadsheet);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
+        createWorksheet();
+    }
+
+    @Category({SmokeTests.class, RegressionTests.class})
+    @Test
+    public void testSetCsvValues() {
+        try {
+            int startingRow = (Integer)getTestRunMessageValue("startingRow");
+            int startingColumn = (Integer)getTestRunMessageValue("startingColumn");
+            String columnSeparator = getTestRunMessageValue("columnSeparator");
+            String lineSeparator = getTestRunMessageValue("lineSeparator");
+
+            String csv = getTestRunMessageValue("csv");
+            runFlowAndGetPayload("set-csv-values");
+
+            List<Row> retrievedRows = runFlowAndGetPayload("get-all-cells");
+            List<Row> csvRows = CsvToRowsAdapter.adapt(csv, startingRow, startingColumn, columnSeparator, lineSeparator);
+
+            for (Row row : csvRows) {
+                assertTrue(retrievedRows.contains(row));
+                Row retrievedRow = retrievedRows.get(retrievedRows.indexOf(row));
+
+                boolean equals = isRowEqual(row, retrievedRow);
+                assertTrue(equals);
+            }
+        } catch (Exception e) {
+            fail(ConnectorTestUtils.getStackTrace(e));
+        }
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        runFlowAndGetPayload("delete-worksheet");
+        deleteSpreadsheet(spreadsheetTitle);
+    }
 }

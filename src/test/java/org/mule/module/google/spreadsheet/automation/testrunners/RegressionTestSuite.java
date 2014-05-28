@@ -7,7 +7,7 @@
  * LICENSE.txt file.
  */
 
-package org.mule.module.google.spreadsheet.automation;
+package org.mule.module.google.spreadsheet.automation.testrunners;
 
 import org.junit.experimental.categories.Categories;
 import org.junit.experimental.categories.Categories.IncludeCategory;
@@ -26,7 +26,7 @@ import org.mule.module.google.spreadsheet.automation.testcases.GetColumnHeadersT
 import org.mule.module.google.spreadsheet.automation.testcases.GetSpreadsheetsByTitleTestCases;
 import org.mule.module.google.spreadsheet.automation.testcases.GetWorksheetByTitleTestCases;
 import org.mule.module.google.spreadsheet.automation.testcases.PurgeWorksheetTestCases;
-import org.mule.module.google.spreadsheet.automation.testcases.RegressionTests;
+import org.mule.module.google.spreadsheet.automation.RegressionTests;
 import org.mule.module.google.spreadsheet.automation.testcases.SearchTestCases;
 import org.mule.module.google.spreadsheet.automation.testcases.SetCsvValuesTestCases;
 import org.mule.module.google.spreadsheet.automation.testcases.SetRowValuesTestCases;

@@ -9,86 +9,55 @@
 
 package org.mule.module.google.spreadsheet.automation.testcases;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.util.List;
-import java.util.Map;
-
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Predicate;
-import org.apache.commons.lang.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.mule.api.MuleEvent;
-import org.mule.api.processor.MessageProcessor;
-import org.mule.module.google.spreadsheet.model.Cell;
+import org.mule.module.google.spreadsheet.automation.RegressionTests;
+import org.mule.module.google.spreadsheet.automation.SmokeTests;
 import org.mule.module.google.spreadsheet.model.Row;
-import org.mule.module.google.spreadsheet.model.Worksheet;
+import org.mule.modules.tests.ConnectorTestUtils;
+
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class GetColumnHeadersTestCases extends GoogleSpreadsheetsTestParent {
 
-	@Before
-	public void setUp() {
-		try {
-			testObjects = (Map<String, Object>) context.getBean("getColumnHeaders");
-			
-			String spreadsheetTitle = (String) testObjects.get("spreadsheet");
-			createSpreadsheet(spreadsheetTitle);
+    private String spreadsheetTitle;
 
-			String worksheetTitle = (String) testObjects.get("worksheet");
-			int rowCount = (Integer) testObjects.get("rowCount");
-			int colCount = (Integer) testObjects.get("colCount");
-			
-			Worksheet worksheet = createWorksheet(spreadsheetTitle, worksheetTitle, rowCount, colCount);
-			testObjects.put("worksheetObject", worksheet);
-			
-			List<Row> rows = (List<Row>) testObjects.get("rowsRef");
-			setRowValues(spreadsheetTitle, worksheet.getTitle(), rows);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Category({SmokeTests.class, RegressionTests.class})
-	@Test
-	public void testGetColumnHeaders() {
-		try {
-			String spreadsheetTitle = (String) testObjects.get("spreadsheet");
-			Worksheet worksheet = (Worksheet) testObjects.get("worksheetObject");
-			List<Row> inputRows = (List<Row>) testObjects.get("rowsRef");
-			
-			testObjects.put("worksheet", worksheet.getTitle());
-			
-			MessageProcessor flow = lookupFlowConstruct("get-column-headers");
-			MuleEvent response = flow.process(getTestEvent(testObjects));
-			
-			Row columnHeaders = (Row) response.getMessage().getPayload();
-			
-			boolean equal = isRowEqual(inputRows.get(0), columnHeaders);
-			assertTrue(equal);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
-	
-	@After
-	public void tearDown() {
-		try {
-			String spreadsheet = (String) testObjects.get("spreadsheet");
-			deleteSpreadsheet(spreadsheet);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
-	
+    @Before
+    public void setUp() throws Exception {
+        initializeTestRunMessage("getColumnHeaders");
+
+        spreadsheetTitle = getTestRunMessageValue("spreadsheet");
+        createSpreadsheet(spreadsheetTitle);
+
+        createWorksheet();
+
+        setRowValues();
+    }
+
+    @Category({SmokeTests.class, RegressionTests.class})
+    @Test
+    public void testGetColumnHeaders() {
+        try {
+            List<Row> inputRows = getTestRunMessageValue("rowsRef");
+
+            Row columnHeaders = runFlowAndGetPayload("get-column-headers");
+
+            boolean equal = isRowEqual(inputRows.get(0), columnHeaders);
+            assertTrue(equal);
+        } catch (Exception e) {
+            fail(ConnectorTestUtils.getStackTrace(e));
+        }
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        runFlowAndGetPayload("delete-worksheet");
+        deleteSpreadsheet(spreadsheetTitle);
+    }
+
 }

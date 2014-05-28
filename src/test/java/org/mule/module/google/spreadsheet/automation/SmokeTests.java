@@ -7,8 +7,8 @@
  * LICENSE.txt file.
  */
 
-package org.mule.module.google.spreadsheet.automation.testcases;
+package org.mule.module.google.spreadsheet.automation;
 
-public interface RegressionTests {
+public interface SmokeTests {
 
 }

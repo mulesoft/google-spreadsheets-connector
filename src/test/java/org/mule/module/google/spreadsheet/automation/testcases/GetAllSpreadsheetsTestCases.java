@@ -9,79 +9,62 @@
 
 package org.mule.module.google.spreadsheet.automation.testcases;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.util.List;
-import java.util.Map;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.mule.api.MuleEvent;
-import org.mule.api.processor.MessageProcessor;
+import org.mule.module.google.spreadsheet.automation.RegressionTests;
+import org.mule.module.google.spreadsheet.automation.SmokeTests;
 import org.mule.module.google.spreadsheet.model.Spreadsheet;
+import org.mule.modules.tests.ConnectorTestUtils;
+
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class GetAllSpreadsheetsTestCases extends GoogleSpreadsheetsTestParent {
 
+    private List<String> spreadsheetTitles;
 
-	@Before
-	public void setUp() {
-		try {
-			testObjects = (Map<String, Object>) context.getBean("getAllSpreadsheets");
-			
-			List<String> spreadsheetTitles = (List<String>) testObjects.get("spreadsheets");
-			for (String spreadsheetTitle : spreadsheetTitles) {
-				createSpreadsheet(spreadsheetTitle);
-			}
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
-	
-	@Category({SmokeTests.class, RegressionTests.class})
-	@Test
-	public void testGetAllSpreadsheets() {
-		try {
-			List<String> createdSpreadsheets = (List<String>) testObjects.get("spreadsheets");
+    @Before
+    public void setUp() throws Exception {
+        initializeTestRunMessage("getAllSpreadsheets");
 
-			MessageProcessor flow = lookupFlowConstruct("get-all-spreadsheets");
-			MuleEvent response = flow.process(getTestEvent(testObjects));
-			List<Spreadsheet> spreadsheets = (List<Spreadsheet>) response.getMessage().getPayload();
+        spreadsheetTitles = getTestRunMessageValue("spreadsheets");
+        for (String spreadsheetTitle : spreadsheetTitles) {
+            upsertOnTestRunMessage("spreadsheet", spreadsheetTitle);
+            createSpreadsheet(spreadsheetTitle);
+        }
+    }
 
-			for (String spreadsheetTitle : createdSpreadsheets) {
-				boolean found = false;
-				for (Spreadsheet spreadsheet : spreadsheets) {
-					if (spreadsheet.getTitle().equals(spreadsheetTitle)) {
-						found = true;
-						break;
-					}
-				}
-				assertTrue(found);
-			}
-			
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
+    @Category({SmokeTests.class, RegressionTests.class})
+    @Test
+    public void testGetAllSpreadsheets() {
+        try {
+            List<Spreadsheet> spreadsheets = runFlowAndGetPayload("get-all-spreadsheets");
 
-	@After
-	public void tearDown() {
-		try {
-			List<String> spreadsheets = (List<String>) testObjects.get("spreadsheets");
-			for (String spreadsheet : spreadsheets) {
-				deleteSpreadsheet(spreadsheet);
-			}
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
-	
+            for (String spreadsheetTitle : spreadsheetTitles) {
+                boolean found = false;
+                for (Spreadsheet spreadsheet : spreadsheets) {
+                    if (spreadsheet.getTitle().equals(spreadsheetTitle)) {
+                        found = true;
+                        break;
+                    }
+                }
+                assertTrue(found);
+            }
+
+        } catch (Exception e) {
+            fail(ConnectorTestUtils.getStackTrace(e));
+        }
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        for (String spreadsheet : spreadsheetTitles) {
+            deleteSpreadsheet(spreadsheet);
+        }
+    }
+
 }

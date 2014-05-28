@@ -9,100 +9,79 @@
 
 package org.mule.module.google.spreadsheet.automation.testcases;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.util.List;
-import java.util.Map;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.mule.api.MuleEvent;
-import org.mule.api.processor.MessageProcessor;
+import org.mule.module.google.spreadsheet.automation.RegressionTests;
 import org.mule.module.google.spreadsheet.model.Spreadsheet;
+import org.mule.modules.tests.ConnectorTestUtils;
+
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class GetSpreadsheetsByTitleTestCases extends GoogleSpreadsheetsTestParent {
 
-	@Before
-	public void setUp() {
-		try {
-			testObjects = (Map<String, Object>) context.getBean("getSpreadsheetsByTitle");
+    private List<String> spreadsheetTitles;
 
-			List<String> spreadsheetTitles = (List<String>) testObjects.get("spreadsheets");
-			for (String spreadsheetTitle : spreadsheetTitles) {
-				createSpreadsheet(spreadsheetTitle);
-			}
-			
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
+    @Before
+    public void setUp() throws Exception {
+        initializeTestRunMessage("getSpreadsheetsByTitle");
+
+        spreadsheetTitles = getTestRunMessageValue("spreadsheets");
+        for (String spreadsheetTitle : spreadsheetTitles) {
+            upsertOnTestRunMessage("spreadsheet", spreadsheetTitle);
+            createSpreadsheet(spreadsheetTitle);
+        }
+    }
 	
 	@Category({RegressionTests.class})
 	@Test
 	public void testGetSpreadsheetsByTitle_WithResults() {
 		try {
-			String toSearch = (String) testObjects.get("toSearch");
-						
-			testObjects.put("title", toSearch);
+            String toSearch = getTestRunMessageValue("toSearch");
+            upsertOnTestRunMessage("spreadsheet", toSearch);
 
-			MessageProcessor flow = lookupFlowConstruct("get-spreadsheets-by-title");
-			MuleEvent response = flow.process(getTestEvent(testObjects));
-			List<Spreadsheet> spreadsheets = (List<Spreadsheet>) response.getMessage().getPayload();
-			
-			for (Spreadsheet spreadsheet : spreadsheets) {
+            List<Spreadsheet> spreadsheets = runFlowAndGetPayload("get-spreadsheets-by-title");
+
+            for (Spreadsheet spreadsheet : spreadsheets) {
 				assertTrue(spreadsheet.getTitle().equals(toSearch));
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
+            fail(ConnectorTestUtils.getStackTrace(e));
+        }
 	}
 	
 	@Category({RegressionTests.class})
 	@Test
 	public void testGetSpreadsheetsByTitle_NoResults() {
 		try {
-			List<String> spreadsheetNames = (List<String>) testObjects.get("spreadsheets");
-			
-			// Create a placeholder for a title which cannot be set for a spreadsheet
+            List<String> spreadsheetNames = getTestRunMessageValue("spreadsheets");
+
+            // Create a placeholder for a title which cannot be set for a spreadsheet
 			// This will guarantee that no spreadsheet is returned with this name
 			String toSearch = "SomeSpreadsheetTitleWhichCannotBeSet";
 			// Do not run the test if some spreadsheet has the same as toSearch
 			assertFalse(spreadsheetNames.contains(toSearch));
-						
-			testObjects.put("title", toSearch);
 
-			MessageProcessor flow = lookupFlowConstruct("get-spreadsheets-by-title");
-			MuleEvent response = flow.process(getTestEvent(testObjects));
-			List<Spreadsheet> spreadsheets = (List<Spreadsheet>) response.getMessage().getPayload();
+            upsertOnTestRunMessage("spreadsheet", toSearch);
 
-			// Assert that no spreadsheets are returned.
+            List<Spreadsheet> spreadsheets = runFlowAndGetPayload("get-spreadsheets-by-title");
+
+            // Assert that no spreadsheets are returned.
 			assertTrue(spreadsheets.isEmpty());
 		}
 		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
+            fail(ConnectorTestUtils.getStackTrace(e));
+        }
 	}
 
-	@After
-	public void tearDown() {
-		try {
-			List<String> spreadsheets = (List<String>) testObjects.get("spreadsheets");
-			for (String spreadsheet : spreadsheets) {
-				deleteSpreadsheet(spreadsheet);
-			}
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
+    @After
+    public void tearDown() throws Exception {
+        for (String createdSpreadsheet : spreadsheetTitles) {
+            deleteSpreadsheet(createdSpreadsheet);
+        }
+    }
 }

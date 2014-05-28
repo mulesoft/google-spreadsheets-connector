@@ -7,7 +7,7 @@
  * LICENSE.txt file.
  */
 
-package org.mule.module.google.spreadsheet.automation;
+package org.mule.module.google.spreadsheet.automation.testrunners;
 
 import org.junit.experimental.categories.Categories;
 import org.junit.experimental.categories.Categories.IncludeCategory;
@@ -19,7 +19,7 @@ import org.mule.module.google.spreadsheet.automation.testcases.GetAllCellsTestCa
 import org.mule.module.google.spreadsheet.automation.testcases.GetAllSpreadsheetsTestCases;
 import org.mule.module.google.spreadsheet.automation.testcases.GetWorksheetByTitleTestCases;
 import org.mule.module.google.spreadsheet.automation.testcases.SetRowValuesTestCases;
-import org.mule.module.google.spreadsheet.automation.testcases.SmokeTests;
+import org.mule.module.google.spreadsheet.automation.SmokeTests;
 
 @RunWith(Categories.class)
 @IncludeCategory(SmokeTests.class)

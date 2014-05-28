@@ -9,74 +9,51 @@
 
 package org.mule.module.google.spreadsheet.automation.testcases;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.util.List;
-import java.util.Map;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.mule.api.MuleEvent;
-import org.mule.api.processor.MessageProcessor;
+import org.mule.module.google.spreadsheet.automation.RegressionTests;
 import org.mule.module.google.spreadsheet.model.Row;
+import org.mule.modules.tests.ConnectorTestUtils;
+
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class SearchTestCases extends GoogleSpreadsheetsTestParent {
 
-	@SuppressWarnings("unchecked")
-	@Before
-	public void setUp() {
-		try {
-			testObjects = (Map<String, Object>) context.getBean("search");
+    private String spreadsheetTitle;
 
-			String spreadsheet = (String) testObjects.get("spreadsheetTitle");
-			createSpreadsheet(spreadsheet);
-			
-			String title = (String) testObjects.get("worksheetTitle");
-			int rowCount = (Integer) testObjects.get("rowCount");
-			int colCount = (Integer) testObjects.get("colCount");
-			
-			createWorksheet(spreadsheet, title, rowCount, colCount) ;
-			
-			setRowValues(spreadsheet, title, (List<Row>) testObjects.get("rowsRef"));
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Category({RegressionTests.class})
+    @Before
+    public void setUp() throws Exception {
+        initializeTestRunMessage("search");
+
+        spreadsheetTitle = getTestRunMessageValue("spreadsheet");
+        createSpreadsheet(spreadsheetTitle);
+
+        createWorksheet();
+
+        setRowValues();
+    }
+
+    @Category({RegressionTests.class})
 	@Test
 	public void testSearch() {
 		try {
-			MessageProcessor flow = lookupFlowConstruct("search");
-			testObjects.put("worksheet", (String) testObjects.get("worksheetTitle"));
-			
-			MuleEvent response = flow.process(getTestEvent(testObjects));
-			
-			List<Row> res = (List<Row>) response.getMessage().getPayload();
-			
-			assertEquals(1, res.size());
+            List<Row> res = runFlowAndGetPayload("search");
+
+            assertEquals(1, res.size());
 		}
 		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
+            fail(ConnectorTestUtils.getStackTrace(e));
+        }
 	}
-	
-	@After
-	public void tearDown() {
-		try {
-			String spreadsheet = (String) testObjects.get("spreadsheetTitle");
-			deleteSpreadsheet(spreadsheet);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			fail();
-		}
-	}
+
+    @After
+    public void tearDown() throws Exception {
+        runFlowAndGetPayload("delete-worksheet");
+        deleteSpreadsheet(spreadsheetTitle);
+    }
 }
