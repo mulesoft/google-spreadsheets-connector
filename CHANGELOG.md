@@ -34,11 +34,12 @@ Closed Issues in this release
     - Get Cell Range
     - Get Cell Range As CSV
     - Search
+ - Migrated functional test cases from Devkit 3.4.x to 3.5.0
 
 Known Issues in this release
 ------------------------------
 
- - Functional test cases and Samples need to be migrated to the latest devkit.
+ - The Spreadsheets API does not currently provide a way to delete a spreadsheet. Manually delete to create the spreadsheet using the test cases.
 
 1.5.0
 =====

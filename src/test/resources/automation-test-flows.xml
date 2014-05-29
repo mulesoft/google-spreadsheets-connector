@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+      xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.5.0"
+      xmlns:google-spreadsheets="http://www.mulesoft.org/schema/mule/google-spreadsheets"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:context="http://www.springframework.org/schema/context"
+      xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/google-spreadsheets http://www.mulesoft.org/schema/mule/google-spreadsheets/current/mule-google-spreadsheets.xsd">
+
+    <context:property-placeholder location="${GOOGLE_SPREADSHEETS_CREDENTIALS}"/>
+
+    <google-spreadsheets:config-with-oauth applicationName="${google.spreadsheets.application.name}"
+                                           name="Google_Spreadsheets"
+                                           consumerKey="${google.spreadsheets.consumer.key}"
+                                           consumerSecret="${google.spreadsheets.consumer.secret}"
+                                           doc:name="Google Spreadsheets">
+        <google-spreadsheets:oauth-callback-config domain="${google.spreadsheets.domain}"
+                                                   localPort="${google.spreadsheets.localPort}"
+                                                   remotePort="${google.spreadsheets.remotePort}"
+                                                   path="${google.spreadsheets.path}"/>
+    </google-spreadsheets:config-with-oauth>
+
+    <flow name="create-spreadsheet" doc:name="create-spreadsheet">
+        <google-spreadsheets:create-spreadsheet config-ref="Google_Spreadsheets" title="#[payload.spreadsheet]"
+                                                accessTokenId="accessTokenId" doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="get-all-spreadsheets">
+        <google-spreadsheets:get-all-spreadsheets config-ref="Google_Spreadsheets" accessTokenId="accessTokenId"
+                                                  doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="create-worksheet">
+        <google-spreadsheets:create-worksheet config-ref="Google_Spreadsheets" accessTokenId="accessTokenId"
+                                              spreadsheet="#[payload.spreadsheet]" title="#[payload.worksheet]"
+                                              rowCount="#[payload.rowCount]" colCount="#[payload.colCount]"
+                                              doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="delete-worksheet">
+        <google-spreadsheets:delete-worksheet
+                config-ref="Google_Spreadsheets" accessTokenId="accessTokenId" spreadsheet="#[payload.spreadsheet]"
+                worksheet="#[payload.worksheet]" doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="get-authors">
+        <google-spreadsheets:get-authors config-ref="Google_Spreadsheets" accessTokenId="accessTokenId"
+                                         spreadsheet="#[payload.spreadsheet]" doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="get-spreadsheets-by-title">
+        <google-spreadsheets:get-spreadsheets-by-title config-ref="Google_Spreadsheets" title="#[payload.spreadsheet]"
+                                                       accessTokenId="accessTokenId" doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="get-worksheet-by-title">
+        <google-spreadsheets:get-worksheet-by-title
+                config-ref="Google_Spreadsheets" spreadsheet="#[payload.spreadsheet]" title="#[payload.worksheet]"
+                accessTokenId="accessTokenId" doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="get-all-worksheets">
+        <google-spreadsheets:get-all-worksheets config-ref="Google_Spreadsheets" spreadsheet="#[payload.spreadsheet]"
+                                                accessTokenId="accessTokenId" doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="purge-worksheet">
+        <google-spreadsheets:purge-worksheet config-ref="Google_Spreadsheets"
+                                             spreadsheet="#[payload.spreadsheet]" worksheet="#[payload.worksheet]"
+                                             accessTokenId="accessTokenId" doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="get-all-cells">
+        <google-spreadsheets:get-all-cells
+                config-ref="Google_Spreadsheets" accessTokenId="accessTokenId" worksheet="#[payload.worksheet]"
+                spreadsheet="#[payload.spreadsheet]" doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="get-all-cells-as-csv">
+        <google-spreadsheets:get-all-cells-as-csv config-ref="Google_Spreadsheets" accessTokenId="accessTokenId"
+                                                  worksheet="#[payload.worksheet]"
+                                                  spreadsheet="#[payload.spreadsheet]"
+                                                  lineSeparator="#[payload.lineSeparator]"
+                                                  columnSeparator="#[payload.columnSeparator]"
+                                                  doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="set-row-values">
+        <google-spreadsheets:set-row-values config-ref="Google_Spreadsheets" accessTokenId="accessTokenId"
+                                            worksheet="#[payload.worksheet]" spreadsheet="#[payload.spreadsheet]"
+                                            purge="#[payload.purge]" doc:name="Google Spreadsheets">
+            <google-spreadsheets:rows ref="#[payload.rowsRef]"/>
+        </google-spreadsheets:set-row-values>
+    </flow>
+
+    <flow name="set-csv-values">
+        <google-spreadsheets:set-csv-values config-ref="Google_Spreadsheets" accessTokenId="accessTokenId"
+                                            worksheet="#[payload.worksheet]"
+                                            spreadsheet="#[payload.spreadsheet]" purge="#[payload.purge]"
+                                            csv="#[payload.csv]" startingRow="#[payload.startingRow]"
+                                            startingColumn="#[payload.startingColumn]"
+                                            lineSeparator="#[payload.lineSeparator]"
+                                            columnSeparator="#[payload.columnSeparator]"
+                                            doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="get-column-headers">
+        <google-spreadsheets:get-column-headers config-ref="Google_Spreadsheets" accessTokenId="accessTokenId"
+                                                worksheet="#[payload.worksheet]" spreadsheet="#[payload.spreadsheet]"
+                                                doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="update-worksheet-metadata">
+        <google-spreadsheets:update-worksheet-metadata config-ref="Google_Spreadsheets" accessTokenId="accessTokenId"
+                                                       spreadsheet="#[payload.spreadsheet]"
+                                                       worksheet="#[payload.worksheet]" rowCount="#[payload.rowCount]"
+                                                       colCount="#[payload.colCount]" title="#[payload.title]"
+                                                       doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="get-cell-range">
+        <google-spreadsheets:get-cell-range config-ref="Google_Spreadsheets" spreadsheet="#[payload.spreadsheet]"
+                                            worksheet="#[payload.worksheet]"
+                                            minRow="#[payload.minRow]" maxRow="#[payload.maxRow]"
+                                            minCol="#[payload.minCol]" maxCol="#[payload.maxCol]"
+                                            accessTokenId="accessTokenId" doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="get-cell-range-as-csv">
+        <google-spreadsheets:get-cell-range-as-csv config-ref="Google_Spreadsheets" spreadsheet="#[payload.spreadsheet]"
+                                                   worksheet="#[payload.worksheet]"
+                                                   minRow="#[payload.minRow]" maxRow="#[payload.maxRow]"
+                                                   minCol="#[payload.minCol]" maxCol="#[payload.maxCol]"
+                                                   accessTokenId="accessTokenId" doc:name="Google Spreadsheets"/>
+    </flow>
+
+    <flow name="search">
+        <google-spreadsheets:search config-ref="Google_Spreadsheets" spreadsheet="#[payload.spreadsheet]"
+                                    worksheet="#[payload.worksheet]" query="#[payload.query]"
+                                    accessTokenId="accessTokenId" doc:name="Google Spreadsheets"/>
+    </flow>
+
+</mule>

@@ -21,7 +21,6 @@
 		<category>Community</category>
 		<licensePath>LICENSE.md</licensePath>
 		<devkit.studio.package.skip>false</devkit.studio.package.skip>
-		<connector.test.version>2.0.3</connector.test.version>
         <google.commons.version>2.0.0-SNAPSHOT</google.commons.version>
     </properties>
 
@@ -63,41 +62,4 @@
 		<developerConnection>scm:git:git@github.com:mulesoft/google-spreadsheets-connector.git</developerConnection>
 		<url>https://github.com/mulesoft/google-spreadsheets-connector</url>
 	</scm>
-
-	  <profiles>
-        <profile>
-            <id>windows_profile</id>
-            <activation>
-                <os>
-                    <family>Windows</family>
-                </os>
-            </activation>
-            <properties>
-                <toolsjar>${java.home}/../lib/tools.jar</toolsjar>
-            </properties>
-        </profile>
-        <profile>
-            <id>linux_profile</id>
-            <activation>
-                <os>
-                    <name>linux</name>
-                </os>
-            </activation>
-            <properties>
-                <toolsjar>${java.home}/../lib/tools.jar</toolsjar>
-            </properties>
-        </profile>
-        <profile>
-            <id>osx_profile</id>
-            <activation>
-                <os>
-                    <family>mac</family>
-                </os>
-            </activation>
-            <properties>
-                <toolsjar>${java.home}/../Classes/classes.jar</toolsjar>
-            </properties>
-        </profile>
-    </profiles>
-
 </project>
