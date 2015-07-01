@@ -6,8 +6,11 @@
                 <optional caption="Name" group="Basic Settings" javaType="java.lang.String" name="name" type="name"/>
                 <required caption="Consumer Key" group="General" javaType="java.lang.String" name="consumerKey" type="string"/>
                 <required caption="Consumer Secret" group="General" javaType="java.lang.String" name="consumerSecret" type="string"/>
-                <optional caption="Scope" default="https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://spreadsheets.google.com/feeds https://docs.google.com/feeds" group="General" javaType="java.lang.String" name="scope" type="string"/>
-                <optional caption="Application Name" default="Mule-GoogleSpreadsheetsConnector/1.0" group="General" javaType="java.lang.String" name="applicationName" type="string"/>
+                <optional caption="Scope"
+                          default="https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://spreadsheets.google.com/feeds https://docs.google.com/feeds"
+                          group="General" javaType="java.lang.String" name="scope" type="string"/>
+                <optional caption="Application Name" default="Mule-GoogleSpreadsheetsConnector/1.0" group="General" javaType="java.lang.String" name="applicationName"
+                          type="string"/>
                 <optional caption="On No Token" default="EXCEPTION" group="General" javaType="java.lang.String" name="onNoToken" type="enum"/>
             </attributes>
             <childElements>
@@ -40,8 +43,10 @@
         <authorize>
             <attributes>
                 <optional caption="State" group="General" javaType="java.lang.String" name="state" type="string"/>
-                <optional caption="Access_type" default="online" group="Additional Authorization Parameters" javaType="org.mule.modules.google.AccessType" name="access_type" type="enum"/>
-                <optional caption="Force_prompt" default="auto" group="Additional Authorization Parameters" javaType="org.mule.modules.google.ForcePrompt" name="force_prompt" type="enum"/>
+                <optional caption="Access_type" default="online" group="Additional Authorization Parameters" javaType="org.mule.modules.google.AccessType" name="access_type"
+                          type="enum"/>
+                <optional caption="Force_prompt" default="auto" group="Additional Authorization Parameters" javaType="org.mule.modules.google.ForcePrompt" name="force_prompt"
+                          type="enum"/>
                 <optional caption="Access Token Id" group="General" javaType="java.lang.String" name="accessTokenId" type="string"/>
             </attributes>
         </authorize>

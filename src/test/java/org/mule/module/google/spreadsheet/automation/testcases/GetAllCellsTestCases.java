@@ -1,19 +1,12 @@
 /**
- *
  * Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
- *
+ * <p/>
  * The software in this package is published under the terms of the CPAL v1.0
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
  */
 
 package org.mule.module.google.spreadsheet.automation.testcases;
-
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.util.List;
-import java.util.Map;
 
 import org.junit.After;
 import org.junit.Before;
@@ -22,7 +15,11 @@ import org.junit.experimental.categories.Category;
 import org.mule.module.google.spreadsheet.automation.RegressionTests;
 import org.mule.module.google.spreadsheet.automation.SmokeTests;
 import org.mule.module.google.spreadsheet.model.Row;
-import org.mule.module.google.spreadsheet.model.Worksheet;
+
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class GetAllCellsTestCases extends GoogleSpreadsheetsTestParent {
 
@@ -40,7 +37,7 @@ public class GetAllCellsTestCases extends GoogleSpreadsheetsTestParent {
         setRowValues();
     }
 
-    @Category({SmokeTests.class, RegressionTests.class})
+    @Category({ SmokeTests.class, RegressionTests.class })
     @Test
     public void testGetAllCells() {
         try {
@@ -64,7 +61,7 @@ public class GetAllCellsTestCases extends GoogleSpreadsheetsTestParent {
     }
 
     @After
-    public void tearDown() throws Exception{
+    public void tearDown() throws Exception {
         runFlowAndGetPayload("delete-worksheet");
         deleteSpreadsheet(spreadsheetTitle);
     }

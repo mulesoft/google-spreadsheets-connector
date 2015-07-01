@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <connector name="Google Spreadsheets">
     <properties>
-    <connectivity-support>true</connectivity-support>
-    <OAuth-authentication>true</OAuth-authentication>
-    <metadata>static</metadata>
-    <datasense-enabled>true</datasense-enabled>
-    <transformer>false</transformer>
-  </properties>
+        <connectivity-support>true</connectivity-support>
+        <OAuth-authentication>true</OAuth-authentication>
+        <metadata>static</metadata>
+        <datasense-enabled>true</datasense-enabled>
+        <transformer>false</transformer>
+    </properties>
     <oauthConfig>
         <required caption="Name" group="Basic Settings" javaType="java.lang.String" name="name" type="name">Google_Spreadsheets</required>
         <required caption="Consumer Key" group="General" javaType="java.lang.String" name="consumerKey" prefix="google_spreadsheets" type="string">ConsumerKey</required>

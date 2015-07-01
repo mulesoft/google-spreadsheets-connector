@@ -18,32 +18,27 @@
 
 -->
 
-<mule xmlns="http://www.mulesoft.org/schema/mule/core"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xmlns:spring="http://www.springframework.org/schema/beans"
-      xmlns:gss="http://www.mulesoft.org/schema/mule/googlespreadsheet"
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xmlns:http="http://www.mulesoft.org/schema/mule/http"
-      xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/3.0/mule-http.xsd
-        http://www.mulesoft.org/schema/mule/googlespreadsheet http://www.mulesoft.org/schema/mule/googlespreadsheet/1.0/mule-googlespreadsheet.xsd">
+      xmlns="http://www.mulesoft.org/schema/mule/core"
+      xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/3.0/mule-http.xsd">
 
-<!--     <gss:config consumerKey="338184803349-oktp3kdscqsr69c51c3qkiu4vo6ec3tc.apps.googleusercontent.com" consumerSecret="-nOKGb-25368mQfvbCBjm-BS"> -->
-<!--     	<gss:oauth-restore-access-token> -->
-<!--             <message-properties-transformer> -->
-<!--                 <add-message-property key="OAuthAccessToken" value="123"/> -->
-<!--                 <add-message-property key="OAuthAccessTokenSecret" value="567"/> -->
-<!--             </message-properties-transformer> -->
-<!--         </gss:oauth-restore-access-token> -->
-<!--     </gss:config> -->
+    <!--     <gss:config consumerKey="338184803349-oktp3kdscqsr69c51c3qkiu4vo6ec3tc.apps.googleusercontent.com" consumerSecret="-nOKGb-25368mQfvbCBjm-BS"> -->
+    <!--     	<gss:oauth-restore-access-token> -->
+    <!--             <message-properties-transformer> -->
+    <!--                 <add-message-property key="OAuthAccessToken" value="123"/> -->
+    <!--                 <add-message-property key="OAuthAccessTokenSecret" value="567"/> -->
+    <!--             </message-properties-transformer> -->
+    <!--         </gss:oauth-restore-access-token> -->
+    <!--     </gss:config> -->
 
-<!-- 	<http:connector name="connector.http.mule.default" /> -->
+    <!-- 	<http:connector name="connector.http.mule.default" /> -->
 
-<!-- 	<flow name="updateFromCsv"> -->
-<!-- 		<gss:authorize /> -->
-<!-- 		<gss:set-csv-values spreadsheet="spreadsheet" worksheet="worksheet" purge="false"/> -->
-<!-- 	</flow> -->
-	
+    <!-- 	<flow name="updateFromCsv"> -->
+    <!-- 		<gss:authorize /> -->
+    <!-- 		<gss:set-csv-values spreadsheet="spreadsheet" worksheet="worksheet" purge="false"/> -->
+    <!-- 	</flow> -->
+
 
 </mule>

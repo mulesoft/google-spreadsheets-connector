@@ -1,7 +1,6 @@
 /**
- *
  * Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
- *
+ * <p/>
  * The software in this package is published under the terms of the CPAL v1.0
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
@@ -13,8 +12,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.mule.api.MuleEvent;
-import org.mule.api.processor.MessageProcessor;
 import org.mule.module.google.spreadsheet.automation.RegressionTests;
 import org.mule.module.google.spreadsheet.automation.SmokeTests;
 import org.mule.module.google.spreadsheet.model.Worksheet;
@@ -40,7 +37,7 @@ public class DeleteWorksheetTestCases extends GoogleSpreadsheetsTestParent {
     }
 
     @Test
-    @Category({SmokeTests.class, RegressionTests.class})
+    @Category({ SmokeTests.class, RegressionTests.class })
     public void testDeleteWorksheet() {
         try {
             runFlowAndGetPayload("delete-worksheet");

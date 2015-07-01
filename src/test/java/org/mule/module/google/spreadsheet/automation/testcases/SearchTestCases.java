@@ -1,7 +1,6 @@
 /**
- *
  * Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
- *
+ * <p/>
  * The software in this package is published under the terms of the CPAL v1.0
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
@@ -38,18 +37,17 @@ public class SearchTestCases extends GoogleSpreadsheetsTestParent {
         setRowValues();
     }
 
-    @Category({RegressionTests.class})
-	@Test
-	public void testSearch() {
-		try {
+    @Category({ RegressionTests.class })
+    @Test
+    public void testSearch() {
+        try {
             List<Row> res = runFlowAndGetPayload("search");
 
             assertEquals(1, res.size());
-		}
-		catch (Exception e) {
+        } catch (Exception e) {
             fail(ConnectorTestUtils.getStackTrace(e));
         }
-	}
+    }
 
     @After
     public void tearDown() throws Exception {

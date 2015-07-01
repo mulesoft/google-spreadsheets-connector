@@ -1,7 +1,6 @@
 /**
- *
  * Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
- *
+ * <p/>
  * The software in this package is published under the terms of the CPAL v1.0
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
@@ -36,12 +35,12 @@ public class GetCellRangeAsCsvTestCases extends GoogleSpreadsheetsTestParent {
         setRowValues();
     }
 
-    @Category({RegressionTests.class})
+    @Category({ RegressionTests.class })
     @Test
     public void testGetCellRangeAsCsv() {
         try {
             String res = runFlowAndGetPayload("get-cell-range-as-csv");
-            String expected = StringEscapeUtils.unescapeJava((String)getTestRunMessageValue("expected"));
+            String expected = StringEscapeUtils.unescapeJava((String) getTestRunMessageValue("expected"));
 
             assertEquals(expected, res);
         } catch (Exception e) {

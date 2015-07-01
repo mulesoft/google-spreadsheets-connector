@@ -1,7 +1,6 @@
 /**
- *
  * Copyright (c) MuleSoft, Inc.  All rights reserved.  http://www.mulesoft.com
- *
+ * <p/>
  * The software in this package is published under the terms of the CPAL v1.0
  * license, a copy of which has been included with this distribution in the
  * LICENSE.txt file.
@@ -57,7 +56,6 @@ public class GoogleSpreadsheetsTestParent extends ConnectorTestCase {
         runFlowAndGetPayload("create-spreadsheet");
     }
 
-
     public List<Spreadsheet> getAllSpreadsheets() throws Exception {
         // Wait for the previous message-processor to complete processing.
         Thread.sleep(5000);
@@ -94,22 +92,21 @@ public class GoogleSpreadsheetsTestParent extends ConnectorTestCase {
         List<Cell> inputCells = row1.getCells();
         List<Cell> retrievedCells = row2.getCells();
 
-		for (final Cell cell : inputCells) {
-			List<Cell> matchingCells = (List<Cell>) CollectionUtils.select(retrievedCells, new Predicate() {
+        for (final Cell cell : inputCells) {
+            List<Cell> matchingCells = (List<Cell>) CollectionUtils.select(retrievedCells, new Predicate() {
 
                 @Override
                 public boolean evaluate(Object object) {
                     Cell cellObject = (Cell) object;
-                    return (cell.getColumnNumber() == cellObject.getColumnNumber())
-                            && (cell.getRowNumber() == cellObject.getRowNumber())
-                            && (StringUtils.equals(cell.getValueOrFormula(), cellObject.getValueOrFormula()));
+                    return (cell.getColumnNumber() == cellObject.getColumnNumber()) && (cell.getRowNumber() == cellObject.getRowNumber()) && (StringUtils
+                            .equals(cell.getValueOrFormula(), cellObject.getValueOrFormula()));
                 }
             });
 
             if (matchingCells.size() != 1)
                 return false;
         }
-		return true;
-	}
+        return true;
+    }
 
 }
